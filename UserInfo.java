@@ -1,7 +1,7 @@
 public class UserInfo{
 	private String name = "";
 	private double monthlyIncome;
-	private double amountToSave = 0.0;
+	private double amountToSave;
 	
 	public UserInfo(String n, double income, double save){
 		name = n;
@@ -15,6 +15,15 @@ public class UserInfo{
 		}
 		else{
 			monthlyIncome = 0.0;
+		}
+	}
+	
+	public vois setAmountToSave(double save){
+		if (save > 0){
+			amountToSave = save;
+		}
+		else{
+			amountToSave = 0.0;
 		}
 	}
 	
