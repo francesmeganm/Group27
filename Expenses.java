@@ -1,4 +1,4 @@
-public class Expenses extends UserInfo{
+public class Expenses{
 	private double rent = 0.0;
 	private double food = 0.0;
 	private double transportation = 0.0; 
