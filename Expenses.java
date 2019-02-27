@@ -16,10 +16,10 @@ public class Expenses extends UserInfo{
 	/**
 	Constructor initializes all private instance variables 
 	*/
-	public Expenses(double rent, double food, double transporation, double utilities){
+	public Expenses(double rent, double food, double transportation, double utilities){
 		this.rent = rent;
 		this.food = food;
-		this.transporation = transporation;
+		this.transportation = transportation;
 		this.utilities = utilties;
 	}
 	
@@ -31,6 +31,8 @@ public class Expenses extends UserInfo{
 		if (rent >= 0){
 			this.rent = rentCost;
 		}
+		else{
+			this.rent = 0.0;
 	}
 	
 	/**
@@ -48,6 +50,8 @@ public class Expenses extends UserInfo{
 		if (food >= 0){
 			this.food = foodCost;
 		}
+		else{
+			this.food = 0.0;
 	}
 	
 	/**
@@ -61,10 +65,12 @@ public class Expenses extends UserInfo{
 	Method sets up the value of transporation, with the condition that the transporation is a non-negitive number
 	@param transporationCost the cost of transporation to be set 
 	*/
-	public void setTransporation(double transporationCost){
+	public void setTransportation(double transportationCost){
 		if (transporation >= 0){
-			this.transporation = transporationCost;
+			this.transportation = transportationCost;
 		}
+		else{
+			this.transportation = transporatation;
 	}
 	
 	/**
@@ -82,6 +88,8 @@ public class Expenses extends UserInfo{
 		if (utilities >= 0){
 			this.utilities = utilitiesCost;
 		}
+		else{
+			this.utilities = utilities;
 	}
 	
 	/**
