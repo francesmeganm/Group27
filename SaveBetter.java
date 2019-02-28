@@ -21,6 +21,10 @@ public class SaveBetter extends UserData{
 	}
 
 	public static void main(String[] args){
-		String hi = keyboard.nextLine();
+		Scanner keyboard = new Scanner(System.in);
+		input = keyboard.newLine();
+		while (input != ""){
+			
+		}
 	}
 }
