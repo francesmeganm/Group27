@@ -3,11 +3,12 @@ public class UserData{
 	private double monthlyIncome = 0.0;
 	private double amountToSave = 0.0;
 	
+	public UserData(){};
 	
 	public UserData(double expenses, double income, double save){
-		monthlyExpenses = expenses;
+		setMonthlyExpenses(expenses);
 		setMonthlyIncome(income);
-		amountToSave = save; 
+		setAmountToSave(save); 
 	}
 	
 	public void setMonthlyIncome(double income){
