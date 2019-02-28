@@ -1,6 +1,6 @@
 import javaa.util.HashMap;
 
-public class MenuOptions extends Budget{
-  HashMap<Budget, String> menuChoices = new HashMap<Budget, String>();
-  menuOptions.put()
+public class MenuOptions extends UserData{
+  HashMap<String, UserData> menuChoices = new HashMap<String, UserData>();
+  menuOptions.put(, 
 }
