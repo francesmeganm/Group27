@@ -11,13 +11,15 @@ public class SaveBetter extends UserData{
 
 	Scanner keyboard = new Scanner(System.in);
 	
-	public void getMenuOption(String choice){
+	public double getMenuOption(String choice){
 		if (choice == "Update Income"){
 			System.out.print("Enter new Income: ");
 			double updatedIncome = keyboard.nextInt();
 			super.setMonthlyIncome(updatedIncome);
 			System.out.println("Your new income is: " + updatedIncome);
+			return super.getMonthlyIncome();
 		}
+		return 0.0;
 	}
 
 	public static void main(String[] args){
@@ -25,5 +27,6 @@ public class SaveBetter extends UserData{
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println(sb.menuList);
 		String input = keyboard.nextLine();
-		
+		sb.getMenuOption(input);
+		}
 }
