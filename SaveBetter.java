@@ -3,11 +3,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SaveBetter extends UserData{
-	String menuList = "Update Income		Update Expenses		Update Amount to Save		Show Budget Overview";
 	
-	public void displayMenu(){
-		System.out.println(menuList);
-	}
+	
 
 	Scanner keyboard = new Scanner(System.in);
 	
@@ -21,10 +18,9 @@ public class SaveBetter extends UserData{
 	}
 
 	public static void main(String[] args){
+		String menuList = "Update Income		Update Expenses		Update Amount to Save		Show Budget Overview";
 		Scanner keyboard = new Scanner(System.in);
-		input = keyboard.newLine();
-		while (input != ""){
-			
-		}
-	}
+		System.out.println(menuList);
+		String input = keyboard.nextLine();
+			}
 }
