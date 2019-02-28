@@ -21,11 +21,9 @@ public class SaveBetter extends UserData{
 	}
 
 	public static void main(String[] args){
+		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println(menuList);
-		input = keyboard.newLine();
-		while (input != ""){
-			getMenuOption()
-		}
-	}
+		System.out.println(sb.menuList);
+		String input = keyboard.nextLine();
+		
 }
