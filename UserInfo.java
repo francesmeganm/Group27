@@ -1,10 +1,11 @@
-public class UserInfo{
-	private String name = "";
-	private double monthlyIncome;
-	private double amountToSave;
+public class UserData{
+	private double monthlyExpenses = 0.0;
+	private double monthlyIncome = 0.0;
+	private double amountToSave = 0.0;
 	
-	public UserInfo(String n, double income, double save){
-		name = n;
+	
+	public UserInfo(double expenses, double income, double save){
+		monthlyExpenses = expenses;
 		monthlyIncome = setMonthlyIncome();
 		amountToSave = save; 
 	}
@@ -13,17 +14,17 @@ public class UserInfo{
 		if (income > 0){
 			monthlyIncome = income;
 		}
-		else{
-			monthlyIncome = 0.0;
-		}
 	}
 	
-	public vois setAmountToSave(double save){
+	public void setAmountToSave(double save){
 		if (save > 0){
 			amountToSave = save;
 		}
-		else{
-			amountToSave = 0.0;
+	}
+	
+	public void setMonthlyExpenses(double expenses){
+		if (expenses > 0){
+			monthlyExpenses = expenses;
 		}
 	}
 	
@@ -35,8 +36,10 @@ public class UserInfo{
 		return amountToSave;
 	}
 	
-	public double getName(){
-		return name;
-	}
-	
+	public double getMonthlyExpenses(){
+		return monthlyExpenses;
 }
+	
+	
+	
+	
