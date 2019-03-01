@@ -26,11 +26,11 @@ public class SaveBetter extends UserData{
 		}
 
 		if (choice == 2){
-			System.out.print("Enter new amount to save: ");
-			double updatedAmountToSave = keyboard.nextInt();
-			super.setAmountToSave(updatedAmountToSave);
-			System.out.println("Your new amount to save is: " + updatedAmountToSave);
-			returnStatement = super.getAmountToSave();
+			System.out.print("Enter percentage of remaining income you would like to save: ");
+			double updatedPercentToSave = keyboard.nextInt();
+			super.setPercentToSave(updatedPercentToSave);
+			System.out.println("Your new desired percentage of income to save: " + updatedPercentToSave);
+			returnStatement = super.getPercentToSave();
 		}
 
 		/*

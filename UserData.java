@@ -1,6 +1,7 @@
 public class UserData{
 	private double monthlyExpenses = 0.0;
 	private double monthlyIncome = 0.0;
+	private double percentToSave = 0.0;
 	private double amountToSave = 0.0;
 	
 	public UserData(){};
@@ -8,7 +9,8 @@ public class UserData{
 	public UserData(double expenses, double income, double save){
 		setMonthlyExpenses(expenses);
 		setMonthlyIncome(income);
-		setAmountToSave(save); 
+		setPercentToSave(save); 
+
 	}
 	
 	public void setMonthlyIncome(double income){
@@ -17,9 +19,10 @@ public class UserData{
 		}
 	}
 	
-	public void setAmountToSave(double save){
-		if (save > 0){
-			amountToSave = save;
+	public void setPercentToSave(double save){
+		if (save > 0 && save < 100){
+			amountToSave = (monthlyIncome - monthlyExpenses) * (save/100);
+			percentToSave = save;
 		}
 	}
 	
@@ -33,8 +36,8 @@ public class UserData{
 		return monthlyIncome;
 	}
 	
-	public double getAmountToSave(){
-		return amountToSave;
+	public double getPercentToSave(){
+		return percentToSave;
 	}
 	
 	public double getMonthlyExpenses(){
