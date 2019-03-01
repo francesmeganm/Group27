@@ -51,7 +51,7 @@ public class SaveBetter extends UserData{
 
 		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("To quite enter a blank line");
+		System.out.println("To quit enter a blank line");
 		System.out.println(sb.menuList);
 		String input = keyboard.nextLine();
 
