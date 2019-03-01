@@ -77,8 +77,8 @@ public class SaveBetter extends UserData{
 				else if (index == 2){
 					sb.getMenuOption(1);
 				}
-				else if (index == 2){
-					sb.getMenuOption(3);
+				else if (index == 3){
+					sb.getMenuOption(2);
 				}
 			}
 			else if (index == 1){
