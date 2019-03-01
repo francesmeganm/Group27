@@ -3,14 +3,14 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SaveBetter extends UserData{
-	String menuList = "Update Income		Update Expenses		Update Amount to Save		Show Budget Overview";
+	String menuList = "Update Income // Update Expenses // Update Amount To Save // Show Budget Overview";
 	
 	Scanner keyboard = new Scanner(System.in);
 	
-	public double getMenuOption(double choice){
+	public double getMenuOption(int choice){
 		double returnStatement = 0.0;
 		if (choice == 0){
-			System.out.print("Enter new Income: ");
+			System.out.println("Enter new Income: ");
 			double updatedIncome = keyboard.nextInt();
 			super.setMonthlyIncome(updatedIncome);
 			System.out.println("Your new income is: " + updatedIncome);
@@ -52,29 +52,37 @@ public class SaveBetter extends UserData{
 	}
 
 	public static void main(String[] args){
+		ArrayList<String> menu = new ArrayList<String>();
+		menu.add("Update Income");
+		menu.add("Update Expenses");
+		menu.add("Update Amount To Save");
+		menu.add("Show Budget Overview");
+
 		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("To quite return 11");
+		System.out.println("To quite enter \"exit\" to quit program");
 		System.out.println(sb.menuList);
-		double input = keyboard.nextInt();
+		String input = keyboard.nextLine();
 
-		while (input != 11){
-			if (input == 0){
-				sb.getMenuOption(input);
+		while (!(input.isEmpty())){
+			System.out.println(menu);
+			int index = menu.indexOf(input);
+			System.out.println(index);
+			if (index == 0){
+				sb.getMenuOption(index);
 			}
-			if (input == 1){
-				sb.getMenuOption(input);
+			if (index == 1){
+				sb.getMenuOption(index);
 			}
-			if (input == 2){
-				sb.getMenuOption(input);
+			if (index == 2){
+				sb.getMenuOption(index);
 			}
-			if (input == 3){
+			if (index == 3){
 				sb.getBudgetOverview();
 			}
 
-			input = keyboard.nextInt();
+			System.out.print(menu);
+			input = keyboard.nextLine();
 		}
-
-
 	}
 }
