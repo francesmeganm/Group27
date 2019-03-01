@@ -3,8 +3,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SaveBetter extends UserData{
-	String menuList = "Update User Info// Show Budget Overview";
-	String updateList = "Update All // Update Income // Update Expenses // Update Amount To Save";
+	String menuList = "\nUpdate User Info// Show Budget Overview";
+	String updateList = "\nUpdate All // Update Income // Update Expenses // Update Amount To Save";
 	
 	Scanner keyboard = new Scanner(System.in);
 	
@@ -38,7 +38,7 @@ public class SaveBetter extends UserData{
 	}
 
 	public void getBudgetOverview(){
-		System.out.println("This is your budget overview: \n" +  
+		System.out.println("\nThis is your budget overview: \n" +  
 			"Desired amount to save a month: " + super.getAmountToSave() + "\n" + 
 			"Money left to spend this month: " + super.getRemainingMoney());
 	}
