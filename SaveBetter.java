@@ -44,11 +44,10 @@ public class SaveBetter extends UserData{
 		return returnStatement;
 	}
 
-	public String getBudgetOverview(){
-		String returnStatement = "xx";
-		System.out.println("This is your budget overview");
-		return returnStatement;
-
+	public void getBudgetOverview(){
+		System.out.println("This is your budget overview: \n" +  
+			"Desired amount to save a month: " + super.getAmountToSave() + "\n" + 
+			"Money left to spend this month: " + super.getRemainingMoney());
 	}
 
 	public static void main(String[] args){

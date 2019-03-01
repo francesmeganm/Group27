@@ -43,6 +43,14 @@ public class UserData{
 	public double getMonthlyExpenses(){
 		return monthlyExpenses;
 	}
+
+	public double getAmountToSave(){
+		return amountToSave;
+	}
+
+	public double getRemainingMoney(){
+		return monthlyIncome - monthlyExpenses - amountToSave;
+	}
 }
 	
 	
