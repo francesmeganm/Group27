@@ -3,7 +3,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class SaveBetter extends UserData{
-	String menuList = "Update Income // Update Expenses // Update Amount To Save // Show Budget Overview";
+	String menuList = "Update User Info// Show Budget Overview";
+	String updateList = "Update All // Update Income // Update Expenses // Update Amount To Save";
 	
 	Scanner keyboard = new Scanner(System.in);
 	
@@ -44,10 +45,14 @@ public class SaveBetter extends UserData{
 
 	public static void main(String[] args){
 		ArrayList<String> menu = new ArrayList<String>();
-		menu.add("Update Income");
-		menu.add("Update Expenses");
-		menu.add("Update Amount To Save");
+		menu.add("Update User Info");
 		menu.add("Show Budget Overview");
+
+		ArrayList<String> update = new ArrayList<String>();
+		update.add("Update All");
+		update.add("Update Income");
+		update.add("Update Expenses");
+		update.add("Update Amount To Spend");
 
 		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
@@ -56,18 +61,27 @@ public class SaveBetter extends UserData{
 		String input = keyboard.nextLine();
 
 		while (!(input.isEmpty())){
-			System.out.println(menu);
 			int index = menu.indexOf(input);
 			if (index == 0){
-				sb.getMenuOption(index);
+				System.out.println(sb.updateList);
+				input = keyboard.nextLine();
+				index = update.indexOf(input);
+				if (index == 0){
+					sb.getMenuOption(0);
+					sb.getMenuOption(1);
+					sb.getMenuOption(2);
+				}
+				else if (index == 1){
+					sb.getMenuOption(0);
+				}
+				else if (index == 2){
+					sb.getMenuOption(1);
+				}
+				else if (index == 2){
+					sb.getMenuOption(3);
+				}
 			}
-			if (index == 1){
-				sb.getMenuOption(index);
-			}
-			if (index == 2){
-				sb.getMenuOption(index);
-			}
-			if (index == 3){
+			else if (index == 1){
 				sb.getBudgetOverview();
 			}
 
