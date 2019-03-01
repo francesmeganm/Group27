@@ -47,7 +47,7 @@ public class SaveBetter extends UserData{
 		update.add("Update All");
 		update.add("Update Income");
 		update.add("Update Expenses");
-		update.add("Update Amount To Spend");
+		update.add("Update Amount To Save");
 
 		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
