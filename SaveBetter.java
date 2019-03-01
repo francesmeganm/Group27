@@ -35,7 +35,7 @@ public class SaveBetter extends UserData{
 	public void getBudgetOverview(){
 		System.out.println("\nThis is your budget overview: \n" +  
 			"Desired amount to save a month: " + super.getAmountToSave() + "\n" + 
-			"Money left to spend this month: " + super.getRemainingMoney());
+			"Money left to spend this month: " + super.getRemainingBalance());
 	}
 
 	public static void main(String[] args){
