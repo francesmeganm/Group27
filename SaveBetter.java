@@ -10,7 +10,7 @@ public class SaveBetter extends UserData{
 	public double getMenuOption(int choice){
 		double returnStatement = 0.0;
 		if (choice == 0){
-			System.out.println("Enter new Income: ");
+			System.out.print("Enter new Income: ");
 			double updatedIncome = keyboard.nextInt();
 			super.setMonthlyIncome(updatedIncome);
 			System.out.println("Your new income is: " + updatedIncome);
@@ -46,7 +46,7 @@ public class SaveBetter extends UserData{
 
 	public String getBudgetOverview(){
 		String returnStatement = "xx";
-		System.out.print("This is your budget overview");
+		System.out.println("This is your budget overview");
 		return returnStatement;
 
 	}
@@ -60,14 +60,13 @@ public class SaveBetter extends UserData{
 
 		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("To quite enter \"exit\" to quit program");
+		System.out.println("To quite enter a blank line");
 		System.out.println(sb.menuList);
 		String input = keyboard.nextLine();
 
 		while (!(input.isEmpty())){
 			System.out.println(menu);
 			int index = menu.indexOf(input);
-			System.out.println(index);
 			if (index == 0){
 				sb.getMenuOption(index);
 			}
@@ -81,7 +80,7 @@ public class SaveBetter extends UserData{
 				sb.getBudgetOverview();
 			}
 
-			System.out.print(menu);
+			System.out.println(sb.menuList);
 			input = keyboard.nextLine();
 		}
 	}
