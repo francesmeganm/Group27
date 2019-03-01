@@ -44,6 +44,13 @@ public class SaveBetter extends UserData{
 		return returnStatement;
 	}
 
+	public String getBudgetOverview(){
+		String returnStatement = "xx";
+		System.out.print("This is your budget overview");
+		return returnStatement;
+
+	}
+
 	public static void main(String[] args){
 		SaveBetter sb = new SaveBetter();
 		Scanner keyboard = new Scanner(System.in);
@@ -52,8 +59,22 @@ public class SaveBetter extends UserData{
 		double input = keyboard.nextInt();
 
 		while (input != 11){
-			sb.getMenuOption(input);
+			if (input == 0){
+				sb.getMenuOption(input);
+			}
+			if (input == 1){
+				sb.getMenuOption(input);
+			}
+			if (input == 2){
+				sb.getMenuOption(input);
+			}
+			if (input == 3){
+				sb.getBudgetOverview();
+			}
+
 			input = keyboard.nextInt();
 		}
+
+
 	}
 }
