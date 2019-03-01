@@ -33,14 +33,6 @@ public class SaveBetter extends UserData{
 			returnStatement = super.getPercentToSave();
 		}
 
-		/*
-		this one is hard because there is a good chance that budget overview has more than 
-		just number, and right now this method only returns double 
-
-		if (choice == 3){
-			System.out.print("This is your budget overview");
-
-		}*/
 		return returnStatement;
 	}
 
