@@ -48,7 +48,7 @@ public class UserData{
 		return amountToSave;
 	}
 
-	public double getRemainingBalance(){
+	public double getRemainingMoney(){
 		return monthlyIncome - monthlyExpenses - amountToSave;
 	}
 }

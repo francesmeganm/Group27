@@ -8,33 +8,28 @@ public class SaveBetter extends UserData{
 	
 	Scanner keyboard = new Scanner(System.in);
 	
-	public double getMenuOption(int choice){
+	public void getMenuOption(int choice){
 		double returnStatement = 0.0;
 		if (choice == 0){
-			System.out.print("Enter new Income: ");
+			System.out.print("Enter new income: ");
 			double updatedIncome = keyboard.nextInt();
 			super.setMonthlyIncome(updatedIncome);
-			System.out.println("Your new income is: " + updatedIncome);
-			returnStatement = super.getMonthlyIncome();
+			System.out.println("Your new income is: " + updatedIncome + "\n");
 		}
 
 		if (choice == 1){
 			System.out.print("Enter new expenses: ");
 			double updatedExpenses = keyboard.nextInt();
 			super.setMonthlyExpenses(updatedExpenses);
-			System.out.println("Your new expenses is: " + updatedExpenses);
-			returnStatement = super.getMonthlyExpenses();
+			System.out.println("Your new expenses is: " + updatedExpenses + "\n");
 		}
 
 		if (choice == 2){
-			System.out.print("Enter percentage of remaining income you would like to save: ");
+			System.out.print("Enter % of remaining income you would like to save: ");
 			double updatedPercentToSave = keyboard.nextInt();
 			super.setPercentToSave(updatedPercentToSave);
-			System.out.println("Your new desired percentage of income to save: " + updatedPercentToSave);
-			returnStatement = super.getPercentToSave();
+			System.out.println("Your new desired % of income to save: " + updatedPercentToSave + "\n");
 		}
-
-		return returnStatement;
 	}
 
 	public void getBudgetOverview(){
