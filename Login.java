@@ -8,7 +8,7 @@ public class Login extends Accounts{
     String username;
     String password;
 
-    String loginMenu = "Login [1] Create Account [2]";
+    String loginMenu = "Create Account [1] Login [2]";
     
     Accounts acct = new Accounts();
 
