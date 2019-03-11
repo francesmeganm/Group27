@@ -33,6 +33,7 @@ public class Login extends Accounts{
         System.out.print("Enter a new username");
         username = keyboard.nextLine();
       } 
+      keyboard.nextLine();
       System.out.println("Enter a new password: ");
       password = keyboard.nextLine();
       acct.createAccount(username, password);
