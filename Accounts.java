@@ -11,6 +11,7 @@ public class Accounts extends UserInfo{
   	usernameAndPassword.put(username, password);
     UserInfo info = new UserInfo();
     usernameAndUserInfo.put(username, info);
+    info.getMonthlyIncome();
     info.getMonthlyExpenses();
   }
 

@@ -39,6 +39,8 @@ public class UserInfo{
 	}
 	
 	public double getMonthlyIncome() {
+		System.out.print("Enter income: ");
+		monthlyIncome =keyboard.nextDouble();
 		return monthlyIncome;
 	}
 	
