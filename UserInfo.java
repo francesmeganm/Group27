@@ -1,19 +1,25 @@
-
-
 import java.util.Scanner;
 
-public class UserInfo extends Account {
+public class UserInfo{
 
-	private double monthlyExpenses;
-	private double monthlyIncome;
+	Scanner keyboard = new Scanner(System.in);
 	
+	private double monthlyExpenses = 0.0;
+	private double monthlyIncome = 0.0;
 	
+	public UserInfo(){}
+	
+  	public UserInfo(double exp, double inc){
+	    setMonthlyIncome(inc);
+	    setMonthlyExpenses(exp);
+ 	 }
+ 	 public UserInfo(UserInfo toCopy){
+   		UserInfo user = new UserInfo(toCopy);
+ 	 }
+
 	public double getMonthlyExpenses() {
 	
-	
-		Scanner keyboard = new Scanner(System.in);
-	
-		ystem.out.println("Enter expense for Transportation: ");
+		System.out.println("Enter expense for Transportation: ");
 		double transportCost = keyboard.nextInt();
 	
 		System.out.println("Enter expense for Food & Drink: ");
@@ -31,15 +37,19 @@ public class UserInfo extends Account {
 		monthlyExpenses = transportCost + foodCost + entertainmentCost + rentCost + otherCost;
 	
 		return monthlyExpenses;
-	
 	}
 	
 	public double getMonthlyIncome() {
+		System.out.println("Enter income: ");
+		monthlyIncome = keyboard.nextInt();
 		return monthlyIncome;
 	}
 	
-	public void setMonthlyIncome(income) {
+	public void setMonthlyIncome(double income) {
 		monthlyIncome = income;
 	}
-	
+
+	public void setMonthlyExpenses(double expenses){
+		monthlyExpenses = expenses;
+	}
 }
