@@ -17,19 +17,19 @@ public class UserInfo{
 	public double getMonthlyExpenses() {
 		Scanner keyboard = new Scanner(System.in);
 	
-		System.out.println("Enter expense for Transportation: ");
+		System.out.print("Enter expense for Transportation: ");
 		double transportCost = keyboard.nextInt();
 	
-		System.out.println("Enter expense for Food & Drink: ");
+		System.out.print("Enter expense for Food & Drink: ");
 		double foodCost = keyboard.nextInt();
 	
-		System.out.println("Enter expense for Entertainment: ");
+		System.out.print("Enter expense for Entertainment: ");
 		double entertainmentCost = keyboard.nextInt();
 	
-		System.out.println("Enter expense for Rent: ");
+		System.out.print("Enter expense for Rent: ");
 		double rentCost = keyboard.nextInt();
 	
-		System.out.println("Enter expense for Other: ");
+		System.out.print("Enter expense for Other: ");
 		double otherCost = keyboard.nextInt();
 		
 		monthlyExpenses = transportCost + foodCost + entertainmentCost + rentCost + otherCost;
