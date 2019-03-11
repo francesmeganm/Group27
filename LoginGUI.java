@@ -6,6 +6,7 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.scene.shape.*;
+import javafx.scene.paint.Color;
 import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -15,11 +16,15 @@ public class LoginGUI extends Application{
 	private Accounts account = new Accounts();
 	private TextField input1;
 	private TextField input2;
+	private Label output;
 
 	class HandleCreateAccount implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
+			if (!account.checkUsername(username)){
+				output.setText("Sorry that username is already taken, please try another.");
+			}
 			account.createAccount(username, password);
 		}
 	}
@@ -28,10 +33,12 @@ public class LoginGUI extends Application{
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
-			HashMap<String, String> usernameAndPassword = new HashMap<String, String >(account.getUsernameAndPassword());
-			/*while (usernameAndPassword.get(username) != password){
-				name.setLabel("You have entered an invalid username/password. Please try again.");
-    		}*/
+			if (!account.verifyUsernameAndPassword(username, password)){
+				output.setText("You have entered an invalid username/password. Please try again.");
+			}
+			else{
+				UserInfo currentAccount = new UserInfo(account.usernameAndUserInfo.get(username));
+			}
     	}
 	}
 
@@ -65,6 +72,15 @@ public class LoginGUI extends Application{
 		input2 = username;
 		branchnode3.getChildren().add(password);
 
+		HBox branchnode4 = new HBox();
+		root.getChildren().add(branchnode4);
+		branchnode4.setAlignment(Pos.CENTER);
+
+		output = new Label();
+		output.setWrapText(true);
+		output.setTextFill(Color.web("#FF0000"));
+		branchnode4.getChildren().add(output);
+
 		HBox branchnode2 = new HBox();
 		root.getChildren().add(branchnode2);
 		branchnode2.setAlignment(Pos.CENTER);
@@ -77,7 +93,7 @@ public class LoginGUI extends Application{
 		login.setOnAction(new HandleLogin());
 		branchnode2.getChildren().add(login);
 
-		Scene scene = new Scene (root, 300, 200);
+		Scene scene = new Scene (root, 600, 300);
 		primaryStage.setTitle("SAVEBETTER");
 		primaryStage.setScene(scene);
 		primaryStage.show();
