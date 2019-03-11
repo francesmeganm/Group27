@@ -4,33 +4,34 @@ public class UserInfo{
 
 	private double monthlyExpenses = 0.0;
 	private double monthlyIncome = 0.0;
+
+	Scanner keyboard = new Scanner(System.in);
 	
-  public UserInfo(double exp, double inc){
-    setMonthlyIncome(inc);
-    setMonthlyExpenses(exp);
-  }
-  public UserInfo(UserInfo toCopy){
-    UserInfo user = new UserInfo(toCopy);
-  }
-  public UserInfo(){}
+ 	public UserInfo(double exp, double inc){
+    	setMonthlyIncome(inc);
+    	setMonthlyExpenses(exp);
+  	}
+  	public UserInfo(UserInfo toCopy){
+    	UserInfo user = new UserInfo(toCopy);
+  	}
+ 	public UserInfo(){}
   
 	public double getMonthlyExpenses() {
-		Scanner keyboard = new Scanner(System.in);
 	
 		System.out.print("Enter expense for Transportation: ");
-		double transportCost = keyboard.nextInt();
+		double transportCost = keyboard.nextDouble();
 	
 		System.out.print("Enter expense for Food & Drink: ");
-		double foodCost = keyboard.nextInt();
+		double foodCost = keyboard.nextDouble();
 	
 		System.out.print("Enter expense for Entertainment: ");
-		double entertainmentCost = keyboard.nextInt();
+		double entertainmentCost = keyboard.nextDouble();
 	
 		System.out.print("Enter expense for Rent: ");
-		double rentCost = keyboard.nextInt();
+		double rentCost = keyboard.nextDouble();
 	
 		System.out.print("Enter expense for Other: ");
-		double otherCost = keyboard.nextInt();
+		double otherCost = keyboard.nextDouble();
 		
 		monthlyExpenses = transportCost + foodCost + entertainmentCost + rentCost + otherCost;
 	
