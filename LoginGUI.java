@@ -12,13 +12,26 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import java.util.HashMap;
 
+/** 
+LoginGUI class references the login page that will run in the SaveBetter App. It contains instance variables:
+acoount, input1 textfield for the usernmae, input2 textfield for the password, and an output label that display any errors. 
+This class also extends Application. 
+*/
 public class LoginGUI extends Application{
 	private Accounts account = new Accounts();
 	private TextField input1;
 	private TextField input2;
 	private Label output;
 
+	/** 
+	HandleCreateAccount class handles the event when a user presses the "Create Account" button and extends EventHandler.
+	*/
 	class HandleCreateAccount implements EventHandler<ActionEvent>{
+		/** 
+		Method takes the input from the username and password textboxes. If the username is not unique an error will appear and 
+		the program will not create a new account. Otherwise, it will create a new account. 
+		@param event of pressing "Create Account" button 
+		*/
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
@@ -29,7 +42,16 @@ public class LoginGUI extends Application{
 		}
 	}
 
+	/**
+	HandleLogin class handles the event when a user presses the "Login" button and extends EventHandler.
+	*/
 	class HandleLogin implements EventHandler<ActionEvent>{
+		/**
+		Method takes the input from the username and password textboxes. If the username and password are 
+		valid credentials of an existing account, the program will create a new instance of that account and its
+		user info. Otherwise, an error will be displayed. 
+		@param event of pressing "Login" button 
+		*/
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
