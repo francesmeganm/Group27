@@ -68,20 +68,6 @@ public class UserInfoGUI extends Application{
 	}
 
 	/**
-	The class HandleEntertainment sets the entertainment expense in the class
-	UserInfo and then shows the new monthly entertainment expense to the user 
-	*/
-	class HandleEntertainment implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			String newEnt = input4.getText();
-			double newEnt1 = Double.parseDouble(newEnt);
-			account.setEntertainment(newEnt1);
-			String stringEnt = account.getEntertainment() + "";
-			input4.setText(stringEnt);
-		}
-	}
-
-	/**
 	The class HandleRent sets the rent exepense in the class UserInfo and then
 	shows the new monthly rent expense to the user 
 	*/
@@ -132,12 +118,6 @@ public class UserInfoGUI extends Application{
 			account.setFood(newFood1);
 			String stringFood = account.getFood() + "";
 			input3.setText(stringFood);
-
-			String newEnt = input4.getText();
-			double newEnt1 = Double.parseDouble(newEnt);
-			account.setEntertainment(newEnt1);
-			String stringEnt = account.getEntertainment() + "";
-			input4.setText(stringEnt);
 
 			String newRent = input5.getText();
 			double newRent1 = Double.parseDouble(newRent);
@@ -219,55 +199,41 @@ public class UserInfoGUI extends Application{
 		grid.getChildren().add(mFood);
 		mFood.setOnAction(new HandleFoodAndDrink());
 
-		//ENTER ENTAINTMENT COLUMN 
-		Label enterEnt = new Label("Update Entertainment: ");
-		GridPane.setConstraints(enterEnt, 1, 4);
-		grid.getChildren().add(enterEnt);
-
-		input4 = new TextField(Double.toString(account.getEntertainment()));
-		GridPane.setConstraints(input4, 2, 4);
-		grid.getChildren().add(input4);
-
-		Button mEnt = new Button("Update");
-		GridPane.setConstraints(mEnt, 3, 4);
-		grid.getChildren().add(mEnt);
-		mEnt.setOnAction(new HandleEntertainment());
-
 		//ENTER RENT COLUMN 
 		Label enterRent = new Label("Update Rent: ");
-		GridPane.setConstraints(enterRent, 1, 5);
+		GridPane.setConstraints(enterRent, 1, 4);
 		grid.getChildren().add(enterRent);
 
 		input5 = new TextField(Double.toString(account.getRent()));
-		GridPane.setConstraints(input5, 2, 5);
+		GridPane.setConstraints(input5, 2, 4);
 		grid.getChildren().add(input5);
 
 		Button mRent = new Button("Update");
-		GridPane.setConstraints(mRent, 3, 5);
+		GridPane.setConstraints(mRent, 3, 4);
 		grid.getChildren().add(mRent);
 		mRent.setOnAction(new HandleRent());
 
 		//ENTER OTHER COLUMN 
 		Label enterOther = new Label("Update Other: ");
-		GridPane.setConstraints(enterOther, 1, 6);
+		GridPane.setConstraints(enterOther, 1, 5);
 		grid.getChildren().add(enterOther);
 
 		input6 = new TextField(Double.toString(account.getOther()));
-		GridPane.setConstraints(input6, 2, 6);
+		GridPane.setConstraints(input6, 2, 5);
 		grid.getChildren().add(input6);
 
 		Button mOther = new Button("Update");
-		GridPane.setConstraints(mOther, 3, 6);
+		GridPane.setConstraints(mOther, 3, 5);
 		grid.getChildren().add(mOther);
 		mOther.setOnAction(new HandleOther());
 
 		//UPDATE ALL
 		Label updateAll = new Label("Update all: ");
-		GridPane.setConstraints(updateAll, 1, 7);
+		GridPane.setConstraints(updateAll, 1, 6);
 		grid.getChildren().add(updateAll);
 
 		Button mAll = new Button("Update");
-		GridPane.setConstraints(mAll, 3, 7);
+		GridPane.setConstraints(mAll, 3, 6);
 		grid.getChildren().add(mAll);
 		mAll.setOnAction(new HandleAll());
 		
