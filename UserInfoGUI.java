@@ -10,6 +10,12 @@ import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
+/**
+The class UserInfoGUI handles events of getting and setting variables that are in 
+ the UserInfo class
+ It has 6 instance variables that all hold values of TextField inputed by the 
+ user in the GUI
+*/
 public class UserInfoGUI extends Application{
 	Stage window;
 	private UserInfo account = new UserInfo();
@@ -20,6 +26,10 @@ public class UserInfoGUI extends Application{
 	private TextField input5;
 	private TextField input6;
 
+	/**
+	The class HandleIncome set income in the class UserInfo and then shows
+	the new monthly income to the user
+	*/
 	class HandleIncome implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newIncome = input1.getText();
@@ -29,7 +39,10 @@ public class UserInfoGUI extends Application{
 			input1.setText(stringIncome);
 		}
 	}
-
+	/**
+	The class HandleTransportation sets the transporation expense in the class
+	UserInfo and then shows the new monthly transporation cost to the user
+	*/
 	class HandleTransportation implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newTrans = input2.getText();
@@ -40,6 +53,10 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	/**
+	The class HandleFoodAndDrink sets the food and drink expense in the class
+	UserInfo and then shows the new monthly food and drink expense to the user
+	*/
 	class HandleFoodAndDrink implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newFood = input3.getText();
@@ -50,6 +67,10 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	/**
+	The class HandleEntertainment sets the entertainment expense in the class
+	UserInfo and then shows the new monthly entertainment expense to the user 
+	*/
 	class HandleEntertainment implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newEnt = input4.getText();
@@ -60,6 +81,10 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	/**
+	The class HandleRent sets the rent exepense in the class UserInfo and then
+	shows the new monthly rent expense to the user 
+	*/
 	class HandleRent implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newRent = input5.getText();
@@ -70,6 +95,10 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	/**
+	The class HandleOther sets the other expense in the class UserInfo and then 
+	shows the new monthly other expense to the user
+	*/
 	class HandleOther implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newOther = input6.getText();
@@ -80,6 +109,10 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	/**
+	The class HandleAll updates all expenses and income inputed by the users, and
+	shows the updated amounts 
+	*/
 	class HandleAll implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String newIncome = input1.getText();
@@ -120,10 +153,17 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	/**
+	Main function
+	*/
 	public static void main(String[] args){
 		launch(args);
 	}
 
+	/**
+	Method creates the GUI display for the user representing the UserInfo
+	User can enter and update all their expenses and income
+	*/
 	public void start(Stage primaryStage){
 		window = primaryStage;
 		window.setTitle("SaveBetter");
@@ -231,7 +271,6 @@ public class UserInfoGUI extends Application{
 		grid.getChildren().add(mAll);
 		mAll.setOnAction(new HandleAll());
 		
-
 		Scene scene = new Scene(grid, 600, 300);
 		window.setScene(scene);
 
