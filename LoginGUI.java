@@ -22,6 +22,7 @@ public class LoginGUI extends Application{
 	private TextField input1;
 	private TextField input2;
 	private Label output;
+	private Stage s = new Stage();
 
 	/** 
 	HandleCreateAccount class handles the event when a user presses the "Create Account" button and extends EventHandler.
@@ -36,7 +37,7 @@ public class LoginGUI extends Application{
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
-			if (username == "" || password == ""){
+			if (username.isEmpty() || password.isEmpty()){
 				output.setText("Please enter a new username and password for your new account.");
 			}
 			else if (!account.checkUsername(username)){
@@ -44,8 +45,8 @@ public class LoginGUI extends Application{
 			}
 			else{
 				account.createAccount(username, password);
-				Stage s = new Stage();
 				new UserInfoGUI().start(s);
+				output.setText("");
 			}
 		}
 	}
@@ -104,7 +105,7 @@ public class LoginGUI extends Application{
 		branchnode3.getChildren().add(passwordLabel);
 
 		TextField password = new TextField();
-		input2 = username;
+		input2 = password;
 		branchnode3.getChildren().add(password);
 
 		HBox branchnode4 = new HBox();
