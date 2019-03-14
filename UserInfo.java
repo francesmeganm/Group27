@@ -2,14 +2,13 @@ import java.util.Scanner;
 /**
 Class contains all the montary related infomation about the user that they can change 
 Has 7 instance variables, they are all type double: monthlyExpenses, monthlyIncome, 
-transportCost, foodCost, entertainmentCost, otherCost, and rentCost 
+transportCost, foodCost, otherCost, and rentCost 
 */
 public class UserInfo{
 	private double monthlyExpenses = 0.0;
 	private double monthlyIncome = 0.0;
 	private double transportCost = 0.0;
-	private double foodCost = 0.0;
-	private double entertainmentCost = 0.0;
+	private double foodCost = 0.0; 
 	private double otherCost = 0.0;
 	private double rentCost = 0.0;
 	Scanner keyboard = new Scanner(System.in);
@@ -20,17 +19,15 @@ public class UserInfo{
 	@param inc is the monthly income
 	@param t is the monthly transporatation expense 
 	@param f is the monthly food expense
-	@param e is the monthly entertainment expesnse 
 	@param o is the monthly other expense 
 	@param r is the monthly rent cost
 	*/
 
- 	public UserInfo(double exp, double inc, double t, double f, double e, double o, double r){
+ 	public UserInfo(double exp, double inc, double t, double f, double o, double r){
     	setMonthlyIncome(inc);
     	setMonthlyExpenses(exp);
     	setTransport(t);
     	setFood(f);
-    	setEntertainment(e);
     	setOther(o);
     	setRent(r);
   	}
@@ -78,21 +75,6 @@ public class UserInfo{
  	}
 
  	/**
- 	Method sets a expense for entertainment expense 
- 	@param e is the entertainment expense 
- 	*/
- 	public void setEntertainment(double e){
- 		this.entertainmentCost = e;
- 	}
-
- 	/**
- 	@return the expense for food 
- 	*/
- 	public double getEntertainment(){
- 		return entertainmentCost;
- 	}
-
- 	/**
  	Method sets a expense for other expenses 
  	@param 0 is the other expense 
  	*/
@@ -127,7 +109,7 @@ public class UserInfo{
   	@return monthlyExpenses 
   	*/
 	public double getMonthlyExpenses() {
-		monthlyExpenses = transportCost + foodCost + entertainmentCost + rentCost + otherCost;
+		monthlyExpenses = transportCost + foodCost + rentCost + otherCost;
 		return monthlyExpenses;
 	}
 	
