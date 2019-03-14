@@ -53,16 +53,16 @@ public class UserInfoGUI extends Application{
 	}
 
 	/**
-	The class HandleFoodAndDrink sets the food and drink expense in the class
-	UserInfo and then shows the new monthly food and drink expense to the user
+	The class HandleUtility sets the utility expense in the class
+	UserInfo and then shows the new monthly utility expense to the user
 	*/
-	class HandleFoodAndDrink implements EventHandler<ActionEvent>{
+	class HandleUtility implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			String newFood = input3.getText();
-			double newFood1 = Double.parseDouble(newFood);
-			account.setFood(newFood1);
-			String stringFood = account.getFood() + "";
-			input3.setText(stringFood);
+			String newUtility = input3.getText();
+			double newUtility1 = Double.parseDouble(newUtility);
+			account.setUtility(newUtility1);
+			String stringUtility = account.getUtility() + "";
+			input3.setText(stringUtility);
 		}
 	}
 
@@ -103,10 +103,13 @@ public class UserInfoGUI extends Application{
 			new HandleOther().handle(event);
 			new HandleRent().handle(event);
 			new HandleIncome().handle(event);
-			new HandleEntertainment().handle(event);
 			new HandleTransportation().handle(event);
-			new HandleFoodAndDrink().handle(event);
+			new HandleUtility().handle(event);
 		}
+	}
+
+	public static void main(String[] args){
+		launch(args);
 	}
 
 	/**
@@ -154,19 +157,18 @@ public class UserInfoGUI extends Application{
 		grid.getChildren().add(mTrans);
 		mTrans.setOnAction(new HandleTransportation());
 
-		//ENTER FOOD AND DRINK COLUMN
-		Label enterFood = new Label("Update Food and Drink: ");
-		GridPane.setConstraints(enterFood, 1, 3);
-		grid.getChildren().add(enterFood);
+		//ENTER UTILITY COLUMN
+		Label enterUtility = new Label("Update Utility: ");
+		GridPane.setConstraints(enterUtility, 1, 3);
+		grid.getChildren().add(enterUtility);
 
 		input3 = new TextField(Double.toString(account.getTransport()));
 		GridPane.setConstraints(input3, 2, 3);
 		grid.getChildren().add(input3);
-
-		Button mFood = new Button("Update");
-		GridPane.setConstraints(mFood, 3, 3);
-		grid.getChildren().add(mFood);
-		mFood.setOnAction(new HandleFoodAndDrink());
+		Button mUtility = new Button("Update");
+		GridPane.setConstraints(mUtility, 3, 3);
+		grid.getChildren().add(mUtility);
+		mUtility.setOnAction(new HandleUtility());
 
 		//ENTER RENT COLUMN 
 		Label enterRent = new Label("Update Rent: ");
