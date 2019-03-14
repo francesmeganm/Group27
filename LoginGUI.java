@@ -28,15 +28,18 @@ public class LoginGUI extends Application{
 	*/
 	class HandleCreateAccount implements EventHandler<ActionEvent>{
 		/** 
-		Method takes the input from the username and password textboxes. If the username is not unique an error will appear and 
-		the program will not create a new account. Otherwise, it will create a new account and run the UserInfoGUI which initalizes 
-		the users info. 
+		Method takes the input from the username and password textboxes. If the user has not entered a new username or password to set,
+		the program will display an error. Additionally, if the username entered is not unique another error will appear. 
+		Otherwise, it will create a new account and run the UserInfoGUI which initalizes the users info. 
 		@param event of pressing "Create Account" button 
 		*/
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
-			if (!account.checkUsername(username)){
+			if (username = "" || password == ""){
+				output.setText("Please enter a new username and password for your new account.");
+			}
+			else if (!account.checkUsername(username)){
 				output.setText("Sorry that username is already taken, please try another.");
 			}
 			else{
