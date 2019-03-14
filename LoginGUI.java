@@ -36,7 +36,7 @@ public class LoginGUI extends Application{
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
-			if (username = "" || password == ""){
+			if (username == "" || password == ""){
 				output.setText("Please enter a new username and password for your new account.");
 			}
 			else if (!account.checkUsername(username)){
@@ -72,6 +72,11 @@ public class LoginGUI extends Application{
     	}
 	}
 
+	/** 
+	Method start creates the GUI display for the user, represntingthe login window. This window includes textfields allowing the 
+	user to enter usernames and passwords and the option to create an account or login.
+	@param primaryStage
+	*/
 	public void start(Stage primaryStage){
 		VBox root = new VBox();
 		root.setSpacing(15);
