@@ -109,6 +109,14 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
+	class HandleBackToMenu implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent event){
+			Stage s = new Stage();
+			new MenuGUI().start(s);
+			//UserInfoGUI.stop();
+		}
+	}
+
 	public static void main(String[] args){
 		launch(args);
 	}
@@ -204,6 +212,12 @@ public class UserInfoGUI extends Application{
 		GridPane.setConstraints(mAll, 2, 6);
 		grid.getChildren().add(mAll);
 		mAll.setOnAction(new HandleAll());
+
+		//BACK TO MENU 
+		Button back = new Button("Back to main menu");
+		GridPane.setConstraints(back, 3, 7);
+		grid.getChildren().add(back);
+		back.setOnAction(new HandleBackToMenu());
 		
 		Scene scene = new Scene(grid, 600, 300);
 		window.setScene(scene);
