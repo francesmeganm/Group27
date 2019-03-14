@@ -100,43 +100,13 @@ public class UserInfoGUI extends Application{
 	*/
 	class HandleAll implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			String newIncome = input1.getText();
-			double newIncome1 = Double.parseDouble(newIncome);
-			account.setMonthlyIncome(newIncome1);
-			String stringIncome = account.getMonthlyIncome() + "";
-			input1.setText(stringIncome);
-
-			String newTrans = input2.getText();
-			double newTrans1 = Double.parseDouble(newTrans);
-			account.setTransport(newTrans1);
-			String stringTrans = account.getTransport() + "";
-			input2.setText(stringTrans);
-
-			String newFood = input3.getText();
-			double newFood1 = Double.parseDouble(newFood);
-			account.setFood(newFood1);
-			String stringFood = account.getFood() + "";
-			input3.setText(stringFood);
-
-			String newRent = input5.getText();
-			double newRent1 = Double.parseDouble(newRent);
-			account.setRent(newRent1);
-			String stringRent = account.getRent() + "";
-			input5.setText(stringRent);
-
-			String newOther = input6.getText();
-			double newOther1 = Double.parseDouble(newOther);
-			account.setOther(newOther1);
-			String stringOther = account.getOther() + "";
-			input6.setText(stringOther);
+			new HandleOther().handle(event);
+			new HandleRent().handle(event);
+			new HandleIncome().handle(event);
+			new HandleEntertainment().handle(event);
+			new HandleTransportation().handle(event);
+			new HandleFoodAndDrink().handle(event);
 		}
-	}
-
-	/**
-	Main function
-	*/
-	public static void main(String[] args){
-		launch(args);
 	}
 
 	/**
