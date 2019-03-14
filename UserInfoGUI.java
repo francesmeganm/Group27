@@ -113,7 +113,7 @@ public class UserInfoGUI extends Application{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
 			new MenuGUI().start(s);
-			//UserInfoGUI.stop();
+			window.close();
 		}
 	}
 

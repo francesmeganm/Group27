@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 
 public class BudgetBreakdownGUI extends Application{
+	Stage window;
 	private BudgetBreakdown b = new BudgetBreakdown();
 	private Label error;
 	private double extra; 
@@ -50,12 +51,21 @@ public class BudgetBreakdownGUI extends Application{
 		}
 	}
 
+	class HandleBackToMenu implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent event){
+			Stage s = new Stage();
+			new MenuGUI().start(s);
+			window.close();
+		}
+	}
+
+	
 	public BudgetBreakdownGUI(BudgetBreakdown bb){
 		b = new BudgetBreakdown(bb);
 	}
 
 	public BudgetBreakdownGUI(){}
-
+	
 	public static void main(String[] args){
 		launch(args);
 	}
@@ -124,7 +134,12 @@ public class BudgetBreakdownGUI extends Application{
 		grid.getChildren().add(update);
 		update.setOnAction(new HandleSetBudget());
 
-		Scene scene = new Scene (grid, 600, 300);
+		Button back = new Button("Back to main menu");
+		GridPane.setConstraints(back, 3, 8);
+		grid.getChildren().add(back);
+		back.setOnAction(new HandleBackToMenu());
+
+		Scene scene = new Scene (grid, 725, 350);
 		primaryStage.setTitle("SAVEBETTER");
 		primaryStage.setScene(scene);
 		primaryStage.show();

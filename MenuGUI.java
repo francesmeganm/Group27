@@ -11,26 +11,34 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
 public class MenuGUI extends Application{
+	Stage window;
+
 	class HandleUpdateUserInfo implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
 			new UserInfoGUI().start(s);
+			window.close();
 		}
 	}
 	class HandleSimpleBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
 			new BudgetInfoGUI().start(s);
+			window.close();
 		}
 	}
 	class HandleRemainingBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
+			Stage s = new Stage();
+			new BudgetBreakdownGUI().start(s);
+			window.close();
 		}
 	}
 	class HandleLogout implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
 			new LoginGUI().start(s);
+			window.close();
 		}
 	}
 
