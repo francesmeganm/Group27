@@ -11,7 +11,6 @@ public class UserInfo{
 	private double utilityCost = 0.0; 
 	private double otherCost = 0.0;
 	private double rentCost = 0.0;
-	Scanner keyboard = new Scanner(System.in);
 
 	/**
 	Constructor that sets all instance variables 
@@ -36,7 +35,12 @@ public class UserInfo{
   	@param toCopy is the account to copy from 
   	*/
   	public UserInfo(UserInfo toCopy){
-    	UserInfo user = new UserInfo(toCopy);
+    	setMonthlyExpenses(toCopy.getMonthlyExpenses());
+    	setMonthlyIncome(toCopy.getMonthlyIncome());
+    	setTransport(toCopy.getTransport());
+    	setUtility(toCopy.getUtility());
+    	setOther(toCopy.getUtility());
+    	setRent(toCopy.getRent());
   	}
 
   	/**

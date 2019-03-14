@@ -105,6 +105,7 @@ public class UserInfoGUI extends Application{
 			new HandleIncome().handle(event);
 			new HandleTransportation().handle(event);
 			new HandleUtility().handle(event);
+			window.close();
 		}
 	}
 
@@ -199,12 +200,8 @@ public class UserInfoGUI extends Application{
 		mOther.setOnAction(new HandleOther());
 
 		//UPDATE ALL
-		Label updateAll = new Label("Update all: ");
-		GridPane.setConstraints(updateAll, 1, 6);
-		grid.getChildren().add(updateAll);
-
-		Button mAll = new Button("Update");
-		GridPane.setConstraints(mAll, 3, 6);
+		Button mAll = new Button("Update All & Continue");
+		GridPane.setConstraints(mAll, 2, 6);
 		grid.getChildren().add(mAll);
 		mAll.setOnAction(new HandleAll());
 		

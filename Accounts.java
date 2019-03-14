@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.HashMap;
 import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
 Accounts class references a individual accounts that are stored in the hashmaps instance variables:
@@ -10,8 +11,6 @@ information contained in each account.
 public class Accounts extends UserInfo{
   protected static HashMap<String, String> usernameAndPassword = new HashMap<String, String>();
   protected static HashMap<String, UserInfo> usernameAndUserInfo = new HashMap<String, UserInfo>();
-
-  Scanner keyboard = new Scanner(System.in);
   
   /**
   Method createAccount creates a new user account containing a username and password, 
@@ -23,7 +22,6 @@ public class Accounts extends UserInfo{
   	usernameAndPassword.put(username, password);
     UserInfo info = new UserInfo();
     usernameAndUserInfo.put(username, info);
-    Application.launch(UserInfoGUI.class, args);
   }
 
   /** 
@@ -48,9 +46,10 @@ public class Accounts extends UserInfo{
   @return a boolean value that results in true if the username and password are the correct credentials of an existinga account 
   */
   public boolean verifyUsernameAndPassword(String username, String password){
-    boolean isCorrect = true;
-    if (usernameAndPassword.get(username) != password){
-      isCorrect = false;
+    boolean isCorrect = false;
+    String p = usernameAndPassword.get(username);
+    if (p.equals(password)){
+      isCorrect = true;
     }
     return isCorrect;
   }
