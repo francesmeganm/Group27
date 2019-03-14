@@ -22,26 +22,31 @@ public class LoginGUI extends Application{
 	private TextField input1;
 	private TextField input2;
 	private Label output;
+	private Stage s = new Stage();
 
 	/** 
 	HandleCreateAccount class handles the event when a user presses the "Create Account" button and extends EventHandler.
 	*/
 	class HandleCreateAccount implements EventHandler<ActionEvent>{
 		/** 
-		Method takes the input from the username and password textboxes. If the username is not unique an error will appear and 
-		the program will not create a new account. Otherwise, it will create a new account. 
+		Method takes the input from the username and password textboxes. If the user has not entered a new username or password to set,
+		the program will display an error. Additionally, if the username entered is not unique another error will appear. 
+		Otherwise, it will create a new account and run the UserInfoGUI which initalizes the users info. 
 		@param event of pressing "Create Account" button 
 		*/
 		public void handle(ActionEvent event){
 			String username = input1.getText();
 			String password = input2.getText();
-			if (!account.checkUsername(username)){
+			if (username.isEmpty() || password.isEmpty()){
+				output.setText("Please enter a new username and password for your new account.");
+			}
+			else if (!account.checkUsername(username)){
 				output.setText("Sorry that username is already taken, please try another.");
 			}
 			else{
 				account.createAccount(username, password);
-				Stage s = new Stage();
 				new UserInfoGUI().start(s);
+				output.setText("");
 			}
 		}
 	}
@@ -68,6 +73,11 @@ public class LoginGUI extends Application{
     	}
 	}
 
+	/** 
+	Method start creates the GUI display for the user, represntingthe login window. This window includes textfields allowing the 
+	user to enter usernames and passwords and the option to create an account or login.
+	@param primaryStage
+	*/
 	public void start(Stage primaryStage){
 		VBox root = new VBox();
 		root.setSpacing(15);
@@ -95,7 +105,7 @@ public class LoginGUI extends Application{
 		branchnode3.getChildren().add(passwordLabel);
 
 		TextField password = new TextField();
-		input2 = username;
+		input2 = password;
 		branchnode3.getChildren().add(password);
 
 		HBox branchnode4 = new HBox();

@@ -22,7 +22,6 @@ public class UserInfoGUI extends Application{
 	private TextField input1;
 	private TextField input2;
 	private TextField input3;
-	private TextField input4;
 	private TextField input5;
 	private TextField input6;
 
@@ -54,16 +53,16 @@ public class UserInfoGUI extends Application{
 	}
 
 	/**
-	The class HandleFoodAndDrink sets the food and drink expense in the class
-	UserInfo and then shows the new monthly food and drink expense to the user
+	The class HandleUtility sets the utility expense in the class
+	UserInfo and then shows the new monthly utility expense to the user
 	*/
-	class HandleFoodAndDrink implements EventHandler<ActionEvent>{
+	class HandleUtility implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			String newFood = input3.getText();
-			double newFood1 = Double.parseDouble(newFood);
-			account.setFood(newFood1);
-			String stringFood = account.getFood() + "";
-			input3.setText(stringFood);
+			String newUtility = input3.getText();
+			double newUtility1 = Double.parseDouble(newUtility);
+			account.setUtility(newUtility1);
+			String stringUtility = account.getUtility() + "";
+			input3.setText(stringUtility);
 		}
 	}
 
@@ -101,41 +100,23 @@ public class UserInfoGUI extends Application{
 	*/
 	class HandleAll implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			String newIncome = input1.getText();
-			double newIncome1 = Double.parseDouble(newIncome);
-			account.setMonthlyIncome(newIncome1);
-			String stringIncome = account.getMonthlyIncome() + "";
-			input1.setText(stringIncome);
-
-			String newTrans = input2.getText();
-			double newTrans1 = Double.parseDouble(newTrans);
-			account.setTransport(newTrans1);
-			String stringTrans = account.getTransport() + "";
-			input2.setText(stringTrans);
-
-			String newFood = input3.getText();
-			double newFood1 = Double.parseDouble(newFood);
-			account.setFood(newFood1);
-			String stringFood = account.getFood() + "";
-			input3.setText(stringFood);
-
-			String newRent = input5.getText();
-			double newRent1 = Double.parseDouble(newRent);
-			account.setRent(newRent1);
-			String stringRent = account.getRent() + "";
-			input5.setText(stringRent);
-
-			String newOther = input6.getText();
-			double newOther1 = Double.parseDouble(newOther);
-			account.setOther(newOther1);
-			String stringOther = account.getOther() + "";
-			input6.setText(stringOther);
+			new HandleOther().handle(event);
+			new HandleRent().handle(event);
+			new HandleIncome().handle(event);
+			new HandleTransportation().handle(event);
+			new HandleUtility().handle(event);
+			window.close();
 		}
 	}
 
-	/**
-	Main function
-	*/
+	class HandleBackToMenu implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent event){
+			Stage s = new Stage();
+			new MenuGUI().start(s);
+			window.close();
+		}
+	}
+
 	public static void main(String[] args){
 		launch(args);
 	}
@@ -185,19 +166,18 @@ public class UserInfoGUI extends Application{
 		grid.getChildren().add(mTrans);
 		mTrans.setOnAction(new HandleTransportation());
 
-		//ENTER FOOD AND DRINK COLUMN
-		Label enterFood = new Label("Update Food and Drink: ");
-		GridPane.setConstraints(enterFood, 1, 3);
-		grid.getChildren().add(enterFood);
+		//ENTER UTILITY COLUMN
+		Label enterUtility = new Label("Update Utility: ");
+		GridPane.setConstraints(enterUtility, 1, 3);
+		grid.getChildren().add(enterUtility);
 
 		input3 = new TextField(Double.toString(account.getTransport()));
 		GridPane.setConstraints(input3, 2, 3);
 		grid.getChildren().add(input3);
-
-		Button mFood = new Button("Update");
-		GridPane.setConstraints(mFood, 3, 3);
-		grid.getChildren().add(mFood);
-		mFood.setOnAction(new HandleFoodAndDrink());
+		Button mUtility = new Button("Update");
+		GridPane.setConstraints(mUtility, 3, 3);
+		grid.getChildren().add(mUtility);
+		mUtility.setOnAction(new HandleUtility());
 
 		//ENTER RENT COLUMN 
 		Label enterRent = new Label("Update Rent: ");
@@ -228,14 +208,16 @@ public class UserInfoGUI extends Application{
 		mOther.setOnAction(new HandleOther());
 
 		//UPDATE ALL
-		Label updateAll = new Label("Update all: ");
-		GridPane.setConstraints(updateAll, 1, 6);
-		grid.getChildren().add(updateAll);
-
-		Button mAll = new Button("Update");
-		GridPane.setConstraints(mAll, 3, 6);
+		Button mAll = new Button("Update All & Continue");
+		GridPane.setConstraints(mAll, 2, 6);
 		grid.getChildren().add(mAll);
 		mAll.setOnAction(new HandleAll());
+
+		//BACK TO MENU 
+		Button back = new Button("Back to main menu");
+		GridPane.setConstraints(back, 3, 7);
+		grid.getChildren().add(back);
+		back.setOnAction(new HandleBackToMenu());
 		
 		Scene scene = new Scene(grid, 600, 300);
 		window.setScene(scene);
