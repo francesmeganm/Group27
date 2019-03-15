@@ -28,7 +28,11 @@ public class BudgetBreakdownGUI extends Application{
 	class HandleSetBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
+			System.out.println(entertainment);
 			bb.setAmountForEntertainment(entertainment);
+			double okay = bb.getAmountForEntertainment();
+			System.out.println(okay);
+
 			entText.setText(bb.getAmountForEntertainment()+"");
 
 			double personalCare = Double.parseDouble(persText.getText());

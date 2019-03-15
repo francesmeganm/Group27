@@ -17,6 +17,7 @@ import java.awt.Font.*;
 import javafx.scene.text.TextFlow.*;
 import javafx.scene.text.FontWeight;
 import java.lang.Object.*;
+import java.lang.Math.*;
 
 /**
 The class UserInfoGUI handles events of getting and setting variables that are in 
@@ -30,25 +31,36 @@ public class BudgetInfoGUI extends Application{
 	private BudgetInfo account = new BudgetInfo(currentAccount);
 	private TextField percentage;
 	private TextField goalCost;
-	private Label input1;
-	private Label input2;
 
 	class HandlePercentage implements EventHandler<ActionEvent>{
+		private Label input1;
+		public HandlePercentage(Label aLabel){
+			input1 = aLabel;
+		}
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
 			double per2 = account.getAmountToSave(per1);
 			String per3 = per2 + "";
+			System.out.println(per3);
 			input1.setText(per3);
 		}
 	}
 	class HandleGoal implements EventHandler<ActionEvent>{
+		private Label input2;
+		public HandleGoal(Label aLabel){
+			input2 = aLabel;
+		}
 		public void handle(ActionEvent event){
 			String goal = goalCost.getText();
+			System.out.println(goal);
 			double goal1 = Double.parseDouble(goal);
+			System.out.println(goal1);
 			Date due = account.getDateGoalCompleted(goal1);
+			System.out.println(due);
 			SimpleDateFormat format = new SimpleDateFormat();
 			String date1 = format.format(due);
+			System.out.println(date1);
 			input2.setText(date1);
 		}
 	}
@@ -121,15 +133,18 @@ public class BudgetInfoGUI extends Application{
 		GridPane.setConstraints(f, 1, 6);
 		grid.getChildren().add(f);
 
-		Button g = new Button("Compute");
-		GridPane.setConstraints(g, 3, 5);
-		grid.getChildren().add(g);
-		g.setOnAction(new HandlePercentage());
+		
 
 		//BOLD
 		Label input1 = new Label("0.00");
 		GridPane.setConstraints(input1, 2, 6);
 		grid.getChildren().add(input1);
+
+
+		Button g = new Button("Compute");
+		GridPane.setConstraints(g, 3, 5);
+		grid.getChildren().add(g);
+		g.setOnAction(new HandlePercentage(input1));
 
 		//MONTHS UNTIL GOAL
 		//BOLD
@@ -141,20 +156,9 @@ public class BudgetInfoGUI extends Application{
 		GridPane.setConstraints(j, 1, 9);
 		grid.getChildren().add(j);
 
-		TextField goalCost = new TextField("0.00");
+		goalCost = new TextField("0.00");
 		GridPane.setConstraints(goalCost, 2, 9);
 		grid.getChildren().add(goalCost);
-
-		Button k = new Button("Compute");
-		GridPane.setConstraints(k, 3, 9);
-		grid.getChildren().add(k);
-		k.setOnAction(new HandleGoal());
-
-		Label l = new Label("Date goal is completed: ");
-		GridPane.setConstraints(l, 1, 10);
-		grid.getChildren().add(l);
-
-		//BOLD
 
 		Date t1 = new Date();
 		SimpleDateFormat format = new SimpleDateFormat();
@@ -163,6 +167,20 @@ public class BudgetInfoGUI extends Application{
 		Label input2 = new Label(format.format(t1));
 		GridPane.setConstraints(input2, 2, 10);
 		grid.getChildren().add(input2);
+
+		Button k = new Button("Compute");
+		GridPane.setConstraints(k, 3, 9);
+		grid.getChildren().add(k);
+		k.setOnAction(new HandleGoal(input2));
+
+		Label l = new Label("Date goal is completed: ");
+		GridPane.setConstraints(l, 1, 10);
+		grid.getChildren().add(l);
+
+
+		//BOLD
+
+		
 
 		Button back = new Button("Back to main menu");
 		GridPane.setConstraints(back, 3, 11);

@@ -8,7 +8,6 @@ public class BudgetBreakdown extends BudgetInfo{
 	private double amountForShopping=0.0;
 	private double amountForMiscellaneous =0.0;
 	private double percentExtra=0.0;
-	private UserInfo user = new UserInfo();
 
 	public BudgetBreakdown(UserInfo user){
 		super(user);
