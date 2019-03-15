@@ -69,6 +69,7 @@ public class LoginGUI extends Application{
 			}
 			else{
 				UserInfo currentAccount = new UserInfo(account.usernameAndUserInfo.get(username));
+				new MenuGUI(currentAccount).start(s);
 			}
     	}
 	}

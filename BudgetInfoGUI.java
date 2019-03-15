@@ -27,6 +27,7 @@ The class UserInfoGUI handles events of getting and setting variables that are i
 public class BudgetInfoGUI extends Application{
 	Stage window;
 	private BudgetInfo account = new BudgetInfo();
+	private UserInfo currentAccount;
 	private TextField percentage;
 	private TextField goalCost;
 	private Label input1;
@@ -55,11 +56,15 @@ public class BudgetInfoGUI extends Application{
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new MenuGUI().start(s);
+			new MenuGUI(account).start(s);
 			window.close();
 		}
 	}
 
+	public BudgetInfoGUI(UserInfo user){
+		currentAccount = new UserInfo(user);
+		account = new BudgetInfo(currentAccount);
+	}
 	/**
 	Method creates the GUI display for the user representing the UserInfo
 	User can enter and update all their expenses and income

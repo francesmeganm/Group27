@@ -12,7 +12,11 @@ import javafx.event.ActionEvent;
 
 public class MenuGUI extends Application{
 	Stage window;
+	UserInfo currentUser;
 
+	public MenuGUI(UserInfo user){
+		currentUser = new UserInfo(user);
+	}
 	class HandleUpdateUserInfo implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
@@ -23,7 +27,7 @@ public class MenuGUI extends Application{
 	class HandleSimpleBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new BudgetInfoGUI().start(s);
+			new BudgetInfoGUI(currentUser).start(s);
 			window.close();
 		}
 	}
