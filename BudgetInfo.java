@@ -10,7 +10,7 @@ public class BudgetInfo  extends UserInfo{
  	}
 
 	public double getRemainingMoney(){
-		remainingMoney = getMonthlyIncome() - getMonthlyExpenses() - amountToSave;
+		remainingMoney = getMonthlyIncome() - getMonthlyExpenses();
 		return remainingMoney;
 	}
 
