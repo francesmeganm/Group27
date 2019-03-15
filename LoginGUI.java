@@ -18,6 +18,7 @@ acoount, input1 textfield for the usernmae, input2 textfield for the password, a
 This class also extends Application. 
 */
 public class LoginGUI extends Application{
+	Stage window;
 	private Accounts account = new Accounts();
 	private TextField input1;
 	private TextField input2;
@@ -70,6 +71,7 @@ public class LoginGUI extends Application{
 			else{
 				UserInfo currentAccount = new UserInfo(account.usernameAndUserInfo.get(username));
 				new MenuGUI(currentAccount).start(s);
+				window.close();
 			}
     	}
 	}
@@ -80,6 +82,7 @@ public class LoginGUI extends Application{
 	@param primaryStage
 	*/
 	public void start(Stage primaryStage){
+		window = primaryStage;
 		VBox root = new VBox();
 		root.setSpacing(15);
 		root.setAlignment(Pos.CENTER);
