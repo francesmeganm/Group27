@@ -45,7 +45,7 @@ public class LoginGUI extends Application{
 			}
 			else{
 				account.createAccount(username, password);
-				new UserInfoGUI().start(s);
+				new UserInfoGUI(account.getUsernameAndUserInfo().get(username)).start(s);
 				output.setText("");
 			}
 		}
