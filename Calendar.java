@@ -1,14 +1,10 @@
 import java.util.*
 
-                              
-
 public class Calendar extends BudgetInfo {
 
 	public static void main(String[] args) {
 	
 		BudgetInfo b = new BudgetInfo(); // Create a BudgetInfo object 
-		
-		BudgetInfo c = new Calendar(); // Create a Calendar object
 		
 		Scanner keyboard = new Scanner(System.in); // Create a Scanner object 
 		
