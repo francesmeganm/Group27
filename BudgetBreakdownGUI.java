@@ -59,20 +59,19 @@ public class BudgetBreakdownGUI extends Application{
 			window.close();
 		}
 	}
-
 	
-	public BudgetBreakdownGUI(BudgetBreakdown bb){
-		b = new BudgetBreakdown(bb);
-		currentAccount = new UserInfo(bb);
+	public BudgetBreakdownGUI(UserInfo user){
+		currentAccount = new UserInfo(user);
+		BudgetInfo b = new BudgetInfo(user);
+		BudgetBreakdown bb = new BudgetBreakdown(b);
 		}
-
-	public BudgetBreakdownGUI(){}
 	
 	public static void main(String[] args){
 		launch(args);
 	}
 
 	public void start(Stage primaryStage){
+		window = primaryStage;
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10,10,10,10));
 		grid.setVgap(10);

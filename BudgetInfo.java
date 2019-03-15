@@ -10,9 +10,7 @@ public class BudgetInfo  extends UserInfo{
     	setAmountToSave(amountToSave);
 
   	}
-  	public BudgetInfo(BudgetInfo toCopy){
-    	BudgetInfo budget = new BudgetInfo(toCopy);
-  	}
+
  	public BudgetInfo(){}
 
  	public BudgetInfo(UserInfo user){

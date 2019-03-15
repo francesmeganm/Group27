@@ -20,7 +20,7 @@ public class MenuGUI extends Application{
 	class HandleUpdateUserInfo implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new UserInfoGUI().start(s);
+			new UserInfoGUI(currentUser).start(s);
 			window.close();
 		}
 	}
@@ -34,7 +34,7 @@ public class MenuGUI extends Application{
 	class HandleRemainingBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new BudgetBreakdownGUI().start(s);
+			new BudgetBreakdownGUI(currentUser).start(s);
 			window.close();
 		}
 	}

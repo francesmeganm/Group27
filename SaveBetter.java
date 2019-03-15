@@ -4,8 +4,6 @@ public class SaveBetter{
 
   	public static void main(String[] args){
   		Application.launch(LoginGUI.class, args);
-  		Application.launch(MenuGUI.class, args);
-
  	}
 }
     

@@ -121,6 +121,10 @@ public class UserInfoGUI extends Application{
 		launch(args);
 	}
 
+	public UserInfoGUI(UserInfo user){
+		account = new UserInfo(user);
+	}
+
 	/**
 	Method creates the GUI display for the user representing the UserInfo
 	User can enter and update all their expenses and income
