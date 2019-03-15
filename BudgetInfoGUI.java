@@ -26,8 +26,8 @@ The class UserInfoGUI handles events of getting and setting variables that are i
 */
 public class BudgetInfoGUI extends Application{
 	Stage window;
-	private BudgetInfo account = new BudgetInfo();
-	private UserInfo currentAccount;
+	private UserInfo currentAccount = new UserInfo();
+	private BudgetInfo account = new BudgetInfo(currentAccount);
 	private TextField percentage;
 	private TextField goalCost;
 	private Label input1;

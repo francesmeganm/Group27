@@ -6,10 +6,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class PieChartSample1 extends Application {
-    BudgetBreakdown n = new BudgetBreakdown();
+    private UserInfo currentAccount = new UserInfo();
+    private BudgetBreakdown n = new BudgetBreakdown(currentAccount);
 
-
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage){
         primaryStage.setTitle("SAVEBETTER");
 
         PieChart pieChart = new PieChart();

@@ -5,14 +5,6 @@ public class BudgetInfo  extends UserInfo{
 	private double amountToSave = 0.0;
 	private double remainingMoney=0.0;
 
-	public BudgetInfo(double amountToSave, double remainingMoney){
-    	setRemainingMoney(remainingMoney);
-    	setAmountToSave(amountToSave);
-
-  	}
-
- 	public BudgetInfo(){}
-
  	public BudgetInfo(UserInfo user){
  		super(user);
  	}

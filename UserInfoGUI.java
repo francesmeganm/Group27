@@ -98,7 +98,7 @@ public class UserInfoGUI extends Application{
 	The class HandleAll updates all expenses and income inputed by the users, and
 	shows the updated amounts 
 	*/
-	class HandleAll implements EventHandler<ActionEvent>{
+	/*class HandleAll implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			new HandleOther().handle(event);
 			new HandleRent().handle(event);
@@ -107,7 +107,7 @@ public class UserInfoGUI extends Application{
 			new HandleUtility().handle(event);
 			window.close();
 		}
-	}
+	}*/
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
@@ -212,10 +212,10 @@ public class UserInfoGUI extends Application{
 		mOther.setOnAction(new HandleOther());
 
 		//UPDATE ALL
-		Button mAll = new Button("Update All & Continue");
+		/*Button mAll = new Button("Update All & Continue");
 		GridPane.setConstraints(mAll, 2, 6);
 		grid.getChildren().add(mAll);
-		mAll.setOnAction(new HandleAll());
+		mAll.setOnAction(new HandleAll());*/
 
 		//BACK TO MENU 
 		Button back = new Button("Back to main menu");

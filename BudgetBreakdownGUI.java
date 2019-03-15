@@ -15,8 +15,8 @@ import javafx.scene.layout.GridPane;
 
 public class BudgetBreakdownGUI extends Application{
 	Stage window;
-	private BudgetBreakdown b = new BudgetBreakdown();
-	private UserInfo currentAccount;
+	private UserInfo currentAccount = new UserInfo();
+	private BudgetBreakdown bb = new BudgetBreakdown(currentAccount);
 	private Label error;
 	private double extra; 
 	private TextField entText;
@@ -28,15 +28,17 @@ public class BudgetBreakdownGUI extends Application{
 	class HandleSetBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
-			b.setAmountForEntertainment(entertainment);
+			bb.setAmountForEntertainment(entertainment);
+			entText.setText(bb.getAmountForEntertainment()+"");
+
 			double personalCare = Double.parseDouble(persText.getText());
-			b.setAmountForPersonalCare(personalCare);
+			bb.setAmountForPersonalCare(personalCare);
 			double foodGroceries = Double.parseDouble(foodText.getText());
-			b.setAmountForFoodAndGroceries(foodGroceries);
+			bb.setAmountForFoodAndGroceries(foodGroceries);
 			double shopping = Double.parseDouble(shopText.getText());
-			b.setAmountForShopping(shopping);
+			bb.setAmountForShopping(shopping);
 			double miscellaneous = Double.parseDouble(miscText.getText());
-			b.setAmountForMiscellanous(miscellaneous);
+			bb.setAmountForMiscellanous(miscellaneous);
 			double total = entertainment + personalCare + foodGroceries + shopping + miscellaneous;
 
 			if ( total > 100){
@@ -47,7 +49,7 @@ public class BudgetBreakdownGUI extends Application{
 			}
 			else{
 				extra = (100 - total); 
-				b.setAmountExtra(extra);
+				bb.setAmountExtra(extra);
 			}
 		}
 	}
@@ -56,6 +58,14 @@ public class BudgetBreakdownGUI extends Application{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
 			new MenuGUI(currentAccount).start(s);
+			window.close();
+		}
+	}
+
+	class HandleMakePieChart implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent event){
+			Stage s = new Stage ();
+			new PieChartSample1().start(s);
 			window.close();
 		}
 	}
@@ -86,7 +96,7 @@ public class BudgetBreakdownGUI extends Application{
 
 		//ENTERTAINMENT ROW
 		Label ent = new Label("Entertainment? (ie.movies, games etc.)");
-		entText = new TextField(b.getAmountForEntertainment() + "");
+		entText = new TextField(bb.getAmountForEntertainment() + "");
 		GridPane.setConstraints(ent, 0, 2);
 		GridPane.setConstraints(entText, 1, 2);
 		grid.getChildren().add(ent);
@@ -94,7 +104,7 @@ public class BudgetBreakdownGUI extends Application{
 
 		//PERSONAL CARE ROW
 		Label pers = new Label("Personal care? (ie. hair cuts, salons etc.)");
-		persText = new TextField(b.getAmountForPersonalCare() + "");
+		persText = new TextField(bb.getAmountForPersonalCare() + "");
 		GridPane.setConstraints(pers, 0, 3);
 		GridPane.setConstraints(persText, 1, 3);
 		grid.getChildren().add(pers);
@@ -102,7 +112,7 @@ public class BudgetBreakdownGUI extends Application{
 
 		//FOOD AND GROCERIES 
 		Label food = new Label("Food and Groceries (including dining out)");
-		foodText = new TextField(b.getAmountForFoodAndGroceries() + "");
+		foodText = new TextField(bb.getAmountForFoodAndGroceries() + "");
 		GridPane.setConstraints(food, 0, 4);
 		GridPane.setConstraints(foodText, 1, 4);
 		grid.getChildren().add(food);
@@ -110,7 +120,7 @@ public class BudgetBreakdownGUI extends Application{
 
 		//SHOPPING ROW
 		Label shop = new Label("Shopping? (ie. clothing, shoes etc.)");
-		shopText = new TextField(b.getAmountForShopping() + "");
+		shopText = new TextField(bb.getAmountForShopping() + "");
 		GridPane.setConstraints(shop, 0, 5);
 		GridPane.setConstraints(shopText, 1, 5);
 		grid.getChildren().add(shop);
@@ -118,7 +128,7 @@ public class BudgetBreakdownGUI extends Application{
 
 		//MISCELLANEOUS ROW
 		Label misc = new Label("Miscellaneous? (ie. birthday gifts)");
-		miscText = new TextField(b.getAmountForMiscellaneous() + "");
+		miscText = new TextField(bb.getAmountForMiscellaneous() + "");
 		GridPane.setConstraints(misc, 0, 6);
 		GridPane.setConstraints(miscText, 1, 6);
 		grid.getChildren().add(misc);
@@ -135,12 +145,17 @@ public class BudgetBreakdownGUI extends Application{
 		grid.getChildren().add(update);
 		update.setOnAction(new HandleSetBudget());
 
+		Button breakdown = new Button("Show budget breakdown");
+		GridPane.setConstraints(breakdown, 1, 8);
+		grid.getChildren().add(breakdown);
+		breakdown.setOnAction(new HandleMakePieChart());
+
 		Button back = new Button("Back to main menu");
 		GridPane.setConstraints(back, 3, 8);
 		grid.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
 
-		Scene scene = new Scene (grid, 725, 350);
+		Scene scene = new Scene (grid, 800, 350);
 		primaryStage.setTitle("SAVEBETTER");
 		primaryStage.setScene(scene);
 		primaryStage.show();
