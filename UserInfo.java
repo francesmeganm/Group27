@@ -11,25 +11,7 @@ public class UserInfo{
 	private double utilityCost = 0.0; 
 	private double otherCost = 0.0;
 	private double rentCost = 0.0;
-
-	/**
-	Constructor that sets all instance variables 
-	@param exp is the monthly expenses 
-	@param inc is the monthly income
-	@param t is the monthly transporatation expense 
-	@param u is the monthly utility expense
-	@param o is the monthly other expense 
-	@param r is the monthly rent cost
-	*/
-
- 	public UserInfo(double exp, double inc, double t, double u, double o, double r){
-    	setMonthlyIncome(inc);
-    	setMonthlyExpenses(exp);
-    	setTransport(t);
-    	setUtility(u);
-    	setOther(o);
-    	setRent(r);
-  	}
+	
   	/**
   	Constructor that copies values in another UserInfo into the current UserInfo
   	@param toCopy is the account to copy from 
