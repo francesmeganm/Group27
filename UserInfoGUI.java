@@ -112,13 +112,17 @@ public class UserInfoGUI extends Application{
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new MenuGUI().start(s);
+			new MenuGUI(account).start(s);
 			window.close();
 		}
 	}
 
 	public static void main(String[] args){
 		launch(args);
+	}
+
+	public UserInfoGUI(UserInfo user){
+		account = new UserInfo(user);
 	}
 
 	/**

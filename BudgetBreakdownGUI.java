@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 public class BudgetBreakdownGUI extends Application{
 	Stage window;
 	private BudgetBreakdown b = new BudgetBreakdown();
+	private UserInfo currentAccount;
 	private Label error;
 	private double extra; 
 	private TextField entText;
@@ -54,23 +55,23 @@ public class BudgetBreakdownGUI extends Application{
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new MenuGUI().start(s);
+			new MenuGUI(currentAccount).start(s);
 			window.close();
 		}
 	}
-
 	
-	public BudgetBreakdownGUI(BudgetBreakdown bb){
-		b = new BudgetBreakdown(bb);
-	}
-
-	public BudgetBreakdownGUI(){}
+	public BudgetBreakdownGUI(UserInfo user){
+		currentAccount = new UserInfo(user);
+		BudgetInfo b = new BudgetInfo(user);
+		BudgetBreakdown bb = new BudgetBreakdown(b);
+		}
 	
 	public static void main(String[] args){
 		launch(args);
 	}
 
 	public void start(Stage primaryStage){
+		window = primaryStage;
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10,10,10,10));
 		grid.setVgap(10);

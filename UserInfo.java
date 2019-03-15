@@ -8,26 +8,25 @@ public class UserInfo{
 	private double monthlyExpenses = 0.0;
 	private double monthlyIncome = 0.0;
 	private double transportCost = 0.0;
-	private double foodCost = 0.0; 
+	private double utilityCost = 0.0; 
 	private double otherCost = 0.0;
 	private double rentCost = 0.0;
-	Scanner keyboard = new Scanner(System.in);
 
 	/**
 	Constructor that sets all instance variables 
 	@param exp is the monthly expenses 
 	@param inc is the monthly income
 	@param t is the monthly transporatation expense 
-	@param f is the monthly food expense
+	@param u is the monthly utility expense
 	@param o is the monthly other expense 
 	@param r is the monthly rent cost
 	*/
 
- 	public UserInfo(double exp, double inc, double t, double f, double o, double r){
+ 	public UserInfo(double exp, double inc, double t, double u, double o, double r){
     	setMonthlyIncome(inc);
     	setMonthlyExpenses(exp);
     	setTransport(t);
-    	setFood(f);
+    	setUtility(u);
     	setOther(o);
     	setRent(r);
   	}
@@ -36,7 +35,12 @@ public class UserInfo{
   	@param toCopy is the account to copy from 
   	*/
   	public UserInfo(UserInfo toCopy){
-    	UserInfo user = new UserInfo(toCopy);
+    	setMonthlyExpenses(toCopy.getMonthlyExpenses());
+    	setMonthlyIncome(toCopy.getMonthlyIncome());
+    	setTransport(toCopy.getTransport());
+    	setUtility(toCopy.getUtility());
+    	setOther(toCopy.getUtility());
+    	setRent(toCopy.getRent());
   	}
 
   	/**
@@ -60,18 +64,18 @@ public class UserInfo{
  	}
 
  	/**
- 	Method sets a expense to food expense 
- 	@param f is the food expense 
+ 	Method sets a expense to utility expense 
+ 	@param u is the food expense 
  	*/
- 	public void setFood(double f){
- 		this.foodCost = f;
+ 	public void setUtility(double u){
+ 		this.utilityCost = u;
  	}
 
  	/**
- 	@return the expense for food  
+ 	@return the expense for utility  
  	*/
- 	public double getFood(){
- 		return foodCost;
+ 	public double getUtility(){
+ 		return utilityCost;
  	}
 
  	/**
@@ -109,7 +113,7 @@ public class UserInfo{
   	@return monthlyExpenses 
   	*/
 	public double getMonthlyExpenses() {
-		monthlyExpenses = transportCost + foodCost + rentCost + otherCost;
+		monthlyExpenses = transportCost + utilityCost + rentCost + otherCost;
 		return monthlyExpenses;
 	}
 	
