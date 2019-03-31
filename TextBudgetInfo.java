@@ -1,3 +1,6 @@
+import java.util.Date;
+import java.util.Scanner;
+
 public class TextBudgetInfo(){
 	BudgetTool tool = new BudgetTool();
 	Scanner keyboard = new Scanner(System.in);

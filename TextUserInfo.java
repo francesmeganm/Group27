@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TextUserInfo(){
 	BudgetTool tool = new BudgetTool();
 	Scanner keyboard = new Scanner(System.in);

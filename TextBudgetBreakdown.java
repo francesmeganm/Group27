@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TextBudgetBreakdown{
 	BudgetTool tool = new BudgetTool();
 	Scanner keyboard = new Scanner(System.in);
@@ -23,7 +25,7 @@ public class TextBudgetBreakdown{
 		tool.settingBudgetBreakdown(ent, pers, food, shop, misc);
 
 		System.out.println("The amount to spend on entertainment is: " + tool.gettingEntertainment());
-		System.out.println("The amount to spend on persoanl care is: " + tool.gettingPersonalCare());
+		System.out.println("The amount to spend on persoanl care is: " + tool.gettingPersonal());
 		System.out.println("The amount to spend on food and groceries is: " + tool.gettingFood());
 		System.out.println("The amount to spend on shopping is: " + tool.gettingShopping());
 		System.out.println("The amount to spend on miscellaneous is: " + tool.gettingMisc());
