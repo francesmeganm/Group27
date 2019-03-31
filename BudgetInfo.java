@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.Calendar;
 import java.lang.Math.*;
 
-public class BudgetInfo{
+public class BudgetInfo extends UserInfo{
 	private double amountToSave = 0.0;
 	private double remainingMoney;
 	private UserInfo user;

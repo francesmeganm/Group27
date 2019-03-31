@@ -30,6 +30,10 @@ public class BudgetTool{
 		return verify;
 	}
 
+  public void setUser(User currentUser){
+    user = currentUser;
+  }
+
   public void updateUserInfo(double trans, double uti, double oth, double rent, double inc){
     if (trans != 0){
       user.setTrasport(trans);
@@ -105,5 +109,7 @@ public class BudgetTool{
   public double gettingMisc(){
     return user.getAmountForMiscellaneous();
   }
+
+
 	
 }

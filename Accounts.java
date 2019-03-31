@@ -56,6 +56,10 @@ public class Accounts{
     }
     return isCorrect;
   }
+
+  public UserInfo getUserInfo(String username){
+    return usernameAndUserInfo.get(username);
+  }
   
   /** 
   @return the hashmap containing the usernames and passwords of existing accounts 
