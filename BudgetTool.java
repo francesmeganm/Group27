@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class BudgetTool{
 	//inputing user info // no this is in the GUI
 	//does things that you know need to be completed from interaction from the user
@@ -26,17 +28,17 @@ public class BudgetTool{
 	}
 
 	public boolean checkingLogin(String username, String password){
-		boolean verify = account.verifyUsernameAndPassword();
+		boolean verify = account.verifyUsernameAndPassword(username, password);
 		return verify;
 	}
 
-  public void setUser(User currentUser){
+  public void setUser(UserInfo currentUser){
     user = currentUser;
   }
 
   public void updateUserInfo(double trans, double uti, double oth, double rent, double inc){
     if (trans != 0){
-      user.setTrasport(trans);
+      user.setTransport(trans);
     }
     if (uti != 0){
       user.setUtility(uti);
@@ -45,7 +47,7 @@ public class BudgetTool{
       user.setOther(oth);
     }
     if (rent != 0){
-      user.setRentRent(rent);
+      user.setRent(rent);
     }
     if (inc != 0){
       user.setMonthlyIncome(inc);
@@ -57,19 +59,19 @@ public class BudgetTool{
   }
   
   public double gettingTheRemainingMoney(){
-    user.getRemainingMoney(remain);
+    return smallBudget.getRemainingMoney();
   }
 	
-  public double gettingTheAmountToSave(){
-    return user.getAmountToSave();
+  public double gettingTheAmountToSave(double percent){
+    return smallBudget.getAmountToSave(percent);
   }
   
   public void settingTheAmountToSave(double save){
-    user.setAmountToSave(save);
+    smallBudget.setAmountToSave(save);
   }
   
   public Date gettingDateGoalCompleted(double goalCost){
-    return user.getDateGoalCompleted(goalCost);
+    return smallBudget.getDateGoalCompleted(goalCost);
   }
   
   public void settingBudgetBreakdown(double ent, double pers, double food, double shop, double misc){

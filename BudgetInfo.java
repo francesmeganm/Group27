@@ -24,7 +24,7 @@ public class BudgetInfo extends UserInfo{
 	}
 
 	public double getAmountToSave(double percentToSave){
-			amountToSave = (super.getMonthlyIncome() - super.getMonthlyExpenses()) * (percentToSave / 100);
+		amountToSave = (super.getMonthlyIncome() - super.getMonthlyExpenses()) * (percentToSave / 100);
 		return amountToSave;	
 	}
 	public void setAmountToSave(double amt){
