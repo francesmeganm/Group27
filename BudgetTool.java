@@ -74,40 +74,40 @@ public class BudgetTool{
   
   public void settingBudgetBreakdown(double ent, double pers, double food, double shop, double misc){
     if (ent != 0){
-      user.setAmountForEntertainment(ent);
+      largeBudget.setAmountForEntertainment(ent);
     }
     if (pers != 0){
-      user.setAmountForPersonalCare(pers);
+      largeBudget.setAmountForPersonalCare(pers);
     }
     if (food != 0){
-      user.getAmountForFoodAndGroceries(food);
+      largeBudget.setAmountForFoodAndGroceries(food);
     }
     if (shop != 0){
-      user.setAmountForShopping(shop);
+      largeBudget.setAmountForShopping(shop);
     }
     if (misc != 0){
-      user.setAmountForMiscellaneous(misc);
+      largeBudget.setAmountForMiscellaneous(misc);
     }
   }
 	
   public double gettingEntertainment(){
-    return user.getAmountForEntertainment();
+    return largeBudget.getAmountForEntertainment();
   }
   
   public double gettingPersonal(){
-		return user.getAmountForPersonalCare();
+		return largeBudget.getAmountForPersonalCare();
   }
   
   public double gettingFood(){
-    return user.getAmountForFoodAndGroceries();
+    return largeBudget.getAmountForFoodAndGroceries();
   }
   
   public double gettingShopping(){
-    return user.getAmountForShopping();
+    return largeBudget.getAmountForShopping();
   }
   
   public double gettingMisc(){
-    return user.getAmountForMiscellaneous();
+    return largeBudget.getAmountForMiscellaneous();
   }
 
 

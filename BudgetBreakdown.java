@@ -45,7 +45,7 @@ public class BudgetBreakdown extends BudgetInfo{
 		return amountForShopping;
 	}
 
-	public void setAmountForMiscellanous(double m){
+	public void setAmountForMiscellaneous(double m){
 		amountForMiscellaneous = m * super.getRemainingMoney();
 	}
 
