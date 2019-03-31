@@ -14,7 +14,7 @@ public class BudgetTool{
 		largeBudget = new BudgetBreakdown(user);
 	}
 
-	public boolean checkingUsername(username){
+	public boolean checkingUsername(String username){
 		boolean choice = user.checkUsername(username);
     return choice;
 	} 
@@ -72,7 +72,7 @@ public class BudgetTool{
     return user.getDateGoalCompleted(goalCost);
   }
   
-  public void settingBudgetBreakdown(double ent, pers, food, shop, misc){
+  public void settingBudgetBreakdown(double ent, double pers, double food, double shop, double misc){
     if (ent != 0){
       user.setAmountForEntertainment(ent);
     }

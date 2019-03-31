@@ -1,23 +1,15 @@
 import java.util.Scanner;
 
 public class SaveBetterText{
-	private String loginList = "Create Account // Login"
-
-	
-	
-
-	public SaveBetterText(){
-
-	}
-
-
-
 
 	public static void main(String[] args){
+		TextLogin login = new TextLogin();
 		TextUserInfo userInfo = new TextUserInfo();
 		TextBudgetInfo budgetInfo = new TextBudgetInfo();
 		TextBudgetBreakdown budgetBreakdown = new TextBudgetBreakdown();
 
+		//to get the user
+		login.main();
 
 		//when they chose user info
 		userInfo.getAndUpdateUserInfo();
