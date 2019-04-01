@@ -74,4 +74,7 @@ public class Accounts{
   public HashMap<String, UserInfo> getUsernameAndUserInfo(){
     return usernameAndUserInfo;
   }
+
+  public static void main(String [] args){}
+
 }

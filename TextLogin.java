@@ -10,7 +10,9 @@ public class TextLogin extends BudgetTool{
 	String password;
 
 	public String displayOptions(){
-		return loginOption;
+		System.out.println(loginOption);
+		String input = keyboard.nextLine();
+		return input;
 	}
 
 	public void getLoginOption(int choice){
@@ -45,7 +47,7 @@ public class TextLogin extends BudgetTool{
 		}
 	}
 
-	public static void main(String [] args){
+	/*public static void main(String [] args){
 		TextLogin l = new TextLogin();
 		BudgetTool b = new BudgetTool();
 
@@ -57,5 +59,5 @@ public class TextLogin extends BudgetTool{
 		while (input != 0){
 			l.getLoginOption(input);
 		}
-	}
+	}*/
 }

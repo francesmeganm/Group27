@@ -4,7 +4,7 @@ Class contains all the montary related infomation about the user that they can c
 Has 7 instance variables, they are all type double: monthlyExpenses, monthlyIncome, 
 transportCost, foodCost, otherCost, and rentCost 
 */
-public class UserInfo extends Accounts{
+public class UserInfo{
 	private double monthlyExpenses = 0.0;
 	private double monthlyIncome = 0.0;
 	private double transportCost = 0.0;

@@ -9,7 +9,13 @@ public class SaveBetterText{
 		TextBudgetBreakdown budgetBreakdown = new TextBudgetBreakdown();
 
 		//to get the user
-		login.main();
+		String input1 = login.displayOptions();
+		int input = Integer.parseInt(input1);
+		while(input != 0){
+			login.getLoginOption(input);
+		}
+
+
 
 		//when they chose user info
 		userInfo.getAndUpdateUserInfo();

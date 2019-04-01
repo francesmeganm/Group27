@@ -17,7 +17,7 @@ public class BudgetTool{
 	}
 
 	public boolean checkingUsername(String username){
-		boolean choice = user.checkUsername(username);
+		boolean choice = account.checkUsername(username);
     return choice;
 	} 
 

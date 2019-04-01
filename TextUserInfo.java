@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class TextUserInfo(){
+public class TextUserInfo{
 	BudgetTool tool = new BudgetTool();
 	Scanner keyboard = new Scanner(System.in);
 
 
 	public void getAndUpdateUserInfo(){
-		System.out.println("Updating your monthly income and expenses.")
+		System.out.println("Updating your monthly income and expenses.");
 
 		System.out.println("Enter monthly income: ");
 		double inc = keyboard.nextInt();
