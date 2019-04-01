@@ -1,6 +1,19 @@
 import java.util.Scanner;
 
 public class SaveBetterText{
+	Scanner keyboard = new Scanner(System.in);
+	TextLogin login = new TextLogin();
+
+	public void getUser(){
+		login.displayOptions();
+		int input = keyboard.nextInt();
+		boolean result = login.getLoginOption(input);
+		while(result == false){
+			login.displayOptions();
+			input = keyboard.nextInt();
+			result = login.getLoginOption(input);
+		}
+	}
 
 	public void displayMenu(){
 		System.out.println("Update User Info [1] // Create Simple Budget[2] // Create Budget Breakdown[3] // Logout[4]");
@@ -14,16 +27,8 @@ public class SaveBetterText{
 		TextBudgetBreakdown budgetBreakdown = new TextBudgetBreakdown();
 
 		Scanner keyboard = new Scanner(System.in);
-
-		//to get the user
-		login.displayOptions();
-		int input = keyboard.nextInt();
-		boolean result = login.getLoginOption(input);
-		while(result == false){
-			login.displayOptions();
-			input = keyboard.nextInt();
-			result = login.getLoginOption(input);
-		}
+		
+		sb.getUser();
 
 		sb.displayMenu();
 		int choice = keyboard.nextInt();
@@ -41,7 +46,8 @@ public class SaveBetterText{
 			budgetBreakdown.textBudgetBreakdown();
 		}
 		else if (choice == 4){
-			sb = new SaveBetterText();
+			System.out.println("Logged out.");
+			sb.getUser();
 		}
 		else{
 			System.out.println("That is an invalid option. Please try again.");
