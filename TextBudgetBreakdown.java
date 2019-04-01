@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
 public class TextBudgetBreakdown{
+	BudgetTool tool;
 	Scanner keyboard = new Scanner(System.in);
 
-	public void textBudgetBreakdown(BudgetTool bt){
+	public TextBudgetBreakdown(BudgetTool budgetTool){
+		this.tool = budgetTool;
+	}
+
+	public void textBudgetBreakdown(){
 		System.out.println("This is your complex budget breakdown.");
 
 		System.out.println("Enter the percent to spend on entertainment: ");
@@ -21,12 +26,12 @@ public class TextBudgetBreakdown{
 		System.out.println("Enter the percent to spend on miscellaneous: ");
 		double misc = keyboard.nextInt();
 
-		bt.settingBudgetBreakdown(ent, pers, food, shop, misc);
+		tool.settingBudgetBreakdown(ent, pers, food, shop, misc);
 
-		System.out.println("The amount to spend on entertainment is: " + bt.gettingEntertainment());
-		System.out.println("The amount to spend on persoanl care is: " + bt.gettingPersonal());
-		System.out.println("The amount to spend on food and groceries is: " + bt.gettingFood());
-		System.out.println("The amount to spend on shopping is: " + bt.gettingShopping());
-		System.out.println("The amount to spend on miscellaneous is: " + bt.gettingMisc());
+		System.out.println("The amount to spend on entertainment is: " + tool.gettingEntertainment());
+		System.out.println("The amount to spend on persoanl care is: " + tool.gettingPersonal());
+		System.out.println("The amount to spend on food and groceries is: " + tool.gettingFood());
+		System.out.println("The amount to spend on shopping is: " + tool.gettingShopping());
+		System.out.println("The amount to spend on miscellaneous is: " + tool.gettingMisc());
 	}
 }

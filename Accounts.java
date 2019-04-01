@@ -14,7 +14,7 @@ public class Accounts{
   protected static HashMap<String, String> usernameAndPassword = new HashMap<String, String>();
   protected static HashMap<String, UserInfo> usernameAndUserInfo = new HashMap<String, UserInfo>();
 
-
+  public Accounts(){}
   /**
   Method createAccount creates a new user account containing a username and password, 
   which creates a new instance of a User (userInfo) and prompts them to enter the required info after calling the UserInfo class. 
@@ -75,6 +75,6 @@ public class Accounts{
     return usernameAndUserInfo;
   }
 
-  public static void main(String [] args){}
+  //public static void main(String [] args){}
 
 }

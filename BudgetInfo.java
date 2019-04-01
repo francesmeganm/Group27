@@ -9,9 +9,9 @@ public class BudgetInfo extends UserInfo{
 
 	public BudgetInfo(){}
 
- 	public BudgetInfo(UserInfo u){
- 		user = u; 
- 		//this.remainingMoney = rem;
+ 	public BudgetInfo(UserInfo user){
+ 		this.user = user; 
+ 		//setRemainingMoney(user.getMonthlyIncome() - user.getMonthlyExpenses());
  	}
 
 	public double getRemainingMoney(){
