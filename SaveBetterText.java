@@ -14,7 +14,7 @@ public class SaveBetterText{
 		login.displayOptions();
 		int input = keyboard.nextInt();
 		boolean result = login.getLoginOption(input);
-		while(!result){
+		while(result){
 			login.displayOptions();
 			input = keyboard.nextInt();
 			login.getLoginOption(input);
