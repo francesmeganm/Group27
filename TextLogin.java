@@ -9,13 +9,11 @@ public class TextLogin extends BudgetTool{
 	String username;
 	String password;
 
-	public String displayOptions(){
+	public void displayOptions(){
 		System.out.println(loginOption);
-		String input = keyboard.nextLine();
-		return input;
 	}
 
-	public void getLoginOption(int choice){
+	public boolean getLoginOption(int choice){
 		if (choice == 1){
 			System.out.println("Enter a new unique username: ");
 			username = keyboard.nextLine();
@@ -28,24 +26,25 @@ public class TextLogin extends BudgetTool{
 			System.out.println("Enter a password: ");
 			password = keyboard.nextLine();
 			super.makeAccount(username, password);
-			displayOptions();
-			choice = keyboard.nextInt();
+			return true;
 		}
 		else if(choice == 2){
 			System.out.println("Enter your username: ");
 			username = keyboard.nextLine();
+			System.out.println("Enter your password: ");
 			password = keyboard.nextLine();
 			while (!super.checkingLogin(username, password)){
 				System.out.println("Error. Incorrect username/password. Please try again.");
 				username = keyboard.nextLine();
 				password = keyboard.nextLine();
 			}
+			System.out.println("Logged in as " + username);
 			super.setUser(a.getUserInfo(username));
+			return false;
 		}
 		else{
 			System.out.println("That is an invalid login option. Please try again.");
-			displayOptions();
-			choice = keyboard.nextInt();
+			return true;
 		}
 	}
 

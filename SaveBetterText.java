@@ -8,10 +8,15 @@ public class SaveBetterText{
 		TextBudgetInfo budgetInfo = new TextBudgetInfo();
 		TextBudgetBreakdown budgetBreakdown = new TextBudgetBreakdown();
 
+		Scanner keyboard = new Scanner(System.in);
+
 		//to get the user
-		String input1 = login.displayOptions();
-		int input = Integer.parseInt(input1);
-		while(input != 0){
+		login.displayOptions();
+		int input = keyboard.nextInt();
+		boolean result = login.getLoginOption(input);
+		while(!result){
+			login.displayOptions();
+			input = keyboard.nextInt();
 			login.getLoginOption(input);
 		}
 
