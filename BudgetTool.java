@@ -16,6 +16,8 @@ public class BudgetTool{
 		largeBudget = new BudgetBreakdown(user);
 	}
 
+ // public void setUser(UserInfo userInfo)
+
 	public boolean checkingUsername(String username){
 		boolean choice = account.checkUsername(username);
     return choice;
@@ -110,8 +112,5 @@ public class BudgetTool{
   
   public double gettingMisc(){
     return largeBudget.getAmountForMiscellaneous();
-  }
-
-
-	
+  }	
 }

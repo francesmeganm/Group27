@@ -1,13 +1,17 @@
 import java.util.Scanner;
 
-public class TextLogin extends BudgetTool{
-	Accounts a = new Accounts();
+public class TextLogin{
+	BudgetTool tool;
 
-	String loginOption = "\nCreate New Account[1] // Login[2]";
+	String loginOption = "Create New Account[1] // Login[2]";
 	Scanner keyboard = new Scanner(System.in);
 
 	String username;
 	String password;
+
+	public TextLogin(BudgetTool budgetTool){
+		this.tool = budgetTool;
+	}
 
 	public void displayOptions(){
 		System.out.println(loginOption);
@@ -17,29 +21,31 @@ public class TextLogin extends BudgetTool{
 		boolean isLoggedIn = false;
 		if (choice == 1){
 			System.out.println("Enter a new unique username: ");
+			keyboard.nextLine();
 			username = keyboard.nextLine();
-			boolean isUnique = super.checkingUsername(username);
+			boolean isUnique = tool.checkingUsername(username);
 			while (isUnique == false){
 				System.out.println("Sorry, that username is already taken. Please enter a new one: ");
 				username = keyboard.nextLine();
-				isUnique = super.checkingUsername(username);
+				isUnique = tool.checkingUsername(username);
 			}
 			System.out.println("Enter a password: ");
 			password = keyboard.nextLine();
-			super.makeAccount(username, password);
+			tool.makeAccount(username, password);
 		}
 		else if(choice == 2){
 			System.out.println("Enter your username: ");
+			keyboard.nextLine();
 			username = keyboard.nextLine();
 			System.out.println("Enter your password: ");
 			password = keyboard.nextLine();
-			while (!super.checkingLogin(username, password)){
+			while (!tool.checkingLogin(username, password)){
 				System.out.println("Error. Incorrect username/password. Please try again.");
 				username = keyboard.nextLine();
 				password = keyboard.nextLine();
 			}
 			System.out.println("Logged in as " + username);
-			super.setUser(a.getUserInfo(username));
+			//tool.setUser(a.getUserInfo(username));
 			isLoggedIn = true;
 		}
 		else{
@@ -48,14 +54,14 @@ public class TextLogin extends BudgetTool{
 		return isLoggedIn;
 	}
 
-	/*public static void main(String [] args){
-		TextLogin l = new TextLogin();
-		BudgetTool b = new BudgetTool();
-		Scanner keyboard = new Scanner(System.in);
-		l.displayOptions();
+	public void getUser(){
+		displayOptions();
 		int input = keyboard.nextInt();
-		while (input != 0){
-			l.getLoginOption(input);
+		boolean result = getLoginOption(input);
+		while(result == false){
+			displayOptions();
+			input = keyboard.nextInt();
+			result = getLoginOption(input);
 		}
-	}*/
+	}
 }

@@ -2,8 +2,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class TextBudgetInfo{
-	BudgetTool tool = new BudgetTool();
+	BudgetTool tool;
 	Scanner keyboard = new Scanner(System.in);
+
+	public TextBudgetInfo(BudgetTool budgetTool){
+		this.tool = budgetTool;
+	}
 
 	public void textComputeBudgetInfo(){
 		System.out.println("This is your simple budget breakdown.");

@@ -1,9 +1,12 @@
 import java.util.Scanner;
 
 public class TextUserInfo{
-	BudgetTool tool = new BudgetTool();
+	BudgetTool tool;
 	Scanner keyboard = new Scanner(System.in);
 
+	public TextUserInfo(BudgetTool budgetTool){
+		this.tool = budgetTool;
+	}
 
 	public void getAndUpdateUserInfo(){
 		System.out.println("Updating your monthly income and expenses.");
