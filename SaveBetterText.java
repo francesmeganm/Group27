@@ -20,8 +20,6 @@ public class SaveBetterText{
 			login.getLoginOption(input);
 		}
 
-
-
 		//when they chose user info
 		userInfo.getAndUpdateUserInfo();
 
