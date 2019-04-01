@@ -14,6 +14,7 @@ public class TextLogin extends BudgetTool{
 	}
 
 	public boolean getLoginOption(int choice){
+		boolean isLoggedIn = false;
 		if (choice == 1){
 			System.out.println("Enter a new unique username: ");
 			username = keyboard.nextLine();
@@ -26,7 +27,6 @@ public class TextLogin extends BudgetTool{
 			System.out.println("Enter a password: ");
 			password = keyboard.nextLine();
 			super.makeAccount(username, password);
-			return true;
 		}
 		else if(choice == 2){
 			System.out.println("Enter your username: ");
@@ -40,12 +40,12 @@ public class TextLogin extends BudgetTool{
 			}
 			System.out.println("Logged in as " + username);
 			super.setUser(a.getUserInfo(username));
-			return false;
+			isLoggedIn = true;
 		}
 		else{
 			System.out.println("That is an invalid login option. Please try again.");
-			return true;
 		}
+		return isLoggedIn;
 	}
 
 	/*public static void main(String [] args){
