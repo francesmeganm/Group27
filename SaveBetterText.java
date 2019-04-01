@@ -22,7 +22,7 @@ public class SaveBetterText{
 		while(result == false){
 			login.displayOptions();
 			input = keyboard.nextInt();
-			login.getLoginOption(input);
+			result = login.getLoginOption(input);
 		}
 
 		sb.displayMenu();
@@ -41,7 +41,7 @@ public class SaveBetterText{
 			budgetBreakdown.textBudgetBreakdown();
 		}
 		else if (choice == 4){
-			new SaveBetterText();
+			sb = new SaveBetterText();
 		}
 		else{
 			System.out.println("That is an invalid option. Please try again.");
