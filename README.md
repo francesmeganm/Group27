@@ -8,6 +8,8 @@
   Referenced in PieChartSample1.java throughout whole class with slight modifications 
 #Lecture 12 Event Handling Class Examples HandleButtonClicked.java 
   Referenced in UserInfoGUI.java, BudgetBreakdownGUI.java, and MenuGUI.java 
+ #http://myjavafx.blogspot.com/2012/01/javafx-calendar-control.html
+ Referenced in Date Picker.java Caledarstyle, throughout the whole Caledar class with modifications. 
  
 #Where to find:
 All files found in master branch of Group27 repository.
