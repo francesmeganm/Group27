@@ -1,14 +1,10 @@
 import java.util.Scanner;
 
 public class TextUserInfo{
-	BudgetTool tool;
 	Scanner keyboard = new Scanner(System.in);
 
-	public TextUserInfo(BudgetTool budgetTool){
-		this.tool = budgetTool;
-	}
 
-	public void getAndUpdateUserInfo(){
+	public void getAndUpdateUserInfo(BudgetTool bt){
 		System.out.println("Updating your monthly income and expenses.");
 
 		System.out.println("Enter monthly income: ");
@@ -26,6 +22,6 @@ public class TextUserInfo{
 		System.out.println("Enter monthly other: ");
 		double oth = keyboard.nextInt();
 
-		tool.updateUserInfo(trans, uti, oth, rent, inc);
+		bt.updateUserInfo(trans, uti, oth, rent, inc);
 	}
 }

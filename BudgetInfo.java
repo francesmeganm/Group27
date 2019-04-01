@@ -9,13 +9,13 @@ public class BudgetInfo extends UserInfo{
 
 	public BudgetInfo(){}
 
- 	public BudgetInfo(UserInfo user){
- 		setRemainingMoney(user.getMonthlyIncome() - user.getMonthlyExpenses());
- 		this.user = user; 
+ 	public BudgetInfo(UserInfo u){
+ 		user = u; 
  		//this.remainingMoney = rem;
  	}
 
 	public double getRemainingMoney(){
+		setRemainingMoney(user.getMonthlyIncome() - user.getMonthlyExpenses());
 		return remainingMoney;
 	}
 
@@ -24,7 +24,7 @@ public class BudgetInfo extends UserInfo{
 	}
 
 	public double getAmountToSave(double percentToSave){
-		amountToSave = (super.getMonthlyIncome() - super.getMonthlyExpenses()) * (percentToSave / 100);
+		amountToSave = (user.getMonthlyIncome() - user.getMonthlyExpenses()) * (percentToSave / 100);
 		return amountToSave;	
 	}
 	public void setAmountToSave(double amt){

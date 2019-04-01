@@ -4,19 +4,19 @@ public class BudgetTool{
 	//inputing user info // no this is in the GUI
 	//does things that you know need to be completed from interaction from the user
 
-	private UserInfo user;
+	private UserInfo user;	
 	private BudgetInfo smallBudget;
 	private BudgetBreakdown largeBudget;
-	private Accounts account;//do we need this??
+	private Accounts account = new Accounts();//do we need this??
 
 	public BudgetTool(){
-		account = new Accounts();
-		user = new UserInfo();
+	}
+
+	public BudgetTool(UserInfo currentUser){
+		setUser(currentUser);
 		smallBudget = new BudgetInfo(user);
 		largeBudget = new BudgetBreakdown(user);
 	}
-
- // public void setUser(UserInfo userInfo)
 
 	public boolean checkingUsername(String username){
 		boolean choice = account.checkUsername(username);
@@ -38,6 +38,10 @@ public class BudgetTool{
     user = currentUser;
   }
 
+  public UserInfo getCurrentUser(){
+  	return user;
+  }
+
   public void updateUserInfo(double trans, double uti, double oth, double rent, double inc){
     if (trans != 0){
       user.setTransport(trans);
@@ -54,6 +58,7 @@ public class BudgetTool{
     if (inc != 0){
       user.setMonthlyIncome(inc);
     }
+    System.out.println(user.getMonthlyIncome());
   }
   
   public void month(String month){
@@ -61,6 +66,7 @@ public class BudgetTool{
   }
   
   public double gettingTheRemainingMoney(){
+  	System.out.println(smallBudget.getRemainingMoney());
     return smallBudget.getRemainingMoney();
   }
 	
@@ -112,5 +118,8 @@ public class BudgetTool{
   
   public double gettingMisc(){
     return largeBudget.getAmountForMiscellaneous();
-  }	
+  }
+
+
+	
 }
