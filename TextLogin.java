@@ -44,6 +44,7 @@ public class TextLogin extends BudgetTool{
 		else{
 			System.out.println("That is an invalid login option. Please try again.");
 			displayOptions();
+			choice = keyboard.nextInt();
 		}
 	}
 
