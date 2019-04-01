@@ -20,7 +20,7 @@ public class TextUserInfo{
 		System.out.println("Enter monthly rent cost: ");
 		double rent = keyboard.nextInt();
 
-		System.out.println("Enter monthly other ");
+		System.out.println("Enter monthly other: ");
 		double oth = keyboard.nextInt();
 
 		tool.updateUserInfo(trans, uti, oth, rent, inc);

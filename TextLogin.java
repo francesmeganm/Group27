@@ -51,11 +51,8 @@ public class TextLogin extends BudgetTool{
 	/*public static void main(String [] args){
 		TextLogin l = new TextLogin();
 		BudgetTool b = new BudgetTool();
-
 		Scanner keyboard = new Scanner(System.in);
-
 		l.displayOptions();
-
 		int input = keyboard.nextInt();
 		while (input != 0){
 			l.getLoginOption(input);

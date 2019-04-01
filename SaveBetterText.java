@@ -31,26 +31,37 @@ public class SaveBetterText{
 		sb.getUser();
 
 		sb.displayMenu();
-		int choice = keyboard.nextInt();
+		Integer choice = keyboard.nextInt();
 
-		if (choice == 1){
-			//when they chose user info
-			userInfo.getAndUpdateUserInfo();
-		}
-		else if (choice == 2){
-			//when they chose budget info
-			budgetInfo.textComputeBudgetInfo();
-		}
-		else if (choice == 3){
-			//when they chose budget breakdown 
-			budgetBreakdown.textBudgetBreakdown();
-		}
-		else if (choice == 4){
-			System.out.println("Logged out.");
-			sb.getUser();
-		}
-		else{
-			System.out.println("That is an invalid option. Please try again.");
+		while(choice != null){
+			if (choice == 1){
+				//when they chose user info
+				userInfo.getAndUpdateUserInfo();
+				sb.displayMenu();
+
+			}
+			else if (choice == 2){
+				//when they chose budget info
+				budgetInfo.textComputeBudgetInfo();
+				sb.displayMenu();
+
+			}
+			else if (choice == 3){
+				//when they chose budget breakdown 
+				budgetBreakdown.textBudgetBreakdown();
+				sb.displayMenu();
+
+			}
+			else if (choice == 4){
+				System.out.println("Logged out.");
+				sb.getUser();
+			}
+			else{
+				System.out.println("That is an invalid option. Please try again.");
+				sb.displayMenu();
+
+			}
+			choice = keyboard.nextInt();
 		}
 	}
 }
