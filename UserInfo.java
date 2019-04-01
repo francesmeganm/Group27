@@ -11,7 +11,10 @@ public class UserInfo{
 	private double utilityCost = 0.0; 
 	private double otherCost = 0.0;
 	private double rentCost = 0.0;
+	private UserInfo user;
 	
+	public UserInfo(){
+	}
   	/**
   	Constructor that copies values in another UserInfo into the current UserInfo
   	@param toCopy is the account to copy from 
@@ -25,10 +28,6 @@ public class UserInfo{
     	setRent(toCopy.getRent());
   	}
 
-  	/**
-  	Default constructor
-  	*/
- 	public UserInfo(){}
  	/**
  	Method sets a expense to transportation expense 
  	@param t is the transportation expense

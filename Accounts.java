@@ -8,10 +8,13 @@ Accounts class references a individual accounts that are stored in the hashmaps 
 usernameAndPassword and usernameAndUserInfo. This class also extends from UserInfo which will hold the 
 information contained in each account. 
 */
-public class Accounts extends UserInfo{
+
+
+public class Accounts{
   protected static HashMap<String, String> usernameAndPassword = new HashMap<String, String>();
   protected static HashMap<String, UserInfo> usernameAndUserInfo = new HashMap<String, UserInfo>();
-  
+
+  public Accounts(){}
   /**
   Method createAccount creates a new user account containing a username and password, 
   which creates a new instance of a User (userInfo) and prompts them to enter the required info after calling the UserInfo class. 
@@ -53,6 +56,10 @@ public class Accounts extends UserInfo{
     }
     return isCorrect;
   }
+
+  public UserInfo getUserInfo(String username){
+    return usernameAndUserInfo.get(username);
+  }
   
   /** 
   @return the hashmap containing the usernames and passwords of existing accounts 
@@ -67,4 +74,7 @@ public class Accounts extends UserInfo{
   public HashMap<String, UserInfo> getUsernameAndUserInfo(){
     return usernameAndUserInfo;
   }
+
+  //public static void main(String [] args){}
+
 }

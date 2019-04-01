@@ -2,17 +2,20 @@ import java.util.Date;
 import java.util.Calendar;
 import java.lang.Math.*;
 
-public class BudgetInfo  extends UserInfo{
+public class BudgetInfo extends UserInfo{
 	private double amountToSave = 0.0;
-	private double remainingMoney=0.0;
+	private double remainingMoney;
+	private UserInfo user ;
+
+	public BudgetInfo(){}
 
  	public BudgetInfo(UserInfo user){
- 		super(user);
- 		//this.remainingMoney = rem;
+ 		this.user = user; 
+ 		//setRemainingMoney(user.getMonthlyIncome() - user.getMonthlyExpenses());
  	}
 
 	public double getRemainingMoney(){
-		remainingMoney = getMonthlyIncome() - getMonthlyExpenses();
+		setRemainingMoney(user.getMonthlyIncome() - user.getMonthlyExpenses());
 		return remainingMoney;
 	}
 
@@ -21,7 +24,7 @@ public class BudgetInfo  extends UserInfo{
 	}
 
 	public double getAmountToSave(double percentToSave){
-			amountToSave = (super.getMonthlyIncome() - super.getMonthlyExpenses()) * (percentToSave / 100);
+		amountToSave = (user.getMonthlyIncome() - user.getMonthlyExpenses()) * (percentToSave / 100);
 		return amountToSave;	
 	}
 	public void setAmountToSave(double amt){
