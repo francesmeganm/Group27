@@ -41,11 +41,12 @@ public class TextLogin{
 			password = keyboard.nextLine();
 			while (!tool.checkingLogin(username, password)){
 				System.out.println("Error. Incorrect username/password. Please try again.");
+				System.out.println("Enter your username: ");
 				username = keyboard.nextLine();
+				System.out.println("Enter your password: ");
 				password = keyboard.nextLine();
 			}
 			System.out.println("Logged in as " + username);
-			//tool.setUser(a.getUserInfo(username));
 			isLoggedIn = true;
 		}
 		else{

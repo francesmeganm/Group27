@@ -3,53 +3,70 @@ import java.util.Scanner;
 public class SaveBetterText{
 	Scanner keyboard = new Scanner(System.in);
 
+	BudgetTool budgetTool;
+	TextLogin login;
+	TextUserInfo userInfo;
+	TextBudgetInfo budgetInfo;
+	TextBudgetBreakdown budgetBreakdown;
 
+
+	public SaveBetterText(BudgetTool budgetTool){
+		this.budgetTool = budgetTool;
+		login = new TextLogin(budgetTool);
+		userInfo = new TextUserInfo(budgetTool);
+		budgetInfo = new TextBudgetInfo(budgetTool);
+		budgetBreakdown = new TextBudgetBreakdown(budgetTool);
+	}
 
 	public void displayMenu(){
 		System.out.println("Update User Info [1] // Create Simple Budget[2] // Create Budget Breakdown[3] // Logout[4]");
 	}
 
-	public static void main(String[] args){
-		BudgetTool budgetTool = new BudgetTool();
-		SaveBetterText sb = new SaveBetterText();
-		TextLogin login = new TextLogin(budgetTool);
-		TextUserInfo userInfo = new TextUserInfo(budgetTool);
-		TextBudgetInfo budgetInfo = new TextBudgetInfo(budgetTool);
-		TextBudgetBreakdown budgetBreakdown = new TextBudgetBreakdown(budgetTool);
-
-		Scanner keyboard = new Scanner(System.in);
-		
+	public void loginMenu(){
 		login.getUser();
-		//YOU NEED TO MAKE A LARGER LOOP FOR LOGING IN AND OUT 
-		//SO THAT THE PROGRAM NEVER ENDS 
+		displayMenu();
+	}
 
-		sb.displayMenu();
-		Integer choice = keyboard.nextInt();
-		//while(choice != null){}
-
-		while(choice != null){
+	public void mainMenu(Integer choice){
 			if (choice == 1){
 				//when they chose user info
 				userInfo.getAndUpdateUserInfo();
-				sb.displayMenu();
+				displayMenu();
 			}
 			else if (choice == 2){
 				//when they chose budget info
 				budgetInfo.textComputeBudgetInfo();
-				sb.displayMenu();
+				displayMenu();
 			}
 			else if (choice == 3){
 				//when they chose budget breakdown 
 				budgetBreakdown.textBudgetBreakdown();
-				sb.displayMenu();
+				displayMenu();
 			}
 			else if (choice == 4){
 				System.out.println("Logged out.");
-				login.getUser();
 			}
 			else{
 				System.out.println("That is an invalid option. Please try again.");
-				sb.displayMenu();
+				displayMenu();
+			}
+	}
+
+	public static void main(String[] args){
+		Scanner keyboard = new Scanner(System.in);
+		BudgetTool budgetTool = new BudgetTool();
+
+		SaveBetterText saveBetter = new SaveBetterText(budgetTool);
+
+		saveBetter.loginMenu();
+		saveBetter.displayMenu();
+
+		Integer choice = keyboard.nextInt();
+
+		while(choice != null){
+			saveBetter.mainMenu(choice);
+			if(choice == 4){
+				saveBetter.loginMenu();
 			}
 			choice = keyboard.nextInt();
 		}
