@@ -29,6 +29,7 @@ public class TextLogin extends BudgetTool{
 			password = keyboard.nextLine();
 			super.makeAccount(username, password);
 			displayOptions();
+			choice = keyboard.nextInt();
 		}
 		else if(choice == 2){
 			System.out.println("Enter your username: ");
