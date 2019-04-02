@@ -55,6 +55,7 @@ public class SaveBetterText{
 
 		SaveBetterText saveBetter = new SaveBetterText(budgetTool);
 
+		System.out.println("\nWelcome to SaveBetter!");
 		saveBetter.loginMenu();
 		saveBetter.displayMenu();
 
