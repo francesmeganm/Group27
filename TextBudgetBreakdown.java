@@ -9,26 +9,26 @@ public class TextBudgetBreakdown{
 	}
 
 	public void textBudgetBreakdown(){
-		System.out.println("\nThis is your complex budget breakdown.");
+		System.out.print("\nThis is your complex budget breakdown.");
 
-		System.out.println("Enter the percent to spend on entertainment: ");
-		double ent = keyboard.nextInt();
+		System.out.print("\nEnter the percent to spend on entertainment: ");
+		double ent = tool.checkIfValidPercent(keyboard.nextInt());
 
-		System.out.println("Enter the percent to spend on personal care: ");
-		double pers = keyboard.nextInt();
+		System.out.print("Enter the percent to spend on personal care: ");
+		double pers = tool.checkIfValidPercent(keyboard.nextInt());
 
-		System.out.println("Enter the percent to spend on food and groceries: ");
-		double food = keyboard.nextInt();
+		System.out.print("Enter the percent to spend on food and groceries: ");
+		double food = tool.checkIfValidPercent(keyboard.nextInt());
 
-		System.out.println("Enter the percent to spend on shopping: ");
-		double shop = keyboard.nextInt();
+		System.out.print("Enter the percent to spend on shopping: ");
+		double shop = tool.checkIfValidPercent(keyboard.nextInt());
 
-		System.out.println("Enter the percent to spend on miscellaneous: ");
-		double misc = keyboard.nextInt();
+		System.out.print("Enter the percent to spend on miscellaneous: ");
+		double misc = tool.checkIfValidPercent(keyboard.nextInt());
 
 		tool.settingBudgetBreakdown(ent, pers, food, shop, misc);
 
-		System.out.println("The amount to spend on entertainment is: " + tool.gettingEntertainment());
+		System.out.println("\nThe amount to spend on entertainment is: " + tool.gettingEntertainment());
 		System.out.println("The amount to spend on persoanl care is: " + tool.gettingPersonal());
 		System.out.println("The amount to spend on food and groceries is: " + tool.gettingFood());
 		System.out.println("The amount to spend on shopping is: " + tool.gettingShopping());
