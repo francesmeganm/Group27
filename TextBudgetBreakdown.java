@@ -9,7 +9,7 @@ public class TextBudgetBreakdown{
 	}
 
 	public void textBudgetBreakdown(){
-		System.out.println("This is your complex budget breakdown.");
+		System.out.println("\nThis is your complex budget breakdown.");
 
 		System.out.println("Enter the percent to spend on entertainment: ");
 		double ent = keyboard.nextInt();
