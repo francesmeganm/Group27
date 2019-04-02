@@ -107,6 +107,7 @@ public class BudgetTool{
     if (misc != 0){
       largeBudget.setAmountForMiscellaneous(misc);
     }
+    largeBudget.setAmountExtra();
   }
 	
   public double gettingEntertainment(){
@@ -128,4 +129,8 @@ public class BudgetTool{
   public double gettingMisc(){
     return largeBudget.getAmountForMiscellaneous();
   }	
+
+  public double gettingExtra(){
+    return largeBudget.getAmountExtra();
+  }
 }
