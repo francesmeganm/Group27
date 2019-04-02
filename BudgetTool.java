@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Scanner;
 
 public class BudgetTool{
 	//inputing user info // no this is in the GUI
@@ -8,6 +9,7 @@ public class BudgetTool{
 	private BudgetInfo smallBudget;
 	private BudgetBreakdown largeBudget;
 	private Accounts account;//do we need this??
+  private Scanner keyboard = new Scanner(System.in);
 
 	public BudgetTool(){
 		account = new Accounts();
@@ -41,6 +43,14 @@ public class BudgetTool{
 
   public UserInfo getCurrentUser(){
     return user;
+  }
+
+  public double checkIfValidPercent(double percent){
+    while (percent < 0 || percent > 100){
+      System.out.print("That is an invlaid percent. Please enter a percent between 0 and 100%: ");
+      percent = keyboard.nextInt();
+    }
+    return percent;
   }
 
   public void updateUserInfo(double trans, double uti, double oth, double rent, double inc){
