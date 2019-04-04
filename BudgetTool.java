@@ -115,15 +115,6 @@ public class BudgetTool{
     }
   }
   
-
-  /**
-   * Method sets the date the user is making a budget for 
-   * @para date is the users desired date
-   */
-  public void month(Date date){
-    //method choocse which month you are in
-  }
-  
   /**
    * Is a get method for the remaining money
    * Using methods in the BudgetInfo class
@@ -151,6 +142,14 @@ public class BudgetTool{
     smallBudget.setAmountToSave(save);
   }
   
+  /**
+   * Method sets the date the user is making a budget for 
+   * @para date is the users desired date
+   */
+  public void settingDate(Date date){
+    smallBudget.setDate(date);
+  }
+
   /** 
    * When the user inputs a goal to save for computes when the user will 
    * accmplish this goal given the date they have previously inputed or default

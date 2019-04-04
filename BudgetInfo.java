@@ -1,4 +1,4 @@
-5import java.util.Date;
+import java.util.Date;
 import java.util.Calendar;
 import java.lang.Math.*;
 
@@ -10,7 +10,8 @@ import java.lang.Math.*;
 public class BudgetInfo extends UserInfo{
 	private double amountToSave = 0.0;
 	private double remainingMoney;
-	private UserInfo user ;
+	private Date userDate = new Date();
+	private UserInfo user;
 
 	/**
 	 *Default Contructor - takes no arguments 
@@ -65,19 +66,36 @@ public class BudgetInfo extends UserInfo{
 	}
 
 	/**
+	 * This is a setting method for the date the user wants to use
+	 * @param date is the date the user would like to make a budget for
+	 */
+	public void setDate(Date date){
+		this.userDate = date;
+	}
+
+	/**
+	 *This is a getter method that returns the userDate
+	 *@return userDate
+	 */
+	public Date getDate(){
+		return userDate;
+	}
+
+	/**
 	 * This method take the cost of a goal and calulates how long it is going to take
-	 * to complete this goal given their monthly income and exepese, and how much they are trying 
+	 * to complete this goal given their monthly income, expense,the day they
+	 * choose to start, and how much they are trying 
 	 * to save each month
 	 * @param goalCost is the total cost of the goal the user is saving towards 
 	 * @return d2 is the date the goal will be completed by 
 	 */
 	public Date getDateGoalCompleted(double goalCost){
-		double monthsTillGoal = goalCost / amountToSave;
-		double months = Math.ceil(monthsTillGoal);
-		Date d1 = new Date();
+		double daysTillGoal = goalCost / amountToSave / 30;
+		double days = Math.ceil(daysTillGoal);
+		Date d1 = getDate();
 		Calendar cal = Calendar.getInstance();
 		Date today = cal.getTime();
-		cal.add(Calendar.MONTH, (int) months);
+		cal.add(Calendar.DATE, (int) days);
 		Date d2 = cal.getTime();
 		return d2;
 	}
