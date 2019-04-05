@@ -1,15 +1,16 @@
 import java.util.Scanner;
 
 /**
-* Class TextUserInfo refers to the "Update User Info" option on the SaveBetter main menu.
-* It has one instance variable, tool, which is a BudgetTool containing all the logic and methods behind each action.
+* Class TextUserInfo refers to the "Update User Info" option on the SaveBetter main menu. 
+* It allows the user to update their monthly expenses and income. 
+* It has one instance variable, tool of type BudgetTool. 
 */
 public class TextUserInfo{
-	BudgetTool tool;
-	Scanner keyboard = new Scanner(System.in);
+	private BudgetTool tool;
+	private Scanner keyboard = new Scanner(System.in);
 
 	/**
-	* Constructor TextUserInfo takes a budgetTool and initializes it as the tool to reach the logic classes
+	* CConstructor takes an instance of the BudgetTool that refers to the current user
 	* @param budgetTool contains all the logic and methods behind each action the user may make
 	*/
 	public TextUserInfo(BudgetTool budgetTool){

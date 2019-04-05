@@ -6,11 +6,11 @@ import java.util.Scanner;
 * It has one instance variable, tool, which is a BudgetTool containing all the logic and methods behind each action.
 */
 public class TextBudgetBreakdown{
-	BudgetTool tool;
-	Scanner keyboard = new Scanner(System.in);
+	private BudgetTool tool;
+	private Scanner keyboard = new Scanner(System.in);
 
 	/**
-	* This constructor takes a budgetTool and initializes it as the tool 
+	* Constructor takes an instance of the BudgetTool that refers to the current user
 	* @param budgetTool contains all the logic and methods behind each action the user may make
 	*/
 	public TextBudgetBreakdown(BudgetTool budgetTool){

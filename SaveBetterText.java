@@ -9,18 +9,17 @@ import java.util.Scanner;
 * budgetInfo, and budgetBreakdown which all contain the logic to run chosen languages. 
 */
 public class SaveBetterText{
-	Scanner keyboard = new Scanner(System.in);
-
-	BudgetTool budgetTool;
-	TextLogin login;
-	TextUserInfo userInfo;
-	TextBudgetInfo budgetInfo;
-	TextBudgetBreakdown budgetBreakdown;
+	private Scanner keyboard = new Scanner(System.in);
+	private BudgetTool budgetTool;
+	private TextLogin login;
+	private TextUserInfo userInfo;
+	private TextBudgetInfo budgetInfo;
+	private TextBudgetBreakdown budgetBreakdown;
 
 	/**
 	* Constructor makes new instances of the login, userInfo, budgetInfo, and budgetBreakdown 
 	* which will all reference the budgetTool and assigns them to the instance variables. 
-	* @param budgetTool holds all the methods that controls every action the user may make 
+	* @param budgetTool holds all the methods that controls every action the user may make
 	*/
 	public SaveBetterText(BudgetTool budgetTool){
 		this.budgetTool = budgetTool;
@@ -49,7 +48,7 @@ public class SaveBetterText{
 	* Method mainMenu takes the input from the user and runs the correlating method for
 	* each menu option. If the user inputs an invalid choice, then it will re-display the menu, 
 	* reprompting the user. 
-	* @param choice the input from the user for which menu options they would like to do
+	* @param choice the input from the user for which menu option they would like to do
 	*/
 	public void mainMenu(Integer choice){
 			if (choice == 1){

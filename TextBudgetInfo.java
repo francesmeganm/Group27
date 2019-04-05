@@ -4,14 +4,28 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.text.DateFormat;
 
+/**
+* Class TextBudgetInfo refers to the "Create Simple Budget" option on the SaveBetter main menu.
+* It allows the user to create a simple budget with goals and savings. 
+* It has one instance variable, tool, of type BudgetTool. 
+*/
 public class TextBudgetInfo{
-	BudgetTool tool;
-	Scanner keyboard = new Scanner(System.in);
+	private BudgetTool tool;
+	private Scanner keyboard = new Scanner(System.in);
 
+	/**
+	* Constructor takes an instance of the BudgetTool that refers to the current user
+	* @param budgetTool contains all the logic and methods behind each action the user may make
+	*/
 	public TextBudgetInfo(BudgetTool budgetTool){
 		this.tool = budgetTool;
 	}
-	//@throws ParseException
+	
+	/**
+	* Method textComputeBudgetInfo creates a "Simple Budget". Its features include: showing the remaining 
+	* money you have to spend after your monthly expenses, as well as a savings calculator which forecasts 
+	* how long it will take for you to reach your savings goal. 
+	*/
 	public void textComputeBudgetInfo(){
 		try{
 			System.out.println("\nThis is your simple budget breakdown.");

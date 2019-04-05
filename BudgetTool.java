@@ -76,8 +76,8 @@ public class BudgetTool{
   }
 
   /**
-   * This methods checks if the user inputed a vaild percentage in whole numbers 
-   * must be a value between 0 and 100
+   * This methods checks if the user inputed a vaild percentage in whole numbers must be a value between 0 and 100. 
+   * If the user enters an invalid number an error is displayed and they are re-prompted. 
    * @param percent is the percent entered by user 
    * @return percent if it is with the values 
    */
@@ -90,7 +90,7 @@ public class BudgetTool{
   }
 
   /**
-   * This method updates all the user info in UserInfo user, will only update if the value is not equaly to zero
+   * This method updates all the user info in UserInfo user, will only update if the value is greater than 0
    * @param trans is the monthly trasnporation cost
    * @param uti is the monthly utility cost
    * @param oth is the monthly other cost
@@ -98,19 +98,19 @@ public class BudgetTool{
    * @param inc is the monthly inc cost
    */
   public void updateUserInfo(double trans, double uti, double oth, double rent, double inc){
-    if (trans != 0){
+    if (trans > 0){
       user.setTransport(trans);
     }
-    if (uti != 0){
+    if (uti > 0){
       user.setUtility(uti);
     }
-    if (oth != 0){
+    if (oth > 0){
       user.setOther(oth);
     }
-    if (rent != 0){
+    if (rent > 0){
       user.setRent(rent);
     }
-    if (inc != 0){
+    if (inc > 0){
       user.setMonthlyIncome(inc);
     }
   }
@@ -163,7 +163,7 @@ public class BudgetTool{
   
   /** 
    * This method sets all the percentanges that the user would like to spend their remaining money on. 
-   * All percentages are in whole numbers. Does not set the percentage if the value is 0.
+   * All percentages are in whole numbers. Does not set the percentage if the value is less than 0.
    * This is using methods from the BudgetBreakdown class
    * @param ent is the percent for entertainment
    * @param pers is the percent for personal care
@@ -172,19 +172,19 @@ public class BudgetTool{
    * @param misc is the percent for miscellanoues
    */
   public void settingBudgetBreakdown(double ent, double pers, double food, double shop, double misc){
-    if (ent != 0){
+    if (ent >= 0){
       largeBudget.setAmountForEntertainment(ent);
     }
-    if (pers != 0){
+    if (pers >= 0){
       largeBudget.setAmountForPersonalCare(pers);
     }
-    if (food != 0){
+    if (food >= 0){
       largeBudget.setAmountForFoodAndGroceries(food);
     }
-    if (shop != 0){
+    if (shop >= 0){
       largeBudget.setAmountForShopping(shop);
     }
-    if (misc != 0){
+    if (misc >= 0){
       largeBudget.setAmountForMiscellaneous(misc);
     }
     largeBudget.setAmountExtra();

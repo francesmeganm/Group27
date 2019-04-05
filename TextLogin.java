@@ -4,20 +4,20 @@ import java.util.Scanner;
  * The class TextLogin is the main login part of the text based program. It includes creating account, 
  * login in, and displaying the login menu. All methods refer to the an instance of the BudgetTool
  * The class contains four instance variables: tool is a BudgetTool, loginOption is a String, 
- * keyboard is a Sanner, username is a String, and password is a String 
+ * keyboard is a Scanner, username is a String, and password is a String 
  */
 public class TextLogin{
-	BudgetTool tool;
+	private BudgetTool tool;
 
-	String loginOption = "\nCreate New Account[1] // Login[2]";
-	Scanner keyboard = new Scanner(System.in);
+	private String username;
+	private String password;
 
-	String username;
-	String password;
+	private String loginOption = "\nCreate New Account[1] // Login[2]";
+	private Scanner keyboard = new Scanner(System.in);
 
 	/**
 	 * Constructor takes an instance of the BudgetTool that refers to the current user
-	 * @param budgetTool 
+	 * @param budgetTool contains all the logic and methods behind each action the user may make
 	 */
 	public TextLogin(BudgetTool budgetTool){
 		this.tool = budgetTool;
@@ -40,6 +40,7 @@ public class TextLogin{
 		boolean isLoggedIn = false;
 		if (choice == 1){
 			System.out.print("\nEnter a new unique username: ");
+			keyboard.nextLine();
 			username = keyboard.nextLine();
 			boolean isUnique = tool.checkingUsername(username);
 			while (isUnique == false){
