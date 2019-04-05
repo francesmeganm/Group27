@@ -3,7 +3,7 @@ import java.util.Scanner;
 /** 
 * Class TextBudgetBreakdown refers to the "Create Budget Breakdown" option on the SaveBetter main menu.
 * This class displays to the user a breakdown of their remaining money to how they would like to spend it. 
-* It has one instance varibale, tool, which is a BudgetTool containing all the logic and methods behind each action.
+* It has one instance variable, tool, which is a BudgetTool containing all the logic and methods behind each action.
 */
 public class TextBudgetBreakdown{
 	BudgetTool tool;
@@ -21,7 +21,8 @@ public class TextBudgetBreakdown{
 	* Method textBudgetBreakdown is what will be displayed to teh user when they choose
 	* to compute a budget breakdown. It will first prompt the user to enter percentages
 	* for each category, then it will compute the exact amount of your spending money that
-	* can be used for each category. 
+	* can be used for each category. Every time a user enters a percentage, 
+	* it will validate that it is a valid option, if not it will reprompt the user. 
 	*/
 	public void textBudgetBreakdown(){
 		System.out.println("\nThis is your complex budget breakdown.");
