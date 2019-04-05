@@ -128,9 +128,8 @@ public class BudgetBreakdown extends BudgetInfo{
 	public void setAmountExtra(){
 		if ((amountForMiscellaneous + amountForShopping + amountForEntertainment + 
 			amountForPersonalCare + amountForFoodAndGroceries) != super.getRemainingMoney()){
-			amountExtra = 1 - ((amountForMiscellaneous + amountForShopping + amountForEntertainment + 
-				amountForPersonalCare + amountForFoodAndGroceries) / super.getRemainingMoney()) * 
-				super.getRemainingMoney(); 
+			amountExtra = super.getRemainingMoney() - ((amountForMiscellaneous + amountForShopping + amountForEntertainment + 
+				amountForPersonalCare + amountForFoodAndGroceries)); 
 
 		}
 	}
