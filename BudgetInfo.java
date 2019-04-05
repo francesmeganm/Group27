@@ -90,12 +90,28 @@ public class BudgetInfo extends UserInfo{
 	 * @return d2 is the date the goal will be completed by 
 	 */
 	public Date getDateGoalCompleted(double goalCost){
-		double daysTillGoal = goalCost / amountToSave / 30;
+		double daysTillGoal = goalCost / amountToSave * 30;
 		double days = Math.ceil(daysTillGoal);
 		Date d1 = getDate();
 		Calendar cal = Calendar.getInstance();
-		Date today = cal.getTime();
-		cal.add(Calendar.DATE, (int) days);
+		if (days > 365){
+			double year = Math.ceil(days / 365);
+			days -= (year * 365);
+			double month = Math.ceil(days / 30);
+			days = days % 30;
+			cal.add(Calendar.YEAR, (int) year);
+			cal.add(Calendar.DATE, (int) days);
+			cal.add(Calendar.MONTH, (int) month);
+		}
+		else if (days > 30){
+			double month = Math.ceil(days / 30);
+			days = days % 30;
+			cal.add(Calendar.DATE, (int) days);
+			cal.add(Calendar.MONTH, (int) month);
+		}
+		else{
+			cal.add(Calendar.DAY_OF_MONTH, (int) days);
+		}
 		Date d2 = cal.getTime();
 		return d2;
 	}

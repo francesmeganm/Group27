@@ -31,20 +31,11 @@ public class TextBudgetInfo{
 			System.out.print("How much does your goal cost: ");
 			double goalCost = keyboard.nextInt();
 
-			//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			//String dateFormat = "dd/MM/yyyy";
-
 			System.out.print("When would you like to start saving for your goal (dd/MM/yyyy): ");
-			//String date1 = keyboard.nextLine();
-			//Date date = new SimpleDateFormat(dateFormat).parse(date1); 
-			//tool.settingDate(date);
-			System.out.println("1");
-			String date = keyboard.nextLine();
-			System.out.println("2");
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String date = keyboard.next();
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date chosen = dateFormat.parse(date);
 			tool.settingDate(chosen);
-			System.out.println("3");
 			Date goalCompletionDate = tool.gettingDateGoalCompleted(goalCost);
 			System.out.println("You are scheduled to complete your goal: " + goalCompletionDate);
 		}
