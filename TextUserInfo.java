@@ -10,7 +10,7 @@ public class TextUserInfo{
 	private Scanner keyboard = new Scanner(System.in);
 
 	/**
-	* CConstructor takes an instance of the BudgetTool that refers to the current user
+	* Constructor takes an instance of the BudgetTool that refers to the current user
 	* @param budgetTool contains all the logic and methods behind each action the user may make
 	*/
 	public TextUserInfo(BudgetTool budgetTool){
