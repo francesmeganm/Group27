@@ -9,13 +9,17 @@ public class TextUserInfo{
 	Scanner keyboard = new Scanner(System.in);
 
 	/**
-	* Class TextUserInfo takes a budgetTool and initializes it as the tool 
+	* Constructor TextUserInfo takes a budgetTool and initializes it as the tool to reach the logic classes
 	* @param budgetTool contains all the logic and methods behind each action the user may make
 	*/
 	public TextUserInfo(BudgetTool budgetTool){
 		this.tool = budgetTool;
 	}
 
+	/**
+	 * This method takes input from the user about their monthly income and expenses. It goes through 
+	 * budgetTool and updates all user information to UserInfo
+	 */
 	public void getAndUpdateUserInfo(){
 		System.out.println("Updating your monthly income and expenses.");
 
