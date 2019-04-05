@@ -40,7 +40,6 @@ public class TextLogin{
 		boolean isLoggedIn = false;
 		if (choice == 1){
 			System.out.print("\nEnter a new unique username: ");
-			keyboard.nextLine();
 			username = keyboard.nextLine();
 			boolean isUnique = tool.checkingUsername(username);
 			while (isUnique == false){
