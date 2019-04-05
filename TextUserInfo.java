@@ -1,9 +1,17 @@
 import java.util.Scanner;
 
+/**
+* Class TextUserInfo refers to the "Update User Info" option on the SaveBetter main menu.
+* It has one instance variable, tool, which is a BudgetTool containing all the logic and methods behind each action.
+*/
 public class TextUserInfo{
 	BudgetTool tool;
 	Scanner keyboard = new Scanner(System.in);
 
+	/**
+	* Class TextUserInfo takes a budgetTool and initializes it as the tool 
+	* @param budgetTool contains all the logic and methods behind each action the user may make
+	*/
 	public TextUserInfo(BudgetTool budgetTool){
 		this.tool = budgetTool;
 	}
