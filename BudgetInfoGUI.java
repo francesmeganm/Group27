@@ -18,6 +18,14 @@ import javafx.scene.text.TextFlow.*;
 import javafx.scene.text.FontWeight;
 import java.lang.Object.*;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
+
+import java.util.Locale;
+
 /**
 The class UserInfoGUI handles events of getting and setting variables that are in 
  the UserInfo class
@@ -26,8 +34,6 @@ The class UserInfoGUI handles events of getting and setting variables that are i
 */
 public class BudgetInfoGUI extends Application{
 	Stage window;
-	//private BudgetInfo account = new BudgetInfo();
-	//private UserInfo currentAccount;
 	private BudgetTool budgetTool;
 	private TextField percentage;
 	private TextField goalCost;
@@ -42,12 +48,18 @@ public class BudgetInfoGUI extends Application{
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
+			System.out.println(per1);
+			budgetTool.settingTheAmountToSave(per1);
 			double per2 = budgetTool.gettingTheAmountToSave(per1);
-			String per3 = per2 + "";
-			input1.setText(per3);
+			System.out.println(per2);
+			input1.setText(per2 + "");
 		}
 	}
 	class HandleGoal implements EventHandler<ActionEvent>{
+		public HandleGoal(Label aLabel){
+			input2 = aLabel;
+		}
+
 		public void handle(ActionEvent event){
 			String goal = goalCost.getText();
 			double goal1 = Double.parseDouble(goal);
@@ -66,10 +78,6 @@ public class BudgetInfoGUI extends Application{
 		}
 	}
 
-	/*public BudgetInfoGUI(UserInfo user){
-		currentAccount = new UserInfo(user);
-		account = new BudgetInfo(currentAccount);
-	}*/
 	/**
 	Method creates the GUI display for the user representing the UserInfo
 	User can enter and update all their expenses and income
@@ -83,12 +91,11 @@ public class BudgetInfoGUI extends Application{
 		grid.setVgap(10);
 		grid.setHgap(10);
 
+		final DatePicker datePicker = new DatePicker();
+        datePicker.localeProperty().set(Locale.US);
+
 		Label header = new Label("Quick Budgeting Analysis");
 		GridPane.setConstraints(header, 1, 0);
-		//header.setFont(Font.font("Helvetica", FontWeight.BOLD, 10));
-		//setFont(Font.BOLD, header);
-		//String mg = "Quick Budgeting Analysis";
-		//header.setFont(Font.font("Times", BOLD, 12));
 		grid.getChildren().add(header);
 
 
@@ -97,7 +104,6 @@ public class BudgetInfoGUI extends Application{
 		Label a = new Label("Avaliable funds to save each month");
 		GridPane.setConstraints(a, 1, 1);
 		grid.getChildren().add(a);
-		//a.setStyle("-fx-font-weight: bold");
 
 		Label b = new Label("Monthly income less monthly expenses: ");
 		GridPane.setConstraints(b, 1, 2);
@@ -132,7 +138,7 @@ public class BudgetInfoGUI extends Application{
 		g.setOnAction(new HandlePercentage());
 
 		//BOLD
-		Label input1 = new Label("0.00");
+		input1 = new Label("0.00");
 		GridPane.setConstraints(input1, 2, 6);
 		grid.getChildren().add(input1);
 
@@ -150,24 +156,51 @@ public class BudgetInfoGUI extends Application{
 		GridPane.setConstraints(goalCost, 2, 9);
 		grid.getChildren().add(goalCost);
 
+		//BOLD
+		Label what = new Label("Choose date to start Saving: ");
+		GridPane.setConstraints(what, 1, 10);
+		grid.getChildren().add(what);
+
+		HBox hBox = new HBox();
+        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+        hBox.setSpacing(10);
+		GridPane.setConstraints(hBox, 2, 10);
+       
+     	hBox.getChildren().add(datePicker);
+        grid.getChildren().add(hBox);
+
+
+        datePicker.selectedDateProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                System.out.println(datePicker.selectedDateProperty().get());
+            }
+        });
+
+        datePicker.setLocale(Locale.US);
+        datePicker.getCalendarView().todayButtonTextProperty().set("Current Date");		
+
+		Date dateStart = datePicker.selectedDateProperty().get();
+        budgetTool.settingDate(dateStart);
+
+        //Date goalEnds = budgetTool.gettingDateGoalCompleted();
+        Date goalEnds = new Date();
+		SimpleDateFormat format = new SimpleDateFormat();
+		String date1 = format.format(goalEnds);
+
+		Label input2 = new Label(format.format(goalEnds));
+		GridPane.setConstraints(input2, 2, 11);
+		grid.getChildren().add(input2);
+
+
 		Button k = new Button("Compute");
-		GridPane.setConstraints(k, 3, 9);
+		GridPane.setConstraints(k, 3, 10);
 		grid.getChildren().add(k);
-		k.setOnAction(new HandleGoal());
+		k.setOnAction(new HandleGoal(input2));
 
 		Label l = new Label("Date goal is completed: ");
-		GridPane.setConstraints(l, 1, 10);
+		GridPane.setConstraints(l, 1, 11);
 		grid.getChildren().add(l);
-
-		//BOLD
-
-		Date t1 = new Date();
-		SimpleDateFormat format = new SimpleDateFormat();
-		String date1 = format.format(t1);
-
-		Label input2 = new Label(format.format(t1));
-		GridPane.setConstraints(input2, 2, 10);
-		grid.getChildren().add(input2);
 
 		Button back = new Button("Back to main menu");
 		GridPane.setConstraints(back, 3, 11);
