@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import javafx.scene.paint.Color;
 
 /**
 The class UserInfoGUI handles events of getting and setting variables that are in 
@@ -267,7 +268,7 @@ public class UserInfoGUI extends Application{
 		grid.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
 		
-		Scene scene = new Scene(grid, 600, 300);
+		Scene scene = new Scene(grid, 600, 300, Color.LIMEGREEN);
 		window.setScene(scene);
 
 		window.show();

@@ -69,7 +69,7 @@ public class MenuGUI extends Application{
 		userInfo.setGraphic(userIconView);
 		userInfo.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
 		userInfo.setStyle("-fx-font-size: 2em; ");
-		userInfo.setPrefWidth(275);
+		userInfo.setPrefWidth(300);
 		userInfo.setPrefHeight(35);
 		userInfo.setOnAction(new HandleUpdateUserInfo());
 		root.getChildren().add(userInfo);
@@ -83,7 +83,7 @@ public class MenuGUI extends Application{
 		simpleBudget.setGraphic(simpleBudgetView);
 		simpleBudget.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
 		simpleBudget.setStyle("-fx-font-size: 2em; ");
-		simpleBudget.setPrefWidth(275);
+		simpleBudget.setPrefWidth(300);
 		simpleBudget.setPrefHeight(35);
 		simpleBudget.setOnAction(new HandleSimpleBudget());
 		root.getChildren().add(simpleBudget);
@@ -97,7 +97,7 @@ public class MenuGUI extends Application{
 		remainingBudget.setGraphic(remainingBudgetView);
 		remainingBudget.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
 		remainingBudget.setStyle("-fx-font-size: 2em; ");
-		remainingBudget.setPrefWidth(275);
+		remainingBudget.setPrefWidth(300);
 		remainingBudget.setPrefHeight(35);
 		remainingBudget.setOnAction(new HandleRemainingBudget());
 		root.getChildren().add(remainingBudget);
@@ -112,7 +112,7 @@ public class MenuGUI extends Application{
 		logout.setGraphic(logoutView);
 		logout.setStyle("-fx-background-color: white; -fx-text-fill: black;");
 		logout.setStyle("-fx-font-size: 2em; ");
-		logout.setPrefWidth(275);
+		logout.setPrefWidth(300);
 		logout.setPrefHeight(35);
 		logout.setOnAction(new HandleLogout());
 		root.getChildren().add(logout);
