@@ -93,7 +93,7 @@ public class MenuGUI extends Application{
 		ImageView remainingBudgetView = new ImageView(remainingeBudgetIcon);
 		remainingBudgetView.setFitHeight(35);
 		remainingBudgetView.setFitWidth(40);
-		Button remainingBudget = new Button("Complex Budget");
+		Button remainingBudget = new Button("Budget Breakdown");
 		remainingBudget.setGraphic(remainingBudgetView);
 		remainingBudget.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
 		remainingBudget.setStyle("-fx-font-size: 2em; ");
