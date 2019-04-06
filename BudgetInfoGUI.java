@@ -36,7 +36,7 @@ public class BudgetInfoGUI extends Application{
 	Stage window;
 	private BudgetTool budgetTool;
 	private TextField percentage;
-	private TextField goalCost;
+	private TextField inputGoal;
 	private Label input1;
 	private Label input2;
 
@@ -48,25 +48,28 @@ public class BudgetInfoGUI extends Application{
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
-			System.out.println(per1);
 			budgetTool.settingTheAmountToSave(per1);
 			double per2 = budgetTool.gettingTheAmountToSave(per1);
-			System.out.println(per2);
 			input1.setText(per2 + "");
 		}
 	}
+
 	class HandleGoal implements EventHandler<ActionEvent>{
-		public HandleGoal(Label aLabel){
-			input2 = aLabel;
-		}
+		final DatePicker datePicker = new DatePicker();
 
 		public void handle(ActionEvent event){
-			String goal = goalCost.getText();
+			String goal = inputGoal.getText();
 			double goal1 = Double.parseDouble(goal);
+			System.out.println(goal1);
+			Date dateStart = datePicker.selectedDateProperty().get();
+			System.out.println(dateStart);
+        	budgetTool.settingDate(dateStart);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
-			SimpleDateFormat format = new SimpleDateFormat();
-			String date1 = format.format(due);
-			input2.setText(date1);
+			//SimpleDateFormat format = new SimpleDateFormat();
+			//String date1 = format.format(due);
+			System.out.println(due);
+			System.out.println(dateStart);
+			input2.setText(due + "");
 		}
 	}
 
@@ -152,7 +155,9 @@ public class BudgetInfoGUI extends Application{
 		GridPane.setConstraints(j, 1, 9);
 		grid.getChildren().add(j);
 
-		TextField goalCost = new TextField("0.00");
+		TextField goalCost = new TextField();
+		inputGoal = goalCost;
+		goalCost.setPromptText("0.00");
 		GridPane.setConstraints(goalCost, 2, 9);
 		grid.getChildren().add(goalCost);
 
@@ -180,23 +185,18 @@ public class BudgetInfoGUI extends Application{
         datePicker.setLocale(Locale.US);
         datePicker.getCalendarView().todayButtonTextProperty().set("Current Date");		
 
-		Date dateStart = datePicker.selectedDateProperty().get();
-        budgetTool.settingDate(dateStart);
-
-        //Date goalEnds = budgetTool.gettingDateGoalCompleted();
         Date goalEnds = new Date();
 		SimpleDateFormat format = new SimpleDateFormat();
 		String date1 = format.format(goalEnds);
 
-		Label input2 = new Label(format.format(goalEnds));
+		input2 = new Label(format.format(goalEnds));
 		GridPane.setConstraints(input2, 2, 11);
 		grid.getChildren().add(input2);
-
 
 		Button k = new Button("Compute");
 		GridPane.setConstraints(k, 3, 10);
 		grid.getChildren().add(k);
-		k.setOnAction(new HandleGoal(input2));
+		k.setOnAction(new HandleGoal());
 
 		Label l = new Label("Date goal is completed: ");
 		GridPane.setConstraints(l, 1, 11);
