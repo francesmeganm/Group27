@@ -1,15 +1,21 @@
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.Group;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.shape.*;
 import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font; 
+import javafx.scene.text.FontPosture; 
+import javafx.scene.text.FontWeight; 
 import javafx.scene.paint.Color;
+
 
 /**
 The class UserInfoGUI handles events of getting and setting variables that are in 
@@ -72,90 +78,6 @@ public class UserInfoGUI extends Application{
 		}
 	}
 
-	/**
-	The class HandleIncome set income in the class UserInfo and then shows
-	the new monthly income to the user
-	*/
-	/*class HandleIncome implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			String newIncome = input1.getText();
-			double newIncome1 = Double.parseDouble(newIncome);
-			account.setMonthlyIncome(newIncome1);
-			String stringIncome = account.getMonthlyIncome() + "";
-			input1.setText(stringIncome);
-		}
-	}*/
-	/**
-	The class HandleTransportation sets the transporation expense in the class
-	UserInfo and then shows the new monthly transporation cost to the user
-	*/
-	/*class HandleTransportation implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			String newTrans = input2.getText();
-			double newTrans1 = Double.parseDouble(newTrans);
-			account.setTransport(newTrans1);
-			String stringTrans = account.getTransport() + "";
-			input2.setText(stringTrans);
-		}
-	}*/
-
-	/**
-	The class HandleUtility sets the utility expense in the class
-	UserInfo and then shows the new monthly utility expense to the user
-	*/
-	/*class HandleUtility implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			String newUtility = input3.getText();
-			double newUtility1 = Double.parseDouble(newUtility);
-			account.setUtility(newUtility1);
-			String stringUtility = account.getUtility() + "";
-			input3.setText(stringUtility);
-		}
-	}*/
-
-	/**
-	The class HandleRent sets the rent exepense in the class UserInfo and then
-	shows the new monthly rent expense to the user 
-	*/
-	/*class HandleRent implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			String newRent = input5.getText();
-			double newRent1 = Double.parseDouble(newRent);
-			account.setRent(newRent1);
-			String stringRent = account.getRent() + "";
-			input5.setText(stringRent);
-		}
-	}*/
-
-	/**
-	The class HandleOther sets the other expense in the class UserInfo and then 
-	shows the new monthly other expense to the user
-	*/
-	/*class HandleOther implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			String newOther = input6.getText();
-			double newOther1 = Double.parseDouble(newOther);
-			account.setOther(newOther1);
-			String stringOther = account.getOther() + "";
-			input6.setText(stringOther);
-		}
-	}*/
-
-	/**
-	The class HandleAll updates all expenses and income inputed by the users, and
-	shows the updated amounts 
-	*/
-	/*class HandleAll implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			new HandleOther().handle(event);
-			new HandleRent().handle(event);
-			new HandleIncome().handle(event);
-			new HandleTransportation().handle(event);
-			new HandleUtility().handle(event);
-			window.close();
-		}
-	}*/
-
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
@@ -177,98 +99,98 @@ public class UserInfoGUI extends Application{
 		window = primaryStage;
 		window.setTitle("SaveBetter");
 
-		GridPane grid = new GridPane();
-		grid.setPadding(new Insets(10,10,10,10));
-		grid.setVgap(10);
-		grid.setHgap(10);
+		VBox root = new VBox();
+		root.setStyle("-fx-background-color: LIMEGREEN;");
+		root.setSpacing(30);
+		root.setAlignment(Pos.CENTER);
 
-		Label header = new Label("Update Monthly Income and Expenses");
-		GridPane.setConstraints(header, 1, 0);
-		grid.getChildren().add(header);
+		Text header = new Text();
+		header.setText("Update Monthly Income and Expenses");
+		header.setFont(Font.font("Courier", FontWeight.BOLD, 25));   
+		header.setFill(Color.WHITE);
+		root.getChildren().add(header);
+		
 
 		//ENTER INCOME COLUMN
+		HBox income = new HBox();
+		income.setSpacing(20);
+		income.setAlignment(Pos.CENTER);
+		root.getChildren().add(income);
+
 		Label enterIncome = new Label("Update Income: ");
-		GridPane.setConstraints(enterIncome, 1, 1);
-		grid.getChildren().add(enterIncome);
+		income.getChildren().add(enterIncome);
 
 		input1 = new TextField(Double.toString(budgetTool.gettingMonthlyIncome()));
-		GridPane.setConstraints(input1, 2, 1);
-		grid.getChildren().add(input1);
-
-		/*Button mIncome = new Button("Update");
-		GridPane.setConstraints(mIncome, 3, 1);
-		grid.getChildren().add(mIncome);
-		mIncome.setOnAction(new HandleIncome());*/
+		income.getChildren().add(input1);
 
 		//ENTER TRANSPORTATION COLUMN
+		HBox trans = new HBox();
+		trans.setSpacing(20);
+		trans.setAlignment(Pos.CENTER);
+		root.getChildren().add(trans);
+
 		Label enterTrans = new Label("Update Transportation: ");
-		GridPane.setConstraints(enterTrans, 1, 2);
-		grid.getChildren().add(enterTrans);
+		trans.getChildren().add(enterTrans);
 
 		input2 = new TextField(Double.toString(budgetTool.gettingTransport()));
-		GridPane.setConstraints(input2, 2, 2);
-		grid.getChildren().add(input2);
-
-		/*Button mTrans = new Button("Update");
-		GridPane.setConstraints(mTrans, 3, 2);
-		grid.getChildren().add(mTrans);
-		mTrans.setOnAction(new HandleTransportation());*/
+		trans.getChildren().add(input2);
 
 		//ENTER UTILITY COLUMN
+		HBox utility = new HBox();
+		utility.setSpacing(20);
+		utility.setAlignment(Pos.CENTER);
+		root.getChildren().add(utility);
+
 		Label enterUtility = new Label("Update Utility: ");
-		GridPane.setConstraints(enterUtility, 1, 3);
-		grid.getChildren().add(enterUtility);
+		utility.getChildren().add(enterUtility);
 
 		input3 = new TextField(Double.toString(budgetTool.gettingUtility()));
-		GridPane.setConstraints(input3, 2, 3);
-		grid.getChildren().add(input3);
-
-		/*Button mUtility = new Button("Update");
-		GridPane.setConstraints(mUtility, 3, 3);
-		grid.getChildren().add(mUtility);
-		mUtility.setOnAction(new HandleUtility());*/
+		utility.getChildren().add(input3);
 
 		//ENTER RENT COLUMN 
+		HBox rent = new HBox();
+		rent.setSpacing(20);
+		rent.setAlignment(Pos.CENTER);
+		root.getChildren().add(rent);
+
 		Label enterRent = new Label("Update Rent: ");
-		GridPane.setConstraints(enterRent, 1, 4);
-		grid.getChildren().add(enterRent);
+		rent.getChildren().add(enterRent);
 
 		input5 = new TextField(Double.toString(budgetTool.gettingRent()));
-		GridPane.setConstraints(input5, 2, 4);
-		grid.getChildren().add(input5);
-
-		/*Button mRent = new Button("Update");
-		GridPane.setConstraints(mRent, 3, 4);
-		grid.getChildren().add(mRent);
-		mRent.setOnAction(new HandleRent());*/
+		rent.getChildren().add(input5);
 
 		//ENTER OTHER COLUMN 
+		HBox other = new HBox();
+		other.setSpacing(20);
+		other.setAlignment(Pos.CENTER);
+		root.getChildren().add(other);
+
 		Label enterOther = new Label("Update Other: ");
-		GridPane.setConstraints(enterOther, 1, 5);
-		grid.getChildren().add(enterOther);
+		other.getChildren().add(enterOther);
 
 		input6 = new TextField(Double.toString(budgetTool.gettingOther()));
-		GridPane.setConstraints(input6, 2, 5);
-		grid.getChildren().add(input6);
+		other.getChildren().add(input6);
 
-		/*Button mOther = new Button("Update");
-		GridPane.setConstraints(mOther, 3, 5);
-		grid.getChildren().add(mOther);
-		mOther.setOnAction(new HandleOther());*/
+		//UPDATE ALL 
+		HBox updateAndClose = new HBox();
+		updateAndClose.setSpacing(20);
+		updateAndClose.setAlignment(Pos.CENTER);
+		root.getChildren().add(updateAndClose);
 
-		//UPDATE ALL
 		Button mAll = new Button("Update All & Continue");
-		GridPane.setConstraints(mAll, 2, 6);
-		grid.getChildren().add(mAll);
+		mAll.setStyle("-fx-background-color: white; -fx-text-fill: black;");
+		mAll.setStyle("-fx-font-size: 1.1em; ");
+		updateAndClose.getChildren().add(mAll);
 		mAll.setOnAction(new HandleUpdating());
 
 		//BACK TO MENU 
-		Button back = new Button("Back to main menu");
-		GridPane.setConstraints(back, 3, 7);
-		grid.getChildren().add(back);
+		Button back = new Button("Back to Main Menu");
+		back.setStyle("-fx-background-color: white; -fx-text-fill: black;");
+		back.setStyle("-fx-font-size: 1.1em; ");
+		updateAndClose.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
 		
-		Scene scene = new Scene(grid, 600, 300, Color.LIMEGREEN);
+		Scene scene = new Scene(root, 1366, 768);
 		window.setScene(scene);
 
 		window.show();
