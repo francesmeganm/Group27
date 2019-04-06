@@ -56,6 +56,14 @@ public class BudgetBreakdownGUI extends Application{
 		}
 	}
 
+	class HandlePieChart implements EventHandler<ActionEvent>{
+		public void handle(ActionEvent event){
+			Stage s = new Stage();
+			new Piechat(budgetTool).start(s);
+			window.close();
+		}
+	}
+
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
@@ -155,7 +163,7 @@ public class BudgetBreakdownGUI extends Application{
 		compute.setStyle("-fx-background-color: white; -fx-text-fill: black;");
 		compute.setStyle("-fx-font-size: 1.1em; ");
 		rowUp.getChildren().add(compute);
-		//SET OF ACTION
+		compute.setOnAction(new HandlePieChart());
 
 		Button back = new Button("Back to main menu");
 		back.setStyle("-fx-background-color: white; -fx-text-fill: black;");
