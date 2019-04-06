@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
 
 import java.util.Date;
 import java.util.Calendar;
@@ -90,7 +91,8 @@ public class BudgetInfoGUI extends Application{
         datePicker.localeProperty().set(Locale.US);
 
 		Label header = new Label("Quick Budgeting Analysis");
-		header.setFont(Font.font("Helvetica", FontWeight.BOLD, 25));
+		header.setFont(Font.font("Courier", FontWeight.BOLD, 25));
+		header.setTextFill(Color.WHITE);
 		GridPane.setConstraints(header, 1, 0);
 		
 		//setFont(Font.BOLD, header);
@@ -102,84 +104,85 @@ public class BudgetInfoGUI extends Application{
 		//AMOUNT AVALIABLE TO SAVE EACH MONTH
 		//BOLD
 		Label a = new Label("Avaliable funds to save each month:");
-		a.setFont(Font.font ("Verdana", 15));
+		a.setFont(Font.font ("Courier", 15));
 		GridPane.setConstraints(a, 1, 1);
 		grid.getChildren().add(a);
 		//a.setStyle("-fx-font-weight: bold");
 
 		Label b = new Label("Monthly income less monthly expenses: ");
-		b.setFont(Font.font ("Verdana", 15));
+		b.setFont(Font.font ("Courier", 15));
 		GridPane.setConstraints(b, 1, 2);
 		grid.getChildren().add(b);
 
 		//BOLD
 		Label c = new Label(Double.toString(account.getRemainingMoney()));
-		c.setFont(Font.font ("Verdana", 15));
+		c.setFont(Font.font ("Courier", 15));
 		GridPane.setConstraints(c, 2, 2);
 		grid.getChildren().add(c);
 
 		//AMOUNT TO SAVE FROM PERCENTAGE
 		//BOLD
-		Label d = new Label("Amount of income to save a given percentage");
-		d.setFont(Font.font ("Verdana", 15));
-		GridPane.setConstraints(d, 1, 4);
+		Label d = new Label("Amount of income to save a given percentage:");
+		d.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(d, 1, 3);
 		grid.getChildren().add(d);
 
 		Label e = new Label("Desired percentage of income to save: ");
-		e.setFont(Font.font ("Verdana", 15));
-		GridPane.setConstraints(e, 1, 5);
+		e.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(e, 1, 4);
 		grid.getChildren().add(e);
 
 		percentage = new TextField("0.0%");
-		GridPane.setConstraints(percentage, 2, 5);
+		percentage.setPrefWidth(5);
+		percentage.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(percentage, 2, 4);
 		grid.getChildren().add(percentage);
+		
+		Button g = new Button("Compute");
+		g.setFont(Font.font ("Courier", FontWeight.BOLD, 15));
+		g.setStyle("-fx-background-color: linear-gradient(to top, derive(limegreen, 40%), derive(limegreen,70%))");
+		g.setTextFill(Color.GREEN);
+		GridPane.setConstraints(g, 3, 4);
+		grid.getChildren().add(g);
 
 		Label f = new Label("The amount to save is: ");
-		f.setFont(Font.font ("Verdana", 15));
-		GridPane.setConstraints(f, 1, 6);
+		f.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(f, 1, 5);
 		grid.getChildren().add(f);
-
-		Button g = new Button("Compute");
-		GridPane.setConstraints(g, 3, 5);
-		grid.getChildren().add(g);
-		g.setOnAction(new HandlePercentage());
 
 		//BOLD
 		Label input1 = new Label("0.00");
-		GridPane.setConstraints(input1, 2, 6);
+		input1.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(input1, 2, 5);
 		grid.getChildren().add(input1);
 
 		//MONTHS UNTIL GOAL
 		//BOLD
 		Label i = new Label("Goal to save towards");
-		i.setFont(Font.font ("Verdana", 15));
-		GridPane.setConstraints(i, 1, 8);
+		i.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(i, 1, 6);
 		grid.getChildren().add(i);
 
 		Label j = new Label("Cost of given goal: ");
-		j.setFont(Font.font ("Verdana", 15));
-		GridPane.setConstraints(j, 1, 9);
+		j.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(j, 1, 7);
 		grid.getChildren().add(j);
 
 		TextField goalCost = new TextField("0.00");
-		GridPane.setConstraints(goalCost, 2, 9);
-		grid.getChildren().add(goalCost);
+		goalCost.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(goalCost, 2, 7);
+		grid.getChildren().add(goalCost); 
 
-		Button k = new Button("Compute");
-		GridPane.setConstraints(k, 3, 9);
-		grid.getChildren().add(k);
-		k.setOnAction(new HandleGoal());
-
-		Label l = new Label("Date goal is completed: ");
-		l.setFont(Font.font ("Verdana", 15));
-		GridPane.setConstraints(l, 1, 10);
-		grid.getChildren().add(l);
+		Label what = new Label("Choose date to start Saving: ");
+		what.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(what, 1, 8);
+		grid.getChildren().add(what);
 
 
 		HBox hBox = new HBox();
         hBox.setAlignment(Pos.BOTTOM_RIGHT);
-        hBox.setSpacing(10);
-		GridPane.setConstraints(hBox, 2, 10);
+        hBox.setSpacing(25);
+		GridPane.setConstraints(hBox, 2, 8);
        
         hBox.getChildren().add(datePicker);
 		grid.getChildren().add(hBox);
@@ -203,16 +206,33 @@ public class BudgetInfoGUI extends Application{
 		String date1 = format.format(t1);
 
 		Label input2 = new Label(format.format(t1));
-		GridPane.setConstraints(input2, 2, 11);
+		input2.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(input2, 2, 9);
 		grid.getChildren().add(input2);
+		
+		Label l = new Label("Date goal is completed: ");
+		l.setFont(Font.font ("Courier", 15));
+		GridPane.setConstraints(l, 1, 9);
+		grid.getChildren().add(l);
+		
+		Button k = new Button("Compute");
+		k.setFont(Font.font ("Courier", FontWeight.BOLD, 15));
+		k.setStyle("-fx-background-color: linear-gradient(to top, derive(limegreen, 40%), derive(limegreen,70%))");
+		k.setTextFill(Color.GREEN);
+		GridPane.setConstraints(k, 3, 9);
+		grid.getChildren().add(k);
+		
 
 		Button back = new Button("Back to main menu");
-		GridPane.setConstraints(back, 3, 12);
+		back.setFont(Font.font ("Courier", FontWeight.BOLD, 15));
+		back.setStyle("-fx-background-color: linear-gradient(to top, derive(limegreen, 40%), derive(limegreen,70%))"); 
+		back.setTextFill(Color.GREEN);
+		GridPane.setConstraints(back, 3, 10);
 		grid.getChildren().add(back);
 		
 		//grid.setSpacing(20);
 		grid.setAlignment(Pos.CENTER);
-		grid.setStyle("-fx-background-color: lightgreen;");
+		grid.setStyle("-fx-background-color: limegreen;");
 		Scene scene = new Scene(grid, 1366, 768);
 		window.setScene(scene);
 		
