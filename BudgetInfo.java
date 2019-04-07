@@ -94,17 +94,18 @@ public class BudgetInfo extends UserInfo{
 		double days = Math.ceil(daysTillGoal);
 		Date d1 = getDate();
 		Calendar cal = Calendar.getInstance();
+		cal.setTime(d1);
 		if (days > 365){
-			double year = Math.ceil(days / 365);
+			int year = (int) days / 365;
 			days -= (year * 365);
-			double month = Math.ceil(days / 30);
+			int month = (int)days / 30;
 			days = days % 30;
-			cal.add(Calendar.YEAR, (int) year);
+			cal.add(Calendar.YEAR, year);
 			cal.add(Calendar.DATE, (int) days);
-			cal.add(Calendar.MONTH, (int) month);
+			cal.add(Calendar.MONTH, month);
 		}
 		else if (days > 30){
-			double month = Math.ceil(days / 30);
+			int month = (int)days / 30;
 			days = days % 30;
 			cal.add(Calendar.DATE, (int) days);
 			cal.add(Calendar.MONTH, (int) month);

@@ -39,6 +39,7 @@ public class BudgetInfoGUI extends Application{
 	private TextField inputGoal;
 	private Label input1;
 	private Label input2;
+	private Date startDate;
 
 	public BudgetInfoGUI(BudgetTool bt){
 		this.budgetTool = bt;
@@ -55,20 +56,18 @@ public class BudgetInfoGUI extends Application{
 	}
 
 	class HandleGoal implements EventHandler<ActionEvent>{
-		final DatePicker datePicker = new DatePicker();
-
 		public void handle(ActionEvent event){
 			String goal = inputGoal.getText();
 			double goal1 = Double.parseDouble(goal);
 			System.out.println(goal1);
-			Date dateStart = datePicker.selectedDateProperty().get();
-			System.out.println(dateStart);
-        	budgetTool.settingDate(dateStart);
+			//Date dateStart = datePicker.selectedDateProperty().get();
+			//System.out.println(dateStart);
+        	budgetTool.settingDate(startDate);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
 			//SimpleDateFormat format = new SimpleDateFormat();
 			//String date1 = format.format(due);
+			System.out.println(startDate);
 			System.out.println(due);
-			System.out.println(dateStart);
 			input2.setText(due + "");
 		}
 	}
@@ -179,6 +178,7 @@ public class BudgetInfoGUI extends Application{
             @Override
             public void invalidated(Observable observable) {
                 System.out.println(datePicker.selectedDateProperty().get());
+                startDate = datePicker.selectedDateProperty().get();
             }
         });
 
