@@ -199,12 +199,14 @@ public class BudgetInfoGUI extends Application{
 
 		//Label l = new Label("Date goal is completed: ");
 		//h6.getChildren().add(l);
+		
 
 		Button back = new Button("Back to main menu");
 		root.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
 		
 		Scene scene = new Scene(root, 1366, 768);
+		scene.getStylesheets().add("calendarstyle.css");
 		window.setScene(scene);
 
 		window.show();
