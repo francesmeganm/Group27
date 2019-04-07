@@ -16,11 +16,8 @@ import java.util.HashMap;
 import javafx.scene.paint.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font; 
-import javafx.scene.text.FontPosture; 
-import javafx.scene.text.FontWeight; 
-import javafx.scene.text.Text; 
+import javafx.scene.text.*;
+
 
 /** 
 LoginGUI class references the login page that will run in the MySaver App. It contains instance variables:

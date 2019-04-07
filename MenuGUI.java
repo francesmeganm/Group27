@@ -10,10 +10,7 @@ import javafx.scene.shape.*;
 import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font; 
-import javafx.scene.text.FontPosture; 
-import javafx.scene.text.FontWeight; 
+import javafx.scene.text.*; 
 import javafx.scene.paint.Color;
 
 public class MenuGUI extends Application{

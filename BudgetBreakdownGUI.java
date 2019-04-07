@@ -12,10 +12,7 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font; 
-import javafx.scene.text.FontPosture; 
-import javafx.scene.text.FontWeight; 
+import javafx.scene.text.*;
 
 public class BudgetBreakdownGUI extends Application{
 	Stage window;
