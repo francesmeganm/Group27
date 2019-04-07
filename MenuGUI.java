@@ -76,7 +76,7 @@ public class MenuGUI extends Application{
 		ImageView simpleBudgetView = new ImageView(simpleBudgetIcon);
 		simpleBudgetView.setFitHeight(35);
 		simpleBudgetView.setFitWidth(40);
-		Button simpleBudget = new Button("Simple Budget");
+		Button simpleBudget = new Button("Budget Information");
 		simpleBudget.setGraphic(simpleBudgetView);
 		simpleBudget.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
 		simpleBudget.setStyle("-fx-font-size: 2em; ");

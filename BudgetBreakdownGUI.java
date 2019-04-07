@@ -83,7 +83,7 @@ public class BudgetBreakdownGUI extends Application{
 
 
 		Text title = new Text();
-		title.setText("Budget Info");
+		title.setText("Budget Breakdown");
 		title.setFont(Font.font("Courier", FontWeight.BOLD, 25));   
 		title.setFill(Color.WHITE);
 

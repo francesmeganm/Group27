@@ -120,7 +120,7 @@ public class BudgetInfoGUI extends Application{
 		h2.setSpacing(25);
 		h2.setAlignment(Pos.CENTER);
 
-		Label e = new Label("Desired percentage of income to save: ");
+		Label e = new Label("Desired percentage of remaining money to save: ");
 		h2.getChildren().add(e);
 
 		percentage = new TextField("0.0%");
