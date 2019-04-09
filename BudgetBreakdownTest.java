@@ -108,7 +108,7 @@ public class BudgetBreakdownTest extends FormatTester{
 	}
 
 	@Test
-	public void test_noExtraMoneyAvailable(){
+	public void test_setAmountExtra_noExtraMoney(){
 		BudgetBreakdown bb = new BudgetBreakdown(u);
 
 		bb.setAmountForMiscellaneous(50.0);
@@ -122,6 +122,22 @@ public class BudgetBreakdownTest extends FormatTester{
 		bb.setAmountExtra();
 
 		assertEquals("Unexpected extra money balance", 0.0, bb.getAmountExtra(), 0.00001);
+	}
+
+	@Test
+	public void test_setAmountExtra_extraMoney(){
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
+		bb.setAmountForMiscellaneous(50.0);
+		bb.setAmountForShopping(25.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected extra money balance", 200.0, bb.getAmountExtra(), 0.00001);
+
+		bb.setAmountForMiscellaneous(25.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected extra money balance", 400.0, bb.getAmountExtra(), 0.00001);
 	}
 
 }
