@@ -6,23 +6,10 @@ public class BudgetBreakdownTest extends FormatTester{
 	public static final String CLASSNAME = "BudgetBreakdown";
 	public static final String FILENAME = CLASSNAME + ".java";
 
-	protected UserInfo u = new UserInfo();
+	protected UserInfo u = new UserInfo(1000, 50, 50, 50, 50);
 
 	public BudgetBreakdownTest(){
 		super("BudgetBreakdown", false);
-	}
-
-	public class MockBudgetBreakdown extends BudgetBreakdown{
-		public MockBudgetBreakdown(UserInfo u){
-			super(u);
-		}
-
-		double amountForEntertainment=0.0;
-		double amountForPersonalCare=0.0;
-		double amountForFoodAndGroceries=0.0;
-		double amountForShopping=0.0;
-		double amountForMiscellaneous =0.0;
-		double amountExtra = 0.0;
 	}
 
 	private void testInterface(){
@@ -51,9 +38,10 @@ public class BudgetBreakdownTest extends FormatTester{
 	public void test_constructor_existing_user(){
 		testInterface();
 
-		BudgetBreakdown bb = new MockBudgetBreakdown(u);
+		BudgetBreakdown bb = new BudgetBreakdown(u);
 
-		assertEquals("Unexpected transport expense", 800.0, bb.getRemainingMoney(), 0.00001);
+		assertEquals("Unexpected remaining money", 800.0, bb.getRemainingMoney(), 0.00001);
+		assertEquals("Unexpected transportation expense", 50.0, bb.getTransport(), 0.00001);
 
 		assertEquals("Unexpected entertainment balance", 0.0, bb.getAmountForEntertainment(), 0.00001);
 		assertEquals("Unexpected personal care balance", 0.0, bb.getAmountForPersonalCare(), 0.00001);
@@ -66,9 +54,68 @@ public class BudgetBreakdownTest extends FormatTester{
 	//Test Setters and Getters 
 	@Test
 	public void test_setAmountForEntertainment(){
-		BudgetBreakdown bb = new MockBudgetBreakdown(u);
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
 		bb.setAmountForEntertainment(20.0);
-		assertEquals("Unexpected entertainemnt balance", 20.0, bb.getAmountForEntertainment(), 0.00001);
-		assertEquals("Unexpected amount extra balance", 620.0, bb.getAmountExtra(), 0.00001);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected entertainment balance", 160.0, bb.getAmountForEntertainment(), 0.00001);
+		assertEquals("Unexpected amount extra balance", 640.0, bb.getAmountExtra(), 0.00001);
 	}
+
+	@Test
+	public void test_setAmountForPersonalCare(){
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
+		bb.setAmountForPersonalCare(25.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected personal care balance", 200.0, bb.getAmountForPersonalCare(), 0.00001);
+		assertEquals("Unexpected amount extra balance", 600.0, bb.getAmountExtra(), 0.00001);
+	}
+
+	@Test
+	public void test_setAmountForFoodAndGroceries(){
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
+		bb.setAmountForFoodAndGroceries(10.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected food and groceries balance", 80.0, bb.getAmountForFoodAndGroceries(), 0.00001);
+		assertEquals("Unexpected amount extra balance", 720.0, bb.getAmountExtra(), 0.00001);
+	}
+
+	@Test
+	public void test_setAmountForShopping(){
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
+		bb.setAmountForShopping(75.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected entertainment balance", 600.0, bb.getAmountForShopping(), 0.00001);
+		assertEquals("Unexpected amount extra balance", 200.0, bb.getAmountExtra(), 0.00001);
+	}
+
+	@Test
+	public void test_setAmountForMiscellaneous(){
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
+		bb.setAmountForMiscellaneous(5.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected entertainment balance", 40.0, bb.getAmountForMiscellaneous(), 0.00001);
+		assertEquals("Unexpected amount extra balance", 760.0, bb.getAmountExtra(), 0.00001);
+	}
+
+	@Test
+	public void test_noExtraMoneyAvailable(){
+		BudgetBreakdown bb = new BudgetBreakdown(u);
+
+		bb.setAmountForMiscellaneous(50.0);
+		bb.setAmountForShopping(50.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected extra money balance", 0.0, bb.getAmountExtra(), 0.00001);
+	}
+
 }
