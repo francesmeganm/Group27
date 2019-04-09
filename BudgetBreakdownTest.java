@@ -26,6 +26,8 @@ public class BudgetBreakdownTest extends FormatTester{
 		UserInfo user = new UserInfo();
 		BudgetBreakdown bb = new BudgetBreakdown(user);
 
+		assertEquals("Unexpected remaining money", 0.0, bb.getRemainingMoney(), 0.00001);
+
 		assertEquals("Unexpected entertainment balance", 0.0, bb.getAmountForEntertainment(), 0.00001);
 		assertEquals("Unexpected personal care balance", 0.0, bb.getAmountForPersonalCare(), 0.00001);
 		assertEquals("Unexpected food and groceries balance", 0.0, bb.getAmountForFoodAndGroceries(), 0.00001);
