@@ -116,6 +116,12 @@ public class BudgetBreakdownTest extends FormatTester{
 		bb.setAmountExtra();
 
 		assertEquals("Unexpected extra money balance", 0.0, bb.getAmountExtra(), 0.00001);
+
+		bb.setAmountForMiscellaneous(25.0);
+		bb.setAmountForEntertainment(25.0);
+		bb.setAmountExtra();
+
+		assertEquals("Unexpected extra money balance", 0.0, bb.getAmountExtra(), 0.00001);
 	}
 
 }
