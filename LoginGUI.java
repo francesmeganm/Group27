@@ -24,9 +24,7 @@ LoginGUI class references the login page that will run in the MySaver App. It co
 acoount, input1 textfield for the usernmae, input2 textfield for the password, and an output label thats display any errors. 
 */
 public class LoginGUI extends Application{
-
-	Stage window;
-	
+	private Stage window;
 	private BudgetTool budgetTool = new BudgetTool();
 	private TextField input1;
 	private TextField input2;
@@ -34,7 +32,6 @@ public class LoginGUI extends Application{
 	private Stage s = new Stage();
 
 	public LoginGUI(){
-		//this.budgetTool = bt;
 	}
 
 	/** 
@@ -94,9 +91,7 @@ public class LoginGUI extends Application{
 	@param primaryStage
 	*/
 	public void start(Stage primaryStage) {
-	
 		window = primaryStage;
-		
 		
 		VBox root = new VBox();
 		root.setSpacing(20);
@@ -153,10 +148,7 @@ public class LoginGUI extends Application{
 		Button createAccount = new Button("Create Account");
 		createAccount.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
 		createAccount.setOnAction(new HandleCreateAccount());
-		//ProgressIndicator progressIndicator = new ProgressIndicator();
-		//branchnode2.getChildren().addAll(progressIndicator);
 		branchnode2.getChildren().add(createAccount);
-	
 
 		Button login = new Button("Login");
 		login.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 

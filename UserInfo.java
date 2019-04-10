@@ -1,4 +1,3 @@
-import java.util.Scanner;
 /**
  *Class contains all the montary related infomation about the user that they can change 
  *Has 7 instance variables, they are all type double: monthlyExpenses, monthlyIncome, 

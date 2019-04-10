@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * The classs BudgetBreakdown extends BudgetInfo which extends UserInfo
  * This class calulcates the users budget to a more complex degree that Budget Info

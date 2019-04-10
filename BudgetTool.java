@@ -1,6 +1,5 @@
 import java.util.Date;
 import java.util.Scanner;
-
 /**
 * The class BudgetTool serves as a intermediary between the logic and what the user intracts with. 
 * This class had methods of all the function the user could poentially use when running the program. 
@@ -134,36 +133,6 @@ public class BudgetTool{
   public double gettingMonthlyIncome(){
     return user.getMonthlyIncome();
   }
-
- /* public void updateUserInfoTrans(double trans){
-    if (trans > 0){
-      user.setTransport(trans);
-    }
-  }
-
-  public void updateUserInfoUti(double uti){
-    if (uti > 0){
-      user.setUtility(uti);
-    }
-  }
-
-  public void updateUserInfoOth(double oth){
-    if (oth > 0){
-      user.setOther(oth);
-    }
-  }
-
-  public void updateUserInfoRent(double rent){
-    if (rent > 0){
-      user.setRent(rent);
-    }
-  }
-
-  public void updateUserInfoInc(double inc){
-    if (inc > 0){
-      user.setMonthlyIncome(inc);
-    }
-  }*/
   
   /**
    * Is a get method for the remaining money

@@ -1,7 +1,6 @@
 import java.util.Date;
 import java.util.Calendar;
 import java.lang.Math.*;
-
 /** The class BudgetInfo extends from UserInfo. This class contains all calculations to do with 
  * the "simple" budget aspect of SaveBetter
  * There a three instance variables: remaining money is a double, amountToSave is a double, and 

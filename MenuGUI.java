@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 
 public class MenuGUI extends Application{
 	Stage window;
-	BudgetTool budgetTool;
+	private BudgetTool budgetTool;
 
 	public MenuGUI(BudgetTool bt){
 		this.budgetTool = bt;
@@ -50,7 +50,6 @@ public class MenuGUI extends Application{
 	}
 
 	public void start(Stage primaryStage){
-	
 	
 		VBox root = new VBox();
 		root.setSpacing(100);
@@ -100,7 +99,6 @@ public class MenuGUI extends Application{
 		root.getChildren().add(remainingBudget);
 
 
-
 		Image logoutIcon = new Image(getClass().getResourceAsStream("logout.png"));
 		ImageView logoutView = new ImageView(logoutIcon);
 		logoutView.setFitHeight(35);
@@ -116,7 +114,6 @@ public class MenuGUI extends Application{
 
 
 		Scene scene = new Scene (root, 1366, 768);
-		//primaryStage.setMaximized(true);
 		primaryStage.setTitle("Save Better");
 		primaryStage.setScene(scene);
 		primaryStage.show();

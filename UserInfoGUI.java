@@ -21,7 +21,6 @@ The class UserInfoGUI handles events of getting and setting variables that are i
 */
 public class UserInfoGUI extends Application{
 	Stage window;
-	//private UserInfo account = new UserInfo();
 	private BudgetTool budgetTool;
 	private TextField input1;
 	private TextField input2;
@@ -38,35 +37,30 @@ public class UserInfoGUI extends Application{
 			//income
 			String newIncome = input1.getText();
 			double newIncome1 = Double.parseDouble(newIncome);
-			//account.setMonthlyIncome(newIncome1);
 			String stringIncome = newIncome1 + "";
 			input1.setText(stringIncome);
 
 			//transporation
 			String newTrans = input2.getText();
 			double newTrans1 = Double.parseDouble(newTrans);
-			//account.setTransport(newTrans1);
 			String stringTrans = newTrans1 + "";
 			input2.setText(stringTrans);
 
 			//utility
 			String newUtility = input3.getText();
 			double newUtility1 = Double.parseDouble(newUtility);
-			//account.setUtility(newUtility1);
 			String stringUtility = newUtility1 + "";
 			input3.setText(stringUtility);
 
 			//rent 
 			String newRent = input5.getText();
 			double newRent1 = Double.parseDouble(newRent);
-			//account.setRent(newRent1);
 			String stringRent = newRent1 + "";
 			input5.setText(stringRent);
 
 			//other
 			String newOther = input6.getText();
 			double newOther1 = Double.parseDouble(newOther);
-			//account.setOther(newOther1);
 			String stringOther = newOther1 + "";
 			input6.setText(stringOther);
 
@@ -85,7 +79,6 @@ public class UserInfoGUI extends Application{
 	public static void main(String[] args){
 		launch(args);
 	}
-
 
 	/**
 	Method creates the GUI display for the user representing the UserInfo

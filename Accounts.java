@@ -1,8 +1,4 @@
-import java.util.Scanner;
 import java.util.HashMap;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
 /**
  *Accounts class references a individual accounts that are stored in the hashmaps instance variables:
  *usernameAndPassword and usernameAndUserInfo. This class also extends from UserInfo which will hold the 

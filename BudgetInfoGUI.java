@@ -59,12 +59,8 @@ public class BudgetInfoGUI extends Application{
 			String goal = inputGoal.getText();
 			double goal1 = Double.parseDouble(goal);
 			System.out.println(goal1);
-			//Date dateStart = datePicker.selectedDateProperty().get();
-			//System.out.println(dateStart);
         	budgetTool.settingDate(startDate);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
-			//SimpleDateFormat format = new SimpleDateFormat();
-			//String date1 = format.format(due);
 			System.out.println(startDate);
 			System.out.println(due);
 			input2.setText(due + "");
@@ -196,10 +192,6 @@ public class BudgetInfoGUI extends Application{
 		Button k = new Button("Compute");
 		h5.getChildren().add(k);
 		k.setOnAction(new HandleGoal());
-
-		//Label l = new Label("Date goal is completed: ");
-		//h6.getChildren().add(l);
-		
 
 		Button back = new Button("Back to main menu");
 		root.getChildren().add(back);
