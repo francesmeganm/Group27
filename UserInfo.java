@@ -31,6 +31,23 @@ public class UserInfo{
     	setRent(toCopy.getRent());
   	}
 
+  	/**
+  	* Constructor takes all income and expense info and sets it to the instance variables.
+  	@param inc users monthly income
+  	@param trans users monthly transportation costs 
+  	@param uti users monthly utility costs 
+  	@param oth users monthly other costs 
+  	@param rent users monthly rent cost
+  	*/
+  	public UserInfo(double inc, double trans, double uti, double oth, double rent){
+  		setMonthlyIncome(inc);
+  		setTransport(trans);
+  		setUtility(uti);
+  		setOther(oth);
+  		setRent(rent);
+  		getMonthlyExpenses();
+  	}
+
  	/**
  	 *Method sets a expense to transportation expense 
  	 *@param t is the transportation expense
