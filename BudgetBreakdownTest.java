@@ -9,6 +9,7 @@ public class BudgetBreakdownTest{
 
 	protected UserInfo u = new UserInfo(1000, 50, 50, 50, 50);
 
+
 	private void testInterface(){
 		String[] instanceVars = {"double amountForEntertainment", "double amountForPersonalCare", "double amountForFoodAndGroceries", 
 			"double amountForShopping", "double amountForMiscellaneous", "double amountForMiscellaneous"};
@@ -40,7 +41,7 @@ public class BudgetBreakdownTest{
 		BudgetBreakdown bb = new BudgetBreakdown(u);
 
 		assertEquals("Unexpected remaining money", 800.0, bb.getRemainingMoney(), 0.00001);
-		assertEquals("Unexpected transportation expense", 50.0, bb.getTransport(), 0.00001);
+		assertEquals("Unexpected transportation expense", 50.0, u.getTransport(), 0.00001);
 
 		assertEquals("Unexpected entertainment balance", 0.0, bb.getAmountForEntertainment(), 0.00001);
 		assertEquals("Unexpected personal care balance", 0.0, bb.getAmountForPersonalCare(), 0.00001);
