@@ -39,8 +39,6 @@ public class BudgetInfoGUI extends Application{
 	private Label input1;
 	private Label input2;
 	private Date startDate;
-	private Label error;
-	private Label error2;
 
 	public BudgetInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
@@ -51,21 +49,9 @@ public class BudgetInfoGUI extends Application{
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
-			
-			if ( per1 > 100){
-					error.setText( per1 +"% .Percent cannot be greater than 100");
-					input1.setText(" ");
-			}
-			else if (per1<0){
-					error.setText(" Negative percentages not allowed.");
-					input1.setText(" ");
-			}
-			else{
-				error.setText("");
-				budgetTool.settingTheAmountToSave(per1);
-				double per2 = budgetTool.gettingTheAmountToSave(per1);
-				input1.setText("$ " + per2 + "");
-			}
+			budgetTool.settingTheAmountToSave(per1);
+			double per2 = budgetTool.gettingTheAmountToSave(per1);
+			input1.setText("$ " + per2 + "");
 		}
 	}
 
@@ -76,18 +62,10 @@ public class BudgetInfoGUI extends Application{
 			System.out.println(goal1);
         	budgetTool.settingDate(startDate);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
-			if ( goal1 <0){
-				error2.setText( "Error, please enter a positive value.");
-				input2.setText(" ");
-			}
-			else{
-			
 			System.out.println(startDate);
 			System.out.println(due);
 			input2.setText(due + "");
-			error2.setText(" ");
 		}
-	}
 	}
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
@@ -109,7 +87,6 @@ public class BudgetInfoGUI extends Application{
 		root.setSpacing(25);
 		root.setAlignment(Pos.CENTER);
 		root.setStyle("-fx-background-color: LIMEGREEN;");
-		
 
 		final DatePicker datePicker = new DatePicker();
         datePicker.localeProperty().set(Locale.US);
@@ -120,89 +97,54 @@ public class BudgetInfoGUI extends Application{
 		root.getChildren().add(title);
 
 		//AMOUNT AVALIABLE TO SAVE EACH MONTH
-		//BOLD
 		HBox h1 = new HBox();
 		root.getChildren().add(h1);
 		h1.setSpacing(25);
 		h1.setAlignment(Pos.CENTER);
+
+		GridPane gp1 = new GridPane();
+		gp1.setHgap(10);
+		gp1.setVgap(10);
+		h1.getChildren().add(gp1);
+
+		//AVAILABLE FUNDS
 		Label a = new Label("Avaliable funds to save each month: ");
-		h1.getChildren().add(a);
+		gp1.add(a, 0, 0);
 
 		Label c = new Label("$" + Double.toString(budgetTool.gettingTheRemainingMoney()));
-		h1.getChildren().add(c);
+		gp1.add(c, 1, 0);
 
-		//AMOUNT TO SAVE FROM PERCENTAGE
-		//BOLD
-		HBox h2 = new HBox();
-		root.getChildren().add(h2);
-		h2.setSpacing(25);
-		h2.setAlignment(Pos.CENTER);
-
+		//DESIRED % TO SAVE
 		Label e = new Label("Desired percentage of remaining money to save: ");
-		h2.getChildren().add(e);
+		gp1.add(e, 0, 1);
 
 		percentage = new TextField("0.0%");
-		h2.getChildren().add(percentage);
-			
-		HBox errorText = new HBox();
-		root.getChildren().add(errorText);
-		errorText.setAlignment(Pos.CENTER);
-		
-		
-		error = new Label();
-		error.setWrapText(true);
-		error.setTextFill(Color.web("#FF0000"));
-		errorText.getChildren().add(error);
-		
+		gp1.add(percentage, 1, 1);
+
 		Button g = new Button("Compute");
-		h2.getChildren().add(g);
+		gp1.add(g, 2, 1);
 		g.setOnAction(new HandlePercentage());
 
-		HBox h3 = new HBox();
-		root.getChildren().add(h3);
-		h3.setSpacing(25);
-		h3.setAlignment(Pos.CENTER);
-
+		//AMOUNT TO SAVE
 		Label f = new Label("The amount to save is: ");
-		h3.getChildren().add(f);
+		gp1.add(f, 0, 2);
 
 		input1 = new Label("" + "0.00");
-		h3.getChildren().add(input1);
+		gp1.add(input1, 1, 2);
 
-		//MONTHS UNTIL GOAL
-		//BOLD
-		HBox h4 = new HBox();
-		root.getChildren().add(h4);
-		h4.setSpacing(25);
-		h4.setAlignment(Pos.CENTER);
-
+		//COST OF GOAL
 		Label j = new Label("Cost of given goal: ");
-		h4.getChildren().add(j);
+		gp1.add(j, 0, 3);
 
 		TextField goalCost = new TextField("0.00");
 		inputGoal = goalCost;
-		h4.getChildren().add(goalCost);
-		
-		HBox errorText2 = new HBox();
-		root.getChildren().add(errorText2);
-		errorText2.setAlignment(Pos.CENTER);
-		
-		
-		error2 = new Label();
-		error2.setWrapText(true);
-		error2.setTextFill(Color.web("#FF0000"));
-		errorText2.getChildren().add(error2);
-		
-		//BOLD
-		HBox h5 = new HBox();
-		root.getChildren().add(h5);
-		h5.setSpacing(25);
-		h5.setAlignment(Pos.CENTER);
+		gp1.add(goalCost, 1, 3);
 
+		//DATE TO START SAVING
 		Label what = new Label("Choose date to start Saving: ");
-		h5.getChildren().add(what);
+		gp1.add(what, 0, 4);
 
-		h5.getChildren().add(datePicker);
+		gp1.add(datePicker, 1, 4);
 
 
         datePicker.selectedDateProperty().addListener(new InvalidationListener() {
@@ -220,26 +162,20 @@ public class BudgetInfoGUI extends Application{
 		SimpleDateFormat format = new SimpleDateFormat();
 		String date1 = format.format(goalEnds);
 
-		HBox h6 = new HBox();
-		root.getChildren().add(h6);
-		h6.setSpacing(25);
-		h6.setAlignment(Pos.CENTER);
-
+		//DATE COMPLETED
 		Label l = new Label("Date goal is completed: ");
-		h6.getChildren().add(l);
+		gp1.add(l, 0, 5);
 
 		input2 = new Label(format.format(goalEnds));
-		h6.getChildren().add(input2);
+		gp1.add(input2, 1, 5);
 
 		Button k = new Button("Compute");
-		h5.getChildren().add(k);
+		gp1.add(k, 2, 4);
 		k.setOnAction(new HandleGoal());
 
 		Button back = new Button("Back to main menu");
 		root.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
-		
-		
 		
 		Scene scene = new Scene(root, 1366, 768);
 		scene.getStylesheets().add("calendarstyle.css");
