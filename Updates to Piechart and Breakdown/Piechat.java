@@ -19,13 +19,7 @@ public class Piechat extends Application{
     private BudgetTool budgetTool;
     private Paint WHITE;
 	//private static final Paint WHITE = null;
-	class HandleBackToMenu implements EventHandler<ActionEvent>{
-		public void handle(ActionEvent event){
-			Stage s = new Stage();
-			new MenuGUI(budgetTool).start(s);
-			window.close();
-		}
-	}
+	
 
     public Piechat(BudgetTool bt){
         this.budgetTool = bt;
@@ -90,11 +84,6 @@ public class Piechat extends Application{
         root.getChildren().add(Miscellaneous);
 		root.getChildren().add(Extra);
 		
-		Button back = new Button("Back to main menu");
-		back.setStyle("-fx-background-color: white; -fx-text-fill: black;");
-		back.setStyle("-fx-font-size: 1.1em; ");
-		root.getChildren().add(back);
-		back.setOnAction(new HandleBackToMenu());
         
         //if the title need change 
         window.setTitle("SAVEBETTER");
