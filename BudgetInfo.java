@@ -1,6 +1,7 @@
 import java.util.Date;
 import java.util.Calendar;
 import java.lang.Math.*;
+import java.text.DecimalFormat;
 /** The class BudgetInfo extends from UserInfo. This class contains all calculations to do with 
  * the "simple" budget aspect of SaveBetter
  * There a three instance variables: remaining money is a double, amountToSave is a double, and 
@@ -11,6 +12,8 @@ public class BudgetInfo extends UserInfo{
 	private double remainingMoney;
 	private Date userDate = new Date();
 	private UserInfo user;
+	//format to 2 decimal places 
+	private DecimalFormat df = new DecimalFormat("0.00");
 
 	/**
 	 *Default Contructor - takes no arguments 
@@ -51,9 +54,12 @@ public class BudgetInfo extends UserInfo{
 	 * @return amountToSave which is the dollar amount the user needs to save to reach their 
 	 * ideal percent to save of remaining money
 	 */
+	
+	//format to 2 decimal places 
 	public double getAmountToSave(double percentToSave){
 		amountToSave = (user.getMonthlyIncome() - user.getMonthlyExpenses()) * (percentToSave / 100);
-		return amountToSave;	
+		double ats = Double.parseDouble(df.format(amountToSave));
+		return ats;	
 	}
 
 	/**

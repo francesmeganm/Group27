@@ -51,7 +51,7 @@ public class BudgetInfoGUI extends Application{
 			double per1 = Double.parseDouble(per);
 			budgetTool.settingTheAmountToSave(per1);
 			double per2 = budgetTool.gettingTheAmountToSave(per1);
-			input1.setText(per2 + "");
+			input1.setText("$ " + per2 + "");
 		}
 	}
 
@@ -106,7 +106,7 @@ public class BudgetInfoGUI extends Application{
 		Label a = new Label("Avaliable funds to save each month: ");
 		h1.getChildren().add(a);
 
-		Label c = new Label(Double.toString(budgetTool.gettingTheRemainingMoney()));
+		Label c = new Label("$" + Double.toString(budgetTool.gettingTheRemainingMoney()));
 		h1.getChildren().add(c);
 
 		//AMOUNT TO SAVE FROM PERCENTAGE
@@ -134,7 +134,7 @@ public class BudgetInfoGUI extends Application{
 		Label f = new Label("The amount to save is: ");
 		h3.getChildren().add(f);
 
-		input1 = new Label("0.00");
+		input1 = new Label("" + "0.00");
 		h3.getChildren().add(input1);
 
 		//MONTHS UNTIL GOAL

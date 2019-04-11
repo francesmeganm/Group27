@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 /**
 * The class BudgetTool serves as a intermediary between the logic and what the user intracts with. 
 * This class had methods of all the function the user could poentially use when running the program. 
@@ -12,6 +13,8 @@ public class BudgetTool{
 	private BudgetInfo smallBudget;
 	private BudgetBreakdown largeBudget;
 	private Accounts account;
+	//format to 2 decimal places
+	private DecimalFormat df = new DecimalFormat("0.00");
   private Scanner keyboard = new Scanner(System.in);
 
   /**
@@ -214,7 +217,8 @@ public class BudgetTool{
    * @return amountForEntertainment in dollar amount
    */
   public double gettingEntertainment(){
-    return largeBudget.getAmountForEntertainment();
+	  double entertainment = Double.parseDouble(df.format(largeBudget.getAmountForEntertainment()));
+	  return entertainment;
   }
   
   /** 
@@ -222,7 +226,8 @@ public class BudgetTool{
    * @return amountForPersonal in dollar amount
    */
   public double gettingPersonal(){
-		return largeBudget.getAmountForPersonalCare();
+	  double personal = Double.parseDouble(df.format(largeBudget.getAmountForPersonalCare()));
+	  return personal;
   }
   
   /**
@@ -230,7 +235,8 @@ public class BudgetTool{
    * @return amountForFood in dollar amount
    */
   public double gettingFood(){
-    return largeBudget.getAmountForFoodAndGroceries();
+	  double food = Double.parseDouble(df.format(largeBudget.getAmountForFoodAndGroceries()));
+	  return food;
   }
   
   /**
@@ -238,7 +244,8 @@ public class BudgetTool{
    * @return amountForShopping in dollar amount
    */
   public double gettingShopping(){
-    return largeBudget.getAmountForShopping();
+	  double shopping = Double.parseDouble(df.format(largeBudget.getAmountForShopping()));
+	  return shopping;
   }
   
   /**
@@ -246,7 +253,8 @@ public class BudgetTool{
    * @return amountForMiscellaneous in dollar amount
    */
   public double gettingMisc(){
-    return largeBudget.getAmountForMiscellaneous();
+	  double misc = Double.parseDouble(df.format(largeBudget.getAmountForMiscellaneous()));
+	  return misc;
   }	
 
   /**
@@ -254,6 +262,7 @@ public class BudgetTool{
    * @return amountExtra in dollar amount
    */
   public double gettingExtra(){
-    return largeBudget.getAmountExtra();
+	  double extra = Double.parseDouble(df.format(largeBudget.getAmountExtra()));
+	  return extra;
   }
 }
