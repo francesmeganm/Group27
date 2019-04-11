@@ -20,7 +20,7 @@ import javafx.scene.text.*;
 
 
 /** 
-LoginGUI class references the login page that will run in the MySaver App. It contains instance variables:
+LoginGUI class references the login page that will run in the SaveBetter App. It contains instance variables:
 acoount, input1 textfield for the usernmae, input2 textfield for the password, and an output label thats display any errors. 
 */
 public class LoginGUI extends Application{
