@@ -28,8 +28,9 @@ public class UserInfoGUI extends Application{
 	private TextField input5;
 	private TextField input6;
 
-	public UserInfoGUI(BudgetTool bt){
+	public UserInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
+		this.window = win;
 	}
 
 	class HandleUpdating implements EventHandler<ActionEvent>{
@@ -70,9 +71,7 @@ public class UserInfoGUI extends Application{
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			Stage s = new Stage();
-			new MenuGUI(budgetTool).start(s);
-			window.close();
+			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
 

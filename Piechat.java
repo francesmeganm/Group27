@@ -9,6 +9,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.chart.*;
 import javafx.scene.Group;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
 
 
 //this file should connect to budget tool 
@@ -16,10 +19,16 @@ public class Piechat extends Application{
     Stage window;
     private BudgetTool budgetTool;
     private Paint WHITE;
-	//private static final Paint WHITE = null;
 
-    public Piechat(BudgetTool bt){
+    public Piechat(BudgetTool bt, Stage win){
         this.budgetTool = bt;
+        this.window = win;
+    }
+
+    class HandleBackToMenu implements EventHandler<ActionEvent>{
+        public void handle(ActionEvent event){
+            new MenuGUI(budgetTool, window).start(window);
+        }
     }
 
 	public static void main(String[] args) {
@@ -74,6 +83,15 @@ public class Piechat extends Application{
         root.getChildren().add(FoodandGroceries);
         root.getChildren().add(Shopping);
         root.getChildren().add(Miscellaneous);
+
+        //back to menu button 
+        Button back = new Button("Back to main menu");
+        back.setStyle("-fx-background-color: white; -fx-text-fill: black;");
+        back.setStyle("-fx-font-size: 1.1em; ");
+        back.setLayoutX(1000);
+        back.setLayoutY(500);
+        root.getChildren().add(back);
+        back.setOnAction(new HandleBackToMenu());
         
         //if the title need change 
         window.setTitle("SAVEBETTER");

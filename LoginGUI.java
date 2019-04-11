@@ -24,12 +24,11 @@ LoginGUI class references the login page that will run in the MySaver App. It co
 acoount, input1 textfield for the usernmae, input2 textfield for the password, and an output label thats display any errors. 
 */
 public class LoginGUI extends Application{
-	private Stage window;
+	private Stage window = new Stage();
 	private BudgetTool budgetTool = new BudgetTool();
 	private TextField input1;
 	private TextField input2;
 	private Label output;
-	private Stage s = new Stage();
 
 	public LoginGUI(){
 	}
@@ -78,9 +77,7 @@ public class LoginGUI extends Application{
 				output.setText("You have entered an invalid username/password. Please try again.");
 			}
 			else{
-				//UserInfo currentAccount = new UserInfo(account.usernameAndUserInfo.get(username));
-				new MenuGUI(budgetTool).start(s);
-				window.close();
+				new MenuGUI(budgetTool, window).start(window);
 			}
     	}
 	}

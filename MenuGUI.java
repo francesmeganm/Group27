@@ -17,35 +17,31 @@ public class MenuGUI extends Application{
 	Stage window;
 	private BudgetTool budgetTool;
 
-	public MenuGUI(BudgetTool bt){
+	public MenuGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
+		this.window = win;
 	}
 	class HandleUpdateUserInfo implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new UserInfoGUI(budgetTool).start(s);
-			window.close();
+			new UserInfoGUI(budgetTool, window).start(window);
 		}
 	}
 	class HandleSimpleBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			Stage s = new Stage();
-			new BudgetInfoGUI(budgetTool).start(s);
-			window.close();
+			new BudgetInfoGUI(budgetTool, window).start(window);
 		}
 	}
 	class HandleRemainingBudget implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new BudgetBreakdownGUI(budgetTool).start(s);
-			window.close();
+			new BudgetBreakdownGUI(budgetTool, window).start(window);
 		}
 	}
 	class HandleLogout implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new LoginGUI().start(s);
-			window.close();
+			new LoginGUI().start(window);
 		}
 	}
 

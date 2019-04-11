@@ -40,8 +40,9 @@ public class BudgetInfoGUI extends Application{
 	private Label input2;
 	private Date startDate;
 
-	public BudgetInfoGUI(BudgetTool bt){
+	public BudgetInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
+		this.window = win;
 	}
 
 	class HandlePercentage implements EventHandler<ActionEvent>{
@@ -70,8 +71,7 @@ public class BudgetInfoGUI extends Application{
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new MenuGUI(budgetTool).start(s);
-			window.close();
+			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
 

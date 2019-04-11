@@ -25,8 +25,9 @@ public class BudgetBreakdownGUI extends Application{
 	private TextField shopText;
 	private TextField miscText;
 
-	public BudgetBreakdownGUI(BudgetTool bt){
+	public BudgetBreakdownGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
+		this.window = win;
 	}
 
 	class HandleSetBudget implements EventHandler<ActionEvent>{
@@ -55,17 +56,13 @@ public class BudgetBreakdownGUI extends Application{
 
 	class HandlePieChart implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			Stage s = new Stage();
-			new Piechat(budgetTool).start(s);
-			window.close();
+			new Piechat(budgetTool, window).start(window);
 		}
 	}
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			Stage s = new Stage();
-			new MenuGUI(budgetTool).start(s);
-			window.close();
+			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
 	
