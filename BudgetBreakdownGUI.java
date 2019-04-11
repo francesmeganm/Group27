@@ -25,9 +25,8 @@ public class BudgetBreakdownGUI extends Application{
 	private TextField shopText;
 	private TextField miscText;
 
-	public BudgetBreakdownGUI(BudgetTool bt, Stage win){
+	public BudgetBreakdownGUI(BudgetTool bt){
 		this.budgetTool = bt;
-		this.window = win;
 	}
 
 	class HandleSetBudget implements EventHandler<ActionEvent>{
@@ -38,40 +37,79 @@ public class BudgetBreakdownGUI extends Application{
 			double shopping = Double.parseDouble(shopText.getText());
 			double miscellaneous = Double.parseDouble(miscText.getText());
 			double total = entertainment + personalCare + foodGroceries + shopping + miscellaneous;
+			
+			
 
 			budgetTool.settingBudgetBreakdown(entertainment, personalCare, foodGroceries, shopping, miscellaneous);
 
 			if ( total > 100){
-				error.setText("Error, these values add up to "+ total +". Total cannot be >100");
+				
+					error.setText("Error, these values add up to "+ total +"% . Total cannot be greater than 100");
 			}
 			else if (entertainment < 0 || personalCare < 0 || foodGroceries < 0 || shopping < 0 || miscellaneous < 0){
-				error.setText("Error, negative percentages not allowed.");
+					
+					
+					error.setText("Error, negative percentages not allowed.");
 			}
 			else{
-				extra = (100 - total); 
-				error.setText("You have" + budgetTool.gettingExtra() + " to spend.");
+					extra = (100 - total); 
+					if (extra>0){
+					error.setText("You have "+extra+"% left to input. That's:" + budgetTool.gettingExtra() + " extra dollars.");
+					}else{
+						error.setText("");
+					}
 			}
+			
+			
 		}
 	}
 
 	class HandlePieChart implements EventHandler<ActionEvent>{
+		
 		public void handle(ActionEvent event){
-			new Piechat(budgetTool, window).start(window);
+			double entertainment = Double.parseDouble(entText.getText());
+			double personalCare = Double.parseDouble(persText.getText());
+			double foodGroceries = Double.parseDouble(foodText.getText());
+			double shopping = Double.parseDouble(shopText.getText());
+			double miscellaneous = Double.parseDouble(miscText.getText());
+			double total = entertainment + personalCare + foodGroceries + shopping + miscellaneous;
+
+			budgetTool.settingBudgetBreakdown(entertainment, personalCare, foodGroceries, shopping, miscellaneous);
+			
+			
+			if ( total > 100){
+				error.setText("Error, these values add up to "+ total +"% . Total cannot be greater than 100");
+			}
+			else if (entertainment < 0 || personalCare < 0 || foodGroceries < 0 || shopping < 0 || miscellaneous < 0){
+					
+				error.setText("Error, negative percentages not allowed.");
+			
+			}
+			else{
+				
+				Stage s = new Stage();
+				new Piechat(budgetTool).start(s);
+				window.close();
 		}
+	}
 	}
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
-			new MenuGUI(budgetTool, window).start(window);
+			Stage s = new Stage();
+			new MenuGUI(budgetTool).start(s);
+			window.close();
 		}
 	}
 	
 	public static void main(String[] args){
 		launch(args);
 	}
+	
 
 	public void start(Stage primaryStage){
 		window = primaryStage;
+		
 
 		VBox root = new VBox();
 		root.setSpacing(25);
@@ -95,9 +133,13 @@ public class BudgetBreakdownGUI extends Application{
 		rowEnt.setAlignment(Pos.CENTER);
 		Label ent = new Label("Entertainment? (ie.movies, games etc.)");
 		entText = new TextField(budgetTool.gettingEntertainment() + "");
+		//budgetTool.checkIfValidPercent(entText);
+		
 		rowEnt.getChildren().add(ent);
 		rowEnt.getChildren().add(entText);
-
+	
+		
+		
 		//PERSONAL CARE ROW
 		HBox rowPer = new HBox();
 		root.getChildren().add(rowPer);
@@ -105,6 +147,7 @@ public class BudgetBreakdownGUI extends Application{
 		rowPer.setAlignment(Pos.CENTER);
 		Label pers = new Label("Personal care? (ie. hair cuts, salons etc.)");
 		persText = new TextField(budgetTool.gettingPersonal() + "");
+
 		rowPer.getChildren().add(pers);
 		rowPer.getChildren().add(persText);
 
@@ -115,6 +158,7 @@ public class BudgetBreakdownGUI extends Application{
 		rowFoo.setAlignment(Pos.CENTER);
 		Label food = new Label("Food and Groceries (including dining out)");
 		foodText = new TextField(budgetTool.gettingFood() + "");
+		
 		rowFoo.getChildren().add(food);
 		rowFoo.getChildren().add(foodText);
 
@@ -125,6 +169,9 @@ public class BudgetBreakdownGUI extends Application{
 		rowSho.setAlignment(Pos.CENTER);
 		Label shop = new Label("Shopping? (ie. clothing, shoes etc.)");
 		shopText = new TextField(budgetTool.gettingShopping() + "");
+		/*if (Double.parseDouble(shopText.getText()) < 0 || Double.parseDouble(shopText.getText()) > 100){
+			error.setText("That is an invlaid percent. Please enter a percent between 0 and 100%: ");
+		}*/
 		rowSho.getChildren().add(shop);
 		rowSho.getChildren().add(shopText);
 
@@ -134,14 +181,24 @@ public class BudgetBreakdownGUI extends Application{
 		rowMis.setSpacing(25);
 		rowMis.setAlignment(Pos.CENTER);
 		Label misc = new Label("Miscellaneous? (ie. birthday gifts)");
-		miscText = new TextField(budgetTool.gettingMisc() + "");
+		miscText = new TextField(budgetTool.gettingShopping() + "");
+		
 		rowMis.getChildren().add(misc);
 		rowMis.getChildren().add(miscText);
-
-		Label error = new Label();
+		
+	
+		
+		HBox errorText = new HBox();
+		root.getChildren().add(errorText);
+		errorText.setAlignment(Pos.CENTER);
+		
+		
+		error = new Label();
 		error.setWrapText(true);
 		error.setTextFill(Color.web("#FF0000"));
-		root.getChildren().add(error);
+		errorText.getChildren().add(error);
+		
+
 
 		HBox rowUp = new HBox();
 		root.getChildren().add(rowUp);
