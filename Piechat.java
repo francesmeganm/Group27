@@ -13,12 +13,13 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
-
 //this file should connect to budget tool 
 public class Piechat extends Application{
     Stage window;
     private BudgetTool budgetTool;
     private Paint WHITE;
+	//private static final Paint WHITE = null;
+	
 
     public Piechat(BudgetTool bt, Stage win){
         this.budgetTool = bt;
@@ -44,12 +45,14 @@ public class Piechat extends Application{
         PieChart.Data slice3 = new PieChart.Data("Food and Groceries" , budgetTool.gettingFood());
         PieChart.Data slice4 = new PieChart.Data("Shopping", budgetTool.gettingShopping());
         PieChart.Data slice5 = new PieChart.Data("Miscellaneous", budgetTool.gettingMisc());
+		PieChart.Data slice6 = new PieChart.Data("Extras", budgetTool.gettingExtra());
 
         pieChart.getData().add(slice1);
         pieChart.getData().add(slice2);
         pieChart.getData().add(slice3);
         pieChart.getData().add(slice4);
         pieChart.getData().add(slice5);
+		pieChart.getData().add(slice6);
         //if the title of pie chart need change 
         pieChart.setTitle("Budget Breakdown Analysis");
         pieChart.setLayoutX(350);
@@ -61,7 +64,7 @@ public class Piechat extends Application{
         whitebox.setX(1000);
         whitebox.setY(180);
         whitebox.setWidth(180);
-        whitebox.setHeight(150);
+        whitebox.setHeight(180);
         whitebox.setFill(Color.WHITE);
         whitebox.setStroke(Color.WHITE);
         root.getChildren().add(whitebox);
@@ -72,19 +75,23 @@ public class Piechat extends Application{
         Text FoodandGroceries = new Text(1000, 260 , "Food and Groceries: $" + budgetTool.gettingFood());
         Text Shopping = new Text(1000, 290 , "Shopping: $" + budgetTool.gettingShopping());
         Text Miscellaneous = new Text(1000, 320 , "Miscellaneous: $" + budgetTool.gettingMisc());
+		Text Extra = new Text(1000, 350 , "Extra: $" + budgetTool.gettingExtra());
+		
         //if the color change, delete below 
         Entertainment.setFill(Color.RED);
         PersonalCare.setFill(Color.ORANGE);
         FoodandGroceries.setFill(Color.FORESTGREEN);
         Shopping.setFill(Color.SKYBLUE);
         Miscellaneous.setFill(Color.DEEPSKYBLUE);
+		Extra.setFill(Color.GREY);
         root.getChildren().add(Entertainment);
         root.getChildren().add(PersonalCare);
         root.getChildren().add(FoodandGroceries);
         root.getChildren().add(Shopping);
         root.getChildren().add(Miscellaneous);
+		root.getChildren().add(Extra);
 
-        //back to menu button 
+         //back to menu button 
         Button back = new Button("Back to main menu");
         back.setStyle("-fx-background-color: white; -fx-text-fill: black;");
         back.setStyle("-fx-font-size: 1.1em; ");
@@ -92,7 +99,8 @@ public class Piechat extends Application{
         back.setLayoutY(500);
         root.getChildren().add(back);
         back.setOnAction(new HandleBackToMenu());
-        
+		
+
         //if the title need change 
         window.setTitle("SAVEBETTER");
         Scene scene = new Scene(root, 1366, 786, Color.LIMEGREEN);
