@@ -39,6 +39,8 @@ public class BudgetInfoGUI extends Application{
 	private Label input1;
 	private Label input2;
 	private Date startDate;
+	private Label error;
+	private Label error2;
 
 	public BudgetInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
@@ -49,9 +51,21 @@ public class BudgetInfoGUI extends Application{
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
-			budgetTool.settingTheAmountToSave(per1);
-			double per2 = budgetTool.gettingTheAmountToSave(per1);
-			input1.setText("$ " + per2 + "");
+			
+			if ( per1 > 100){
+					error.setText( per1 +"% .Percent cannot be greater than 100");
+					input1.setText(" ");
+			}
+			else if (per1<0){
+					error.setText(" Negative percentages not allowed.");
+					input1.setText(" ");
+			}
+			else{
+				error.setText("");
+				budgetTool.settingTheAmountToSave(per1);
+				double per2 = budgetTool.gettingTheAmountToSave(per1);
+				input1.setText("$ " + per2 + "");
+			}
 		}
 	}
 
@@ -62,10 +76,18 @@ public class BudgetInfoGUI extends Application{
 			System.out.println(goal1);
         	budgetTool.settingDate(startDate);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
+			if ( goal1 <0){
+				error2.setText( "Error, please enter a positive value.");
+				input2.setText(" ");
+			}
+			else{
+			
 			System.out.println(startDate);
 			System.out.println(due);
 			input2.setText(due + "");
+			error2.setText(" ");
 		}
+	}
 	}
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
@@ -121,7 +143,17 @@ public class BudgetInfoGUI extends Application{
 
 		percentage = new TextField("0.0%");
 		h2.getChildren().add(percentage);
-
+			
+		HBox errorText = new HBox();
+		root.getChildren().add(errorText);
+		errorText.setAlignment(Pos.CENTER);
+		
+		
+		error = new Label();
+		error.setWrapText(true);
+		error.setTextFill(Color.web("#FF0000"));
+		errorText.getChildren().add(error);
+		
 		Button g = new Button("Compute");
 		h2.getChildren().add(g);
 		g.setOnAction(new HandlePercentage());
@@ -150,7 +182,17 @@ public class BudgetInfoGUI extends Application{
 		TextField goalCost = new TextField("0.00");
 		inputGoal = goalCost;
 		h4.getChildren().add(goalCost);
-
+		
+		HBox errorText2 = new HBox();
+		root.getChildren().add(errorText2);
+		errorText2.setAlignment(Pos.CENTER);
+		
+		
+		error2 = new Label();
+		error2.setWrapText(true);
+		error2.setTextFill(Color.web("#FF0000"));
+		errorText2.getChildren().add(error2);
+		
 		//BOLD
 		HBox h5 = new HBox();
 		root.getChildren().add(h5);
@@ -196,6 +238,8 @@ public class BudgetInfoGUI extends Application{
 		Button back = new Button("Back to main menu");
 		root.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
+		
+		
 		
 		Scene scene = new Scene(root, 1366, 768);
 		scene.getStylesheets().add("calendarstyle.css");

@@ -178,6 +178,8 @@ public class UserInfoGUI extends Application{
 		updateAndClose.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
 		
+		root.setAlignment(Pos.CENTER);
+		
 		Scene scene = new Scene(root, 1366, 768);
 		window.setScene(scene);
 

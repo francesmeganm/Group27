@@ -173,9 +173,7 @@ public class BudgetBreakdownGUI extends Application{
 		Label shop = new Label("Shopping? (ie. clothing, shoes etc.)");
 		shopText = new TextField();
 		shopText.setPromptText("0-100%");
-		/*if (Double.parseDouble(shopText.getText()) < 0 || Double.parseDouble(shopText.getText()) > 100){
-			error.setText("That is an invlaid percent. Please enter a percent between 0 and 100%: ");
-		}*/
+		
 		rowSho.getChildren().add(shop);
 		rowSho.getChildren().add(shopText);
 
@@ -226,6 +224,8 @@ public class BudgetBreakdownGUI extends Application{
 		back.setStyle("-fx-font-size: 1.1em; ");
 		root.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
+		
+		root.setAlignment(Pos.CENTER);
 
 		Scene scene = new Scene (root, 1366, 768);
 		window.setTitle("SAVEBETTER");
