@@ -1,5 +1,10 @@
 import javafx.application.Application;
 
+/**
+ * 
+ * A functioning GUI-based version that creates an instance of BudgetTool and launches the SaveBetter app.
+ *
+ */
 public class SaveBetterGUI{
 	private BudgetTool budgetTool;
 
