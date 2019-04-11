@@ -17,7 +17,7 @@ import javafx.scene.text.*;
 /**
  * BudgetBreakdown GUI class creates a functioning interface for the BudgetBreakdown class.  
  * It creates an instance of BudgetTool, handles various budget-related events such as creating
- * a pie chart that creates a visual for the data collected, and creates a scene graph to create 
+ * a pie chart that serves as a visual for the data collected, and creates a scene graph to create 
  * a functioning budget window. 
  */
 public class BudgetBreakdownGUI extends Application{
