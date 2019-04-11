@@ -13,6 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.text.*; 
 import javafx.scene.paint.Color;
 
+/**
+ * MenuGUI class displays a functioning interface for the Menu class. It creates an instance 
+ * of BudgetTool, handles various budget-related events and creates a scene graph to incorporate 
+ * all of the necessary aesthetics and functionality needed to create a typical menu. 
+ */
 public class MenuGUI extends Application{
 	Stage window;
 	private BudgetTool budgetTool;
