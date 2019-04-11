@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-
 import java.util.Date;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -17,13 +16,13 @@ import java.awt.Font.*;
 import javafx.scene.text.TextFlow.*;
 import javafx.scene.text.FontWeight;
 import java.lang.Object.*;
-
+import javafx.scene.text.Font; 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-
 import java.util.Locale;
 
 /**
@@ -40,18 +39,32 @@ public class BudgetInfoGUI extends Application{
 	private Label input1;
 	private Label input2;
 	private Date startDate;
+	private Label error;
+	private Label error1;
 
-	public BudgetInfoGUI(BudgetTool bt){
+	public BudgetInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
+		this.window = win;
 	}
 
 	class HandlePercentage implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
-			budgetTool.settingTheAmountToSave(per1);
-			double per2 = budgetTool.gettingTheAmountToSave(per1);
-			input1.setText(per2 + "");
+			if ( per1 > 100){
+					error.setText( per1 +"% .Percent cannot be greater than 100");
+					input1.setText(" ");
+			}
+			else if (per1<0){
+					error.setText(" Negative percentages not allowed.");
+					input1.setText(" ");
+			}
+			else{
+				error.setText("");
+				budgetTool.settingTheAmountToSave(per1);
+				double per2 = budgetTool.gettingTheAmountToSave(per1);
+				input1.setText("$ " + per2 + "");
+			}
 		}
 	}
 
@@ -59,24 +72,23 @@ public class BudgetInfoGUI extends Application{
 		public void handle(ActionEvent event){
 			String goal = inputGoal.getText();
 			double goal1 = Double.parseDouble(goal);
-			System.out.println(goal1);
-			//Date dateStart = datePicker.selectedDateProperty().get();
-			//System.out.println(dateStart);
         	budgetTool.settingDate(startDate);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
-			//SimpleDateFormat format = new SimpleDateFormat();
-			//String date1 = format.format(due);
-			System.out.println(startDate);
-			System.out.println(due);
-			input2.setText(due + "");
+			if ( goal1 <0){
+				error1.setText( "Error, please enter a positive value.");
+				input2.setText(" ");
+			}
+			else{
+				input2.setText(due + "");
+				error1.setText(" ");
+			}
 		}
 	}
 
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
-			new MenuGUI(budgetTool).start(s);
-			window.close();
+			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
 
@@ -88,91 +100,78 @@ public class BudgetInfoGUI extends Application{
 		window = primaryStage;
 		window.setTitle("SaveBetter");
 
-		GridPane grid = new GridPane();
-		grid.setPadding(new Insets(10,10,10,10));
-		grid.setVgap(10);
-		grid.setHgap(10);
+		VBox root = new VBox();
+		root.setSpacing(25);
+		root.setAlignment(Pos.CENTER);
+		root.setStyle("-fx-background-color: LIMEGREEN;");
 
 		final DatePicker datePicker = new DatePicker();
         datePicker.localeProperty().set(Locale.US);
 
-		Label header = new Label("Quick Budgeting Analysis");
-		GridPane.setConstraints(header, 1, 0);
-		grid.getChildren().add(header);
-
+		Text title = new Text("Budget Infomation");
+		title.setFont(Font.font("Courier", FontWeight.BOLD, 25));   
+		title.setFill(Color.WHITE);
+		root.getChildren().add(title);
 
 		//AMOUNT AVALIABLE TO SAVE EACH MONTH
-		//BOLD
-		Label a = new Label("Avaliable funds to save each month");
-		GridPane.setConstraints(a, 1, 1);
-		grid.getChildren().add(a);
+		HBox h1 = new HBox();
+		root.getChildren().add(h1);
+		h1.setSpacing(25);
+		h1.setAlignment(Pos.CENTER);
 
-		Label b = new Label("Monthly income less monthly expenses: ");
-		GridPane.setConstraints(b, 1, 2);
-		grid.getChildren().add(b);
+		GridPane gp1 = new GridPane();
+		gp1.setHgap(10);
+		gp1.setVgap(10);
+		h1.getChildren().add(gp1);
 
-		//BOLD
-		Label c = new Label(Double.toString(budgetTool.gettingTheRemainingMoney()));
-		GridPane.setConstraints(c, 2, 2);
-		grid.getChildren().add(c);
+		//AVAILABLE FUNDS
+		Label a = new Label("Avaliable funds to save each month: ");
+		gp1.add(a, 0, 0);
 
-		//AMOUNT TO SAVE FROM PERCENTAGE
-		//BOLD
-		Label d = new Label("Amount of income to save a given percentage");
-		GridPane.setConstraints(d, 1, 4);
-		grid.getChildren().add(d);
+		Label c = new Label("$" + Double.toString(budgetTool.gettingTheRemainingMoney()));
+		gp1.add(c, 1, 0);
 
-		Label e = new Label("Desired percentage of income to save: ");
-		GridPane.setConstraints(e, 1, 5);
-		grid.getChildren().add(e);
+		//DESIRED % TO SAVE
+		Label e = new Label("Desired percentage of remaining money to save: ");
+		gp1.add(e, 0, 1);
 
 		percentage = new TextField("0.0%");
-		GridPane.setConstraints(percentage, 2, 5);
-		grid.getChildren().add(percentage);
+		gp1.add(percentage, 1, 1);
 
-		Label f = new Label("The amount to save is: ");
-		GridPane.setConstraints(f, 1, 6);
-		grid.getChildren().add(f);
+		error = new Label();
+		error.setWrapText(true);
+		error.setTextFill(Color.web("#FF0000"));
+		gp1.add(error, 1, 2);
 
 		Button g = new Button("Compute");
-		GridPane.setConstraints(g, 3, 5);
-		grid.getChildren().add(g);
+		gp1.add(g, 2, 1);
 		g.setOnAction(new HandlePercentage());
 
-		//BOLD
-		input1 = new Label("0.00");
-		GridPane.setConstraints(input1, 2, 6);
-		grid.getChildren().add(input1);
+		//AMOUNT TO SAVE
+		Label f = new Label("The amount to save is: ");
+		gp1.add(f, 0, 2);
 
-		//MONTHS UNTIL GOAL
-		//BOLD
-		Label i = new Label("Goal to save towards");
-		GridPane.setConstraints(i, 1, 8);
-		grid.getChildren().add(i);
+		input1 = new Label("" + "0.00");
+		gp1.add(input1, 1, 2);
 
+		//COST OF GOAL
 		Label j = new Label("Cost of given goal: ");
-		GridPane.setConstraints(j, 1, 9);
-		grid.getChildren().add(j);
+		gp1.add(j, 0, 3);
 
-		TextField goalCost = new TextField();
+		TextField goalCost = new TextField("0.00");
 		inputGoal = goalCost;
-		goalCost.setPromptText("0.00");
-		GridPane.setConstraints(goalCost, 2, 9);
-		grid.getChildren().add(goalCost);
+		gp1.add(goalCost, 1, 3);
 
-		//BOLD
+		error1 = new Label();
+		error1.setWrapText(true);
+		error1.setTextFill(Color.web("#FF0000"));
+		gp1.add(error1, 1, 5);
+
+		//DATE TO START SAVING
 		Label what = new Label("Choose date to start Saving: ");
-		GridPane.setConstraints(what, 1, 10);
-		grid.getChildren().add(what);
+		gp1.add(what, 0, 4);
 
-		HBox hBox = new HBox();
-        hBox.setAlignment(Pos.BOTTOM_RIGHT);
-        hBox.setSpacing(10);
-		GridPane.setConstraints(hBox, 2, 10);
-       
-     	hBox.getChildren().add(datePicker);
-        grid.getChildren().add(hBox);
-
+		gp1.add(datePicker, 1, 4);
 
         datePicker.selectedDateProperty().addListener(new InvalidationListener() {
             @Override
@@ -189,25 +188,26 @@ public class BudgetInfoGUI extends Application{
 		SimpleDateFormat format = new SimpleDateFormat();
 		String date1 = format.format(goalEnds);
 
+		Label how = new Label("Enter date manually or double click to see calendar.");
+		gp1.add(how, 0, 5);
+
+		//DATE COMPLETED
+		Label l = new Label("Date goal is completed: ");
+		gp1.add(l, 0, 6);
+
 		input2 = new Label(format.format(goalEnds));
-		GridPane.setConstraints(input2, 2, 11);
-		grid.getChildren().add(input2);
+		gp1.add(input2, 1, 6);
 
 		Button k = new Button("Compute");
-		GridPane.setConstraints(k, 3, 10);
-		grid.getChildren().add(k);
+		gp1.add(k, 2, 4);
 		k.setOnAction(new HandleGoal());
 
-		Label l = new Label("Date goal is completed: ");
-		GridPane.setConstraints(l, 1, 11);
-		grid.getChildren().add(l);
-
 		Button back = new Button("Back to main menu");
-		GridPane.setConstraints(back, 3, 11);
-		grid.getChildren().add(back);
+		root.getChildren().add(back);
 		back.setOnAction(new HandleBackToMenu());
 		
-		Scene scene = new Scene(grid, 650, 400);
+		Scene scene = new Scene(root, 1366, 768);
+		scene.getStylesheets().add("calendarstyle.css");
 		window.setScene(scene);
 
 		window.show();
