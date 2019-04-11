@@ -1,6 +1,3 @@
-
-
-
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -11,8 +8,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-
 import java.util.Locale;
+
+/**
+ * A functioning GUI that runs the calendar-related classes. 
+ */
 
 public class SampleApp extends Application {
     public static void main(String[] args) throws Exception {
