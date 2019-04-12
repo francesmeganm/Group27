@@ -15,16 +15,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.*;
 
 /**
-  * BudgetBreakdown GUI class creates a functioning GUI interface for the BudgetBreakdown class.  
-  * It creates an instance of BudgetTool, handles various budget-related events such as creating
-  * a pie chart that serves as a visual for the data collected, and creates a scene graph to create 
-  * a functioning budget window. 
-  */
+ * BudgetBreakdown GUI class creates a functioning interface for the BudgetBreakdown class.  
+ * It creates an instance of BudgetTool, handles various budget-related events such as creating
+ * a pie chart that serves as a visual for the data collected, and creates a scene graph to create 
+ * a functioning budget window. 
+ */
 public class BudgetBreakdownGUI extends Application{
-	
-	Stage window; // Sets the window as the primary stage
-	
-	/** These are instance variables **/
+	Stage window;
 	private BudgetTool budgetTool;
 	private Label error;
 	private double extra; 
@@ -33,22 +30,25 @@ public class BudgetBreakdownGUI extends Application{
 	private TextField foodText;
 	private TextField shopText;
 	private TextField miscText;
-	
+
 	/** 
 	 * Constructor that takes a BudgetTool reference and the stage as arguments 
 	 * @param bt a BudgetTool reference
 	 * @param win the current stage
 	 */
+
 	public BudgetBreakdownGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
 		this.window = win;
 	}
+
 	/** 
 	 * HandleSetBudget class handles the event created when the user enters their information for the different categories 
 	 */ 
 	class HandleSetBudget implements EventHandler<ActionEvent>{
 		/**
 		 * Method gets the text entered by the user and assigns them to budget categories
+		 @param event of updating all 
 		 */
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
@@ -57,8 +57,6 @@ public class BudgetBreakdownGUI extends Application{
 			double shopping = Double.parseDouble(shopText.getText());
 			double miscellaneous = Double.parseDouble(miscText.getText());
 			double total = entertainment + personalCare + foodGroceries + shopping + miscellaneous;
-			
-			
 
 			budgetTool.settingBudgetBreakdown(entertainment, personalCare, foodGroceries, shopping, miscellaneous);
 
@@ -76,10 +74,9 @@ public class BudgetBreakdownGUI extends Application{
 						error.setText("");
 					}
 			}
-			
-			
 		}
 	}
+
 	/**
 	 * HandlePieChart creates a pie chart when the user clicks the 'Compute Graph' button
 	 */
@@ -87,6 +84,7 @@ public class BudgetBreakdownGUI extends Application{
 		/**
 		 * Method collects the data for the different categories in the budget breakdown and creates a chart for it.
 		 * If the total percentage allocated is greater than 100 or less than 0, an error message will be displayed.
+		 * @param event of pressing compute graph 
 		 */
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
@@ -98,22 +96,19 @@ public class BudgetBreakdownGUI extends Application{
 
 			budgetTool.settingBudgetBreakdown(entertainment, personalCare, foodGroceries, shopping, miscellaneous);
 			
-			
 			if ( total > 100){
 				error.setText("Error, these values add up to "+ total +"% . Total cannot be greater than 100");
 			}
 			else if (entertainment < 0 || personalCare < 0 || foodGroceries < 0 || shopping < 0 || miscellaneous < 0){
 					
 				error.setText("Error, negative percentages not allowed.");
-			
 			}
 			else{
-				
 				new Piechat(budgetTool, window).start(window);
+			}
 		}
 	}
-	}
-	
+
 	/** 
 	 * HandleBackToMenu class allows the user to go back to the main menu by clicking the 'Back to main menu' button 
 	 */
@@ -121,23 +116,25 @@ public class BudgetBreakdownGUI extends Application{
 		/**
 		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the current stage
 		 * in order to go back to the main menu.
+		 * @param event of pressing "Back to menu" button 
 		 */
 		public void handle(ActionEvent event){
 			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
-	/** Launches the current window **/
+	
+	/** Launches the current window */
 	public static void main(String[] args){
 		launch(args);
 	}
 	
+
 	/** 
 	 * Method creates and organizes the GUI component for the associated BudgetBreakdown class.
 	 * @param primaryStage
 	 */
 	public void start(Stage primaryStage){
 		window = primaryStage;
-		
 
 		VBox root = new VBox();
 		root.setSpacing(25);
@@ -159,8 +156,6 @@ public class BudgetBreakdownGUI extends Application{
 		gp.setAlignment(Pos.CENTER);
 		root.getChildren().add(gp);
 
-		
-
 		//ENTERTAINMENT ROW
 		Label ent = new Label("Entertainment? (ie.movies, games etc.)");
 		entText = new TextField();
@@ -168,7 +163,6 @@ public class BudgetBreakdownGUI extends Application{
 
 		gp.add(ent, 0, 0);
 		gp.add(entText, 1, 0);
-
 		
 		//PERSONAL CARE ROW
 		Label pers = new Label("Personal care? (ie. hair cuts, salons etc.)");
@@ -212,7 +206,7 @@ public class BudgetBreakdownGUI extends Application{
 		error.setTextFill(Color.web("#FF0000"));
 		errorText.getChildren().add(error);
 
-
+		//ACTION OPTIONS 
 		HBox rowUp = new HBox();
 		root.getChildren().add(rowUp);
 		rowUp.setSpacing(25);
