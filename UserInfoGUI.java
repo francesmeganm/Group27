@@ -14,22 +14,20 @@ import javafx.scene.text.*;
 import javafx.scene.paint.Color;
 
 /**
- * UserInfoGUI class creates a functioning GUI interface for the UserInfo class.
- * It creates an instance of BudgetTool, has 6 instance variables that all hold values of TextField inputed 
- * by the user, and handles handles events associated with getting and setting variables that found in the UserInfo class
- */
+The class UserInfoGUI handles events of getting and setting variables that are in 
+ the UserInfo class
+ It has 6 instance variables that all hold values of TextField inputed by the 
+ user in the GUI
+*/
 public class UserInfoGUI extends Application{
-	
-	Stage window;	// Sets the window as the primary stage
-	
-	/** These are instance variables **/
+	Stage window;
 	private BudgetTool budgetTool;
 	private TextField input1;
 	private TextField input2;
 	private TextField input3;
 	private TextField input5;
 	private TextField input6;
-	
+
 	/**
 	 * Constructor that takes a BudgetTool reference and the stage as arguments
 	 * @param bt a BudgetTool reference
@@ -39,7 +37,7 @@ public class UserInfoGUI extends Application{
 		this.budgetTool = bt;
 		this.window = win;
 	}
-	
+
 	/**
 	 * HandleUpdating class handles the event created when the user inputs their income and expense related information
 	 * and updates them by clicking the 'Update All' button.
@@ -82,7 +80,7 @@ public class UserInfoGUI extends Application{
 			budgetTool.updateUserInfo(newTrans1, newUtility1, newOther1, newRent1, newIncome1);
 		}
 	}
-	
+
 	/**
 	 * HandleBackToMenu class allows the user to go back to main menu by clicking the 'Back to main menu' button
 	 */
@@ -90,13 +88,14 @@ public class UserInfoGUI extends Application{
 		/**
 		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the current stage
 		 * in order to go back to the main menu.
+		 * @param event of going back to menu 
 		 */
 		public void handle(ActionEvent event){
 			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
-	
-	/** Launches the current window **/
+
+	/** Launches the current window */
 	public static void main(String[] args){
 		launch(args);
 	}
@@ -104,7 +103,7 @@ public class UserInfoGUI extends Application{
 	/**
 	 * Method creates the GUI display for the user representing the UserInfo
 	 * User can enter and update all their expenses and income
-	 */
+	*/
 	public void start(Stage primaryStage){
 		window = primaryStage;
 		window.setTitle("SaveBetter");
@@ -120,66 +119,47 @@ public class UserInfoGUI extends Application{
 		header.setFill(Color.WHITE);
 		root.getChildren().add(header);
 		
+		GridPane gp = new GridPane();
+		gp.setHgap(10);
+		gp.setVgap(10);
+		gp.setAlignment(Pos.CENTER);
+		root.getChildren().add(gp);
 
 		//ENTER INCOME COLUMN
-		HBox income = new HBox();
-		income.setSpacing(20);
-		income.setAlignment(Pos.CENTER);
-		root.getChildren().add(income);
 
 		Label enterIncome = new Label("Update Income: ");
-		income.getChildren().add(enterIncome);
+		gp.add(enterIncome, 0, 0);
 
 		input1 = new TextField(Double.toString(budgetTool.gettingMonthlyIncome()));
-		income.getChildren().add(input1);
+		gp.add(input1, 1, 0);
 
 		//ENTER TRANSPORTATION COLUMN
-		HBox trans = new HBox();
-		trans.setSpacing(20);
-		trans.setAlignment(Pos.CENTER);
-		root.getChildren().add(trans);
-
 		Label enterTrans = new Label("Update Transportation: ");
-		trans.getChildren().add(enterTrans);
+		gp.add(enterTrans, 0, 1);
 
 		input2 = new TextField(Double.toString(budgetTool.gettingTransport()));
-		trans.getChildren().add(input2);
+		gp.add(input2, 1, 1);
 
 		//ENTER UTILITY COLUMN
-		HBox utility = new HBox();
-		utility.setSpacing(20);
-		utility.setAlignment(Pos.CENTER);
-		root.getChildren().add(utility);
-
 		Label enterUtility = new Label("Update Utility: ");
-		utility.getChildren().add(enterUtility);
+		gp.add(enterUtility, 0, 2);
 
 		input3 = new TextField(Double.toString(budgetTool.gettingUtility()));
-		utility.getChildren().add(input3);
+		gp.add(input3, 1, 2);
 
 		//ENTER RENT COLUMN 
-		HBox rent = new HBox();
-		rent.setSpacing(20);
-		rent.setAlignment(Pos.CENTER);
-		root.getChildren().add(rent);
-
 		Label enterRent = new Label("Update Rent: ");
-		rent.getChildren().add(enterRent);
+		gp.add(enterRent, 0, 3);
 
 		input5 = new TextField(Double.toString(budgetTool.gettingRent()));
-		rent.getChildren().add(input5);
+		gp.add(input5, 1, 3);
 
 		//ENTER OTHER COLUMN 
-		HBox other = new HBox();
-		other.setSpacing(20);
-		other.setAlignment(Pos.CENTER);
-		root.getChildren().add(other);
-
 		Label enterOther = new Label("Update Other: ");
-		other.getChildren().add(enterOther);
+		gp.add(enterOther, 0, 4);
 
 		input6 = new TextField(Double.toString(budgetTool.gettingOther()));
-		other.getChildren().add(input6);
+		gp.add(input6, 1, 4);
 
 		//UPDATE ALL 
 		HBox updateAndClose = new HBox();
