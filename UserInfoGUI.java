@@ -14,26 +14,40 @@ import javafx.scene.text.*;
 import javafx.scene.paint.Color;
 
 /**
-The class UserInfoGUI handles events of getting and setting variables that are in 
- the UserInfo class
- It has 6 instance variables that all hold values of TextField inputed by the 
- user in the GUI
-*/
+ * UserInfoGUI class creates a functioning GUI interface for the UserInfo class.
+ * It creates an instance of BudgetTool, has 6 instance variables that all hold values of TextField inputed 
+ * by the user, and handles handles events associated with getting and setting variables that found in the UserInfo class
+ */
 public class UserInfoGUI extends Application{
-	Stage window;
+	
+	Stage window;	// Sets the window as the primary stage
+	
+	/** These are instance variables **/
 	private BudgetTool budgetTool;
 	private TextField input1;
 	private TextField input2;
 	private TextField input3;
 	private TextField input5;
 	private TextField input6;
-
+	
+	/**
+	 * Constructor that takes a BudgetTool reference and the stage as arguments
+	 * @param bt a BudgetTool reference
+	 * @param win the current stage
+	 */
 	public UserInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
 		this.window = win;
 	}
-
+	
+	/**
+	 * HandleUpdating class handles the event created when the user inputs their income and expense related information
+	 * and updates them by clicking the 'Update All' button.
+	 */
 	class HandleUpdating implements EventHandler<ActionEvent>{
+		/**
+		 * Method takes the total income and expenses entered by the user and sets them
+		 */
 		public void handle(ActionEvent event){
 			//income
 			String newIncome = input1.getText();
@@ -68,21 +82,29 @@ public class UserInfoGUI extends Application{
 			budgetTool.updateUserInfo(newTrans1, newUtility1, newOther1, newRent1, newIncome1);
 		}
 	}
-
+	
+	/**
+	 * HandleBackToMenu class allows the user to go back to main menu by clicking the 'Back to main menu' button
+	 */
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
+		/**
+		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the current stage
+		 * in order to go back to the main menu.
+		 */
 		public void handle(ActionEvent event){
 			new MenuGUI(budgetTool, window).start(window);
 		}
 	}
-
+	
+	/** Launches the current window **/
 	public static void main(String[] args){
 		launch(args);
 	}
 
 	/**
-	Method creates the GUI display for the user representing the UserInfo
-	User can enter and update all their expenses and income
-	*/
+	 * Method creates the GUI display for the user representing the UserInfo
+	 * User can enter and update all their expenses and income
+	 */
 	public void start(Stage primaryStage){
 		window = primaryStage;
 		window.setTitle("SaveBetter");
