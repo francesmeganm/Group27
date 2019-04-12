@@ -103,9 +103,9 @@ public class BudgetInfoGUI extends Application{
 	}
 
 	/**
-	 * Method creates the GUI display for the user representing the UserInfo
-	 * User can enter and update all their expenses and income
-	*/
+	 * Method reates and organizes the GUI component for the associated BudgetInfo class.
+	 * @param primaryStage
+	 */
 	public void start(Stage primaryStage){
 		window = primaryStage;
 		window.setTitle("SaveBetter");
