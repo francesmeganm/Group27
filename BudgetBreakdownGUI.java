@@ -21,7 +21,10 @@ import javafx.scene.text.*;
  * a functioning budget window. 
  */
 public class BudgetBreakdownGUI extends Application{
-	Stage window;
+	
+	Stage window; // Sets the window as the primary stage
+	
+	/** These are instance variables **/
 	private BudgetTool budgetTool;
 	private Label error;
 	private double extra; 
@@ -30,13 +33,22 @@ public class BudgetBreakdownGUI extends Application{
 	private TextField foodText;
 	private TextField shopText;
 	private TextField miscText;
-
+	
+	
+	/** 
+	Constructor that takes a BudgetTool reference and the stage as arguments 
+	*/
 	public BudgetBreakdownGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
 		this.window = win;
 	}
-
+	/** 
+	HandleSetBudget class handles the event created when the user enters their information for the different categories 
+	*/ 
 	class HandleSetBudget implements EventHandler<ActionEvent>{
+		/**
+		Method gets the text entered by the user and assigns them to instance variables of the BudgetBreakdown class.
+		*/
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
 			double personalCare = Double.parseDouble(persText.getText());
@@ -67,7 +79,8 @@ public class BudgetBreakdownGUI extends Application{
 			
 		}
 	}
-
+	/**
+	HandlePieChart creates a pie chart when the user 
 	class HandlePieChart implements EventHandler<ActionEvent>{
 		
 		public void handle(ActionEvent event){
