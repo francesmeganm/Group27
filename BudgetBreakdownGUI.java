@@ -15,11 +15,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.*;
 
 /**
- * BudgetBreakdown GUI class creates a functioning interface for the BudgetBreakdown class.  
- * It creates an instance of BudgetTool, handles various budget-related events such as creating
- * a pie chart that serves as a visual for the data collected, and creates a scene graph to create 
- * a functioning budget window. 
- */
+  * BudgetBreakdown GUI class creates a functioning interface for the BudgetBreakdown class.  
+  * It creates an instance of BudgetTool, handles various budget-related events such as creating
+  * a pie chart that serves as a visual for the data collected, and creates a scene graph to create 
+  * a functioning budget window. 
+  */
 public class BudgetBreakdownGUI extends Application{
 	
 	Stage window; // Sets the window as the primary stage
@@ -36,19 +36,21 @@ public class BudgetBreakdownGUI extends Application{
 	
 	
 	/** 
-	* Constructor that takes a BudgetTool reference and the stage as arguments 
-	*/
+	 * Constructor that takes a BudgetTool reference and the stage as arguments 
+	 * @param bt a BudgetTool reference
+	 * @param win the current stage
+	 */
 	public BudgetBreakdownGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
 		this.window = win;
 	}
 	/** 
-	* HandleSetBudget class handles the event created when the user enters their information for the different categories 
-	*/ 
+	 * HandleSetBudget class handles the event created when the user enters their information for the different categories 
+	 */ 
 	class HandleSetBudget implements EventHandler<ActionEvent>{
 		/**
-		Method gets the text entered by the user and assigns them to budget categories.
-		*/
+		 * Method gets the text entered by the user and assigns them to budget categories.
+		 */
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
 			double personalCare = Double.parseDouble(persText.getText());
@@ -80,13 +82,13 @@ public class BudgetBreakdownGUI extends Application{
 		}
 	}
 	/**
-	* HandlePieChart creates a pie chart when the user clicks the 'Compute Graph' button
-	**/
+	 * HandlePieChart creates a pie chart when the user clicks the 'Compute Graph' button
+	 */
 	class HandlePieChart implements EventHandler<ActionEvent>{
 		/**
-		* Method collects the data for the different categories in the budget breakdown and creates a chart for it.
-		* If the total percentage allocated is greater than 100 or less than 0, an error message will be displayed.
-		**/
+		 * Method collects the data for the different categories in the budget breakdown and creates a chart for it.
+		 * If the total percentage allocated is greater than 100 or less than 0, an error message will be displayed.
+		 */
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
 			double personalCare = Double.parseDouble(persText.getText());
@@ -116,9 +118,9 @@ public class BudgetBreakdownGUI extends Application{
 	/** HandleBackToMenu class allows the user to go back to the main menu by clicking the 'Logout' button **/
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		/**
-		* Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the stage
-		* in order to go back to the main menu.
-		*/
+		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the stage
+		 * in order to go back to the main menu.
+		 */
 		public void handle(ActionEvent event){
 			new MenuGUI(budgetTool, window).start(window);
 		}
@@ -129,9 +131,9 @@ public class BudgetBreakdownGUI extends Application{
 	}
 	
 	/** 
-	* Method creates a functioning GUI for the BudgetBreakdown class 
-	* @param primaryStage
-	*/
+	 * Method creates a functioning GUI for the BudgetBreakdown class 
+	 * @param primaryStage
+	 */
 	public void start(Stage primaryStage){
 		window = primaryStage;
 		
