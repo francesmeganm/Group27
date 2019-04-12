@@ -34,7 +34,6 @@ public class BudgetBreakdownGUI extends Application{
 	private TextField shopText;
 	private TextField miscText;
 	
-	
 	/** 
 	 * Constructor that takes a BudgetTool reference and the stage as arguments 
 	 * @param bt a BudgetTool reference
@@ -49,7 +48,7 @@ public class BudgetBreakdownGUI extends Application{
 	 */ 
 	class HandleSetBudget implements EventHandler<ActionEvent>{
 		/**
-		 * Method gets the text entered by the user and assigns them to budget categories.
+		 * Method gets the text entered by the user and assigns them to budget categories
 		 */
 		public void handle(ActionEvent event){
 			double entertainment = Double.parseDouble(entText.getText());
@@ -115,10 +114,12 @@ public class BudgetBreakdownGUI extends Application{
 	}
 	}
 	
-	/** HandleBackToMenu class allows the user to go back to the main menu by clicking the 'Logout' button **/
+	/** 
+	 * HandleBackToMenu class allows the user to go back to the main menu by clicking the 'Back to main menu' button 
+	 */
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
 		/**
-		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the stage
+		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the current stage
 		 * in order to go back to the main menu.
 		 */
 		public void handle(ActionEvent event){
