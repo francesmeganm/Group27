@@ -132,7 +132,7 @@ public class BudgetBreakdownGUI extends Application{
 	}
 	
 	/** 
-	 * Method creates a functioning GUI for the BudgetBreakdown class 
+	 * Method creates and organizes the GUI component for the BudgetBreakdown class.
 	 * @param primaryStage
 	 */
 	public void start(Stage primaryStage){
