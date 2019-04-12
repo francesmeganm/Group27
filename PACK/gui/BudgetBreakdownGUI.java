@@ -164,40 +164,35 @@ public class BudgetBreakdownGUI extends Application{
 
 		//ENTERTAINMENT ROW
 		Label ent = new Label("Entertainment? (ie.movies, games etc.)");
-		entText = new TextField();
-		entText.setPromptText("0-100%");
+		entText = new TextField("0.00");
 
 		gp.add(ent, 0, 0);
 		gp.add(entText, 1, 0);
 		
 		//PERSONAL CARE ROW
 		Label pers = new Label("Personal care? (ie. hair cuts, salons etc.)");
-		persText = new TextField();
-		persText.setPromptText("0-100%");
+		persText = new TextField("0.00");
 
 		gp.add(pers, 0, 1);
 		gp.add(persText, 1, 1);
 
 		//FOOD AND GROCERIES 
 		Label food = new Label("Food and Groceries (including dining out)");
-		foodText = new TextField();
-		foodText.setPromptText("0-100%");
+		foodText = new TextField("0.00");
 		
 		gp.add(food, 0, 2);
 		gp.add(foodText, 1, 2);
 
 		//SHOPPING ROW
 		Label shop = new Label("Shopping? (ie. clothing, shoes etc.)");
-		shopText = new TextField();
-		shopText.setPromptText("0-100%");
+		shopText = new TextField("0.00");
 
 		gp.add(shop, 0,3);
 		gp.add(shopText, 1, 3);
 
 		//MISCELLANEOUS ROW
 		Label misc = new Label("Miscellaneous? (ie. birthday gifts)");
-		miscText = new TextField();
-		miscText.setPromptText("0-100%");
+		miscText = new TextField("0.00");
 		
 		gp.add(misc, 0, 4);
 		gp.add(miscText, 1, 4);
