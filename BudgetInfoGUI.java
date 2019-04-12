@@ -26,23 +26,22 @@ import javafx.scene.layout.VBox;
 import java.util.Locale;
 
 /**
- * UserInfoGUI class creates a functioning GUI interface for the BudgetInfo class. 
- * It creates an instance of BudgetTool, includes instance variables that all hold values of TextField inputed by the 
- * user in the GUI, and handles the events associated with getting anf setting variables found in the UserInfo class. 
- */
-
+The class UserInfoGUI handles events of getting and setting variables that are in 
+ the UserInfo class
+ It has 6 instance variables that all hold values of TextField inputed by the 
+ user in the GUI
+*/
 public class BudgetInfoGUI extends Application{
-	
-	Stage window;	// Sets the window as the primary stage
-	
-	/** These are instance variables **/
+	Stage window;
 	private BudgetTool budgetTool;
 	private TextField percentage;
 	private TextField inputGoal;
 	private Label input1;
 	private Label input2;
 	private Date startDate;
-	
+	private Label error;
+	private Label error1;
+
 	/**
 	 * Constructor that takes a BudgetTool reference and the stage as arguments
 	 * @param bt a BudgetTool reference
@@ -52,7 +51,7 @@ public class BudgetInfoGUI extends Application{
 		this.budgetTool = bt;
 		this.window = win;
 	}
-	
+
 	/**
 	 * HandleBackToMenu class handles the event created when user enters the percentage of their remaining balance
 	 * that they wish to save
@@ -60,34 +59,52 @@ public class BudgetInfoGUI extends Application{
 	class HandlePercentage implements EventHandler<ActionEvent>{
 		/**
 		 * Method takes the amount to save, sets it, and computes the exact amount to save based on this percentage
+		 @param event of pressing compute 
 		 */
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
-			budgetTool.settingTheAmountToSave(per1);
-			double per2 = budgetTool.gettingTheAmountToSave(per1);
-			input1.setText("$ " + per2 + "");
+			if ( per1 > 100){
+					error.setText( per1 +"% .Percent cannot be greater than 100");
+					input1.setText(" ");
+			}
+			else if (per1<0){
+					error.setText(" Negative percentages not allowed.");
+					input1.setText(" ");
+			}
+			else{
+				error.setText("");
+				budgetTool.settingTheAmountToSave(per1);
+				double per2 = budgetTool.gettingTheAmountToSave(per1);
+				input1.setText("$ " + per2 + "");
+			}
 		}
 	}
-	
+
 	/**
 	 * HandleGoal class handles the event created when the user enters the cost of a given goal
 	 */
 	class HandleGoal implements EventHandler<ActionEvent>{
 		/**
 		 * Method takes the cost of a goal entered by the user, sets it, and computes the date the goal is reached
+		 @param event of pressing compute 
 		 */
 		public void handle(ActionEvent event){
 			String goal = inputGoal.getText();
 			double goal1 = Double.parseDouble(goal);
-			System.out.println(goal1);
         	budgetTool.settingDate(startDate);
 			Date due = budgetTool.gettingDateGoalCompleted(goal1);
-			System.out.println(startDate);
-			System.out.println(due);
-			input2.setText(due + "");
+			if ( goal1 <0){
+				error1.setText( "Error, please enter a positive value.");
+				input2.setText(" ");
+			}
+			else{
+				input2.setText(due + "");
+				error1.setText(" ");
+			}
 		}
 	}
+
 	/** 
 	 * HandleBackToMenu class allows the user to go back to the main menu by clicking the 'Back to main menu' button
 	 */
@@ -95,6 +112,7 @@ public class BudgetInfoGUI extends Application{
 		/** 
 		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the current
 		 * stage in order to go back to the main menu
+		 * @param event of going back to the main menu 
 		 */
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
@@ -103,9 +121,10 @@ public class BudgetInfoGUI extends Application{
 	}
 
 	/**
-	 * Method reates and organizes the GUI component for the associated BudgetInfo class.
-	 * @param primaryStage
-	 */
+	Method creates the GUI display for the user representing the UserInfo
+	User can enter and update all their expenses and income
+	@param primaryStage 
+	*/
 	public void start(Stage primaryStage){
 		window = primaryStage;
 		window.setTitle("SaveBetter");
@@ -148,6 +167,11 @@ public class BudgetInfoGUI extends Application{
 		percentage = new TextField("0.0%");
 		gp1.add(percentage, 1, 1);
 
+		error = new Label();
+		error.setWrapText(true);
+		error.setTextFill(Color.web("#FF0000"));
+		gp1.add(error, 1, 2);
+
 		Button g = new Button("Compute");
 		gp1.add(g, 2, 1);
 		g.setOnAction(new HandlePercentage());
@@ -167,12 +191,16 @@ public class BudgetInfoGUI extends Application{
 		inputGoal = goalCost;
 		gp1.add(goalCost, 1, 3);
 
+		error1 = new Label();
+		error1.setWrapText(true);
+		error1.setTextFill(Color.web("#FF0000"));
+		gp1.add(error1, 1, 5);
+
 		//DATE TO START SAVING
 		Label what = new Label("Choose date to start Saving: ");
 		gp1.add(what, 0, 4);
 
 		gp1.add(datePicker, 1, 4);
-
 
         datePicker.selectedDateProperty().addListener(new InvalidationListener() {
             @Override
@@ -189,12 +217,15 @@ public class BudgetInfoGUI extends Application{
 		SimpleDateFormat format = new SimpleDateFormat();
 		String date1 = format.format(goalEnds);
 
+		Label how = new Label("Enter date manually or double click to see calendar.");
+		gp1.add(how, 0, 5);
+
 		//DATE COMPLETED
 		Label l = new Label("Date goal is completed: ");
-		gp1.add(l, 0, 5);
+		gp1.add(l, 0, 6);
 
 		input2 = new Label(format.format(goalEnds));
-		gp1.add(input2, 1, 5);
+		gp1.add(input2, 1, 6);
 
 		Button k = new Button("Compute");
 		gp1.add(k, 2, 4);
