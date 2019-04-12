@@ -26,20 +26,21 @@ import javafx.scene.layout.VBox;
 import java.util.Locale;
 
 /**
-The class UserInfoGUI handles events of getting and setting variables that are in 
- the UserInfo class
- It has 6 instance variables that all hold values of TextField inputed by the 
- user in the GUI
-*/
+ * The class UserInfoGUI handles events of getting and setting variables that are in 
+ * the UserInfo class
+ * It has 6 instance variables that all hold values of TextField inputed by the 
+ * user in the GUI
+ */
 public class BudgetInfoGUI extends Application{
-	Stage window;
+	Stage window;	// Primary stage 
+	/** These are instance variables **/
 	private BudgetTool budgetTool;
 	private TextField percentage;
 	private TextField inputGoal;
 	private Label input1;
 	private Label input2;
 	private Date startDate;
-
+	
 	public BudgetInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
 		this.window = win;
