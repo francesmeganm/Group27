@@ -26,13 +26,15 @@ import javafx.scene.layout.VBox;
 import java.util.Locale;
 
 /**
- * The class UserInfoGUI handles events of getting and setting variables that are in 
- * the UserInfo class
- * It has 6 instance variables that all hold values of TextField inputed by the 
- * user in the GUI
+ * UserInfoGUI class creates a functioning GUI interface for the BudgetInfo class. 
+ * It creates an instance of BudgetTool, includes instance variables that all hold values of TextField inputed by the 
+ * user in the GUI, and handles the events associated with getting anf setting variables found in the UserInfo class. 
  */
+
 public class BudgetInfoGUI extends Application{
-	Stage window;	// Primary stage 
+	
+	Stage window;	// Sets the window as the primary stage
+	
 	/** These are instance variables **/
 	private BudgetTool budgetTool;
 	private TextField percentage;
@@ -41,12 +43,24 @@ public class BudgetInfoGUI extends Application{
 	private Label input2;
 	private Date startDate;
 	
+	/**
+	 * Constructor that takes a BudgetTool reference and the stage as arguments
+	 * @param bt a BudgetTool reference
+	 * @param win the current stage
+	 */
 	public BudgetInfoGUI(BudgetTool bt, Stage win){
 		this.budgetTool = bt;
 		this.window = win;
 	}
-
+	
+	/**
+	 * HandleBackToMenu class handles the event created when user enters the percentage of their remaining balance
+	 * that they wish to save
+	 */
 	class HandlePercentage implements EventHandler<ActionEvent>{
+		/**
+		 * Method takes the amount to save, sets it, and computes the exact amount to save based on this percentage
+		 */
 		public void handle(ActionEvent event){
 			String per = percentage.getText();
 			double per1 = Double.parseDouble(per);
@@ -55,8 +69,14 @@ public class BudgetInfoGUI extends Application{
 			input1.setText("$ " + per2 + "");
 		}
 	}
-
+	
+	/**
+	 * HandleGoal class handles the event created when the user enters the cost of a given goal
+	 */
 	class HandleGoal implements EventHandler<ActionEvent>{
+		/**
+		 * Method takes the cost of a goal entered by the user, sets it, and computes the date the goal is reached
+		 */
 		public void handle(ActionEvent event){
 			String goal = inputGoal.getText();
 			double goal1 = Double.parseDouble(goal);
@@ -68,8 +88,14 @@ public class BudgetInfoGUI extends Application{
 			input2.setText(due + "");
 		}
 	}
-
+	/** 
+	 * HandleBackToMenu class allows the user to go back to the main menu by clicking the 'Back to main menu' button
+	 */
 	class HandleBackToMenu implements EventHandler<ActionEvent>{
+		/** 
+		 * Method creates a new MenuGUI instance that takes a reference of the BudgetTool class and the current
+		 * stage in order to go back to the main menu
+		 */
 		public void handle(ActionEvent event){
 			Stage s = new Stage();
 			new MenuGUI(budgetTool, window).start(window);
@@ -77,8 +103,8 @@ public class BudgetInfoGUI extends Application{
 	}
 
 	/**
-	Method creates the GUI display for the user representing the UserInfo
-	User can enter and update all their expenses and income
+	 * Method creates the GUI display for the user representing the UserInfo
+	 * User can enter and update all their expenses and income
 	*/
 	public void start(Stage primaryStage){
 		window = primaryStage;
