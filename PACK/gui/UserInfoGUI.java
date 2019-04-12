@@ -1,9 +1,3 @@
-package gui;
-
-import calendar.*;
-import logic.*;
-import text.*;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.Group;
