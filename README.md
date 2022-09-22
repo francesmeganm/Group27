@@ -1,3 +1,7 @@
+#Edit September 22, 2022
+* Hi Everyone! This is Kathryn writing this, hope everyone is doing well :)
+* I am going to use this project for my CPSC 501 refactoring assignment. I meant to ask for direct permission from each of you but was unsure how to contact you each. I will keep this project private (ie. I will not post to my public github) and only use for the submission of my assignment. 
+
 # Group27 SaveBetter
 
 #References 
